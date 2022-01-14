@@ -34,35 +34,10 @@ namespace Paint
             InitializeComponent();
             NodesControl.ItemsSource = Nodes;
 
-            Nodes.Add(new RectangleNode
-            {
-                Top = 10,
-                Left = 100,
-                Width = 100,
-                Height = 100,
-                Fill = Brushes.Black
-            });
-
-            Nodes.Add(new RectangleNode
-            {
-                Top = 50,
-                Left = 500,
-                Width = 100,
-                Height = 150,
-                Fill = Brushes.Black
-            });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Nodes[0] = new RectangleNode
-            {
-                Top = 50,
-                Left = 100,
-                Width = 100 + 200,
-                Height = 150,
-                Fill = Brushes.Black
-            };
         }
     }
 }
