@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControlzEx.Theming;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,11 @@ namespace Paint
     /// </summary>
     public partial class App : Application
     {
+        /// <inheritdoc />
+        protected override void OnStartup(StartupEventArgs e)
+        {
+
+        }
+
     }
 }

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\C#\Paint\Paint\Paint\App.xaml
-11407045341
+31784694706
 
-5-2051286716
-208-1310627838
-MainWindow.xaml;
+15806514573
+2091574568654
+AdornerTemplate\HoverAdornerTemplate.xaml;AdornerTemplate\MoveResizeRotateAdornerTemplate.xaml;MainWindow.xaml;
 
-False
+True
 
