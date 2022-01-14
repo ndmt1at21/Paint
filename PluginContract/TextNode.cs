@@ -13,5 +13,7 @@ namespace PluginContract
         public int FontSize { get; set; }
         public double FontWeight { get; set; }
         public SolidColorBrush Color { get; set; } = Brushes.Black;
+
+        public override string Name => "Text";
     }
 }

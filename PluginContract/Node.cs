@@ -11,8 +11,10 @@ using System.Windows.Shapes;
 
 namespace PluginContract
 {
-    public class Node
+    public abstract class Node
     {
+        public abstract string Name { get; }
+
         public double Top { get; set; }
         public double Left { get; set; }
         public double Width { get; set; }

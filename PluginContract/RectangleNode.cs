@@ -13,6 +13,8 @@ namespace PluginContract
 {
     public class RectangleNode : ShapeNode
     {
+        public override string Name => "Rectangle";
+
         public override Geometry DefiningShape => CreateGeometry();
 
         public Geometry CreateGeometry()
