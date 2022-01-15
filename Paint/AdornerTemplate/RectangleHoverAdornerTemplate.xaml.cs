@@ -15,12 +15,9 @@ using System.Windows.Shapes;
 
 namespace Paint.AdornerTemplate
 {
-    /// <summary>
-    /// Interaction logic for HoverAdornerTemplate.xaml
-    /// </summary>
-    public partial class HoverAdornerTemplate : UserControl
+    public partial class RectangleHoverAdornerTemplate : UserControl
     {
-        public HoverAdornerTemplate()
+        public RectangleHoverAdornerTemplate()
         {
             InitializeComponent();
         }

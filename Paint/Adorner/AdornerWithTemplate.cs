@@ -11,14 +11,14 @@ namespace Paint.Adorner
 {
     public class AdornerWithTemplate : System.Windows.Documents.Adorner
     {
-        private VisualCollection visuals;
-        private UserControl chrome;
+        private VisualCollection _visuals;
+        private UserControl _template;
 
         protected override int VisualChildrenCount
         {
             get
             {
-                return this.visuals.Count;
+                return _visuals.Count;
             }
         }
 
@@ -26,21 +26,21 @@ namespace Paint.Adorner
             : base(designerItem)
         {
             SnapsToDevicePixels = true;
-            chrome = template;
-            chrome.DataContext = designerItem;
-            visuals = new VisualCollection(this);
-            visuals.Add(chrome);
+            _template = template;
+            _template.DataContext = designerItem;
+            _visuals = new VisualCollection(this);
+            _visuals.Add(_template);
         }
 
         protected override Size ArrangeOverride(Size arrangeBounds)
         {
-            this.chrome.Arrange(new Rect(arrangeBounds));
+            _template.Arrange(new Rect(arrangeBounds));
             return arrangeBounds;
         }
 
         protected override Visual GetVisualChild(int index)
         {
-            return this.visuals[index];
+            return _visuals[index];
         }
     }
 }
