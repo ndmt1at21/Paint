@@ -22,5 +22,4 @@ namespace PluginContract
             return new RectangleGeometry { Rect = new Rect(0, 0, Width, Height) };
         }
     }
-
 }

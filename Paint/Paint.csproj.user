@@ -7,21 +7,30 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AdornerTemplate\HoverAdornerTemplate.xaml.cs">
+    <Compile Update="AdornerTemplate\RectangleHoverAdornerTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AdornerTemplate\MoveResizeRotateAdornerTemplate.xaml.cs">
+    <Compile Update="AdornerTemplate\RectangleAdornerTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="AdornerTemplate\HoverAdornerTemplate.xaml">
+    <Page Update="AdornerTemplate\RectangleHoverAdornerTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="AdornerTemplate\MoveResizeRotateAdornerTemplate.xaml">
+    <Page Update="AdornerTemplate\RectangleAdornerTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CustomControl\DesignItemContainer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CustomControl\DesignItemsControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -1,4 +1,6 @@
-﻿using PluginContract;
+﻿using Paint.CustomControl;
+using Paint.ViewModels;
+using PluginContract;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,16 +22,21 @@ namespace Paint.Thumb
 
         private void MoveThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
-            ContentControl control = (ContentControl)sender;
-            Node node = (Node)control.DataContext;
-
-            Debug.WriteLine(node);
 
         }
 
         private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
+            DesignItemContainer container = (DesignItemContainer)DataContext;
+            NodeViewModel vm = (NodeViewModel)container.DataContext;
 
+            if (vm != null)
+            {
+                vm.Top += e.VerticalChange;
+                vm.Left += e.HorizontalChange;
+            }
+
+            e.Handled = true;
         }
     }
 }

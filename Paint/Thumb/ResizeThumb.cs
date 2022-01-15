@@ -17,7 +17,7 @@ namespace Paint.Thumb
 
         private void ResizeThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
-
+            e.Handled = true;
         }
 
         private void ResizeThumb_DragDelta(object sender, DragDeltaEventArgs e)

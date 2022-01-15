@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
-namespace PluginContract
+namespace Paint.ViewModels
 {
-    public abstract class ShapeNode : Node
+    public class ShapeNodeViewModel : NodeViewModel
     {
         public Brush? Stroke { get; set; }
         public Brush? Fill { get; set; }
@@ -26,6 +23,6 @@ namespace PluginContract
         public double StrokeMiterLimit { get; set; }
         public double StrokeThickness { get; set; }
 
-        public abstract Geometry DefiningShape { get; }
+        public Geometry DefiningShape { get; set; } = Geometry.Empty;
     }
 }

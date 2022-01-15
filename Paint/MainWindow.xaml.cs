@@ -1,4 +1,5 @@
 ﻿using Paint.Adorner;
+using Paint.ViewModels;
 using PluginContract;
 using System;
 using System.Collections.Generic;
@@ -25,19 +26,41 @@ namespace Paint
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public ObservableCollection<Node> Nodes = new ObservableCollection<Node>();
+        public ObservableCollection<NodeViewModel> Nodes { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+
+            Nodes = new ObservableCollection<NodeViewModel>();
             NodesControl.ItemsSource = Nodes;
 
+            Nodes.Add(new ShapeNodeViewModel
+            {
+                Width = 100,
+                Height = 100,
+                Fill = Brushes.Black,
+                Left = 0,
+                Top = 0,
+                DefiningShape = new RectangleGeometry { Rect = new Rect(0, 0, Width, Height) }
+            });
         }
+
+        private static int count = 0;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            count++;
+
+            var node = Nodes[0];
+
+            node.Left += 500;
+            node.Top += 500;
         }
     }
 }
