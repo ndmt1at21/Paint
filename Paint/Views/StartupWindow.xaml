@@ -1,0 +1,42 @@
+﻿<Window
+    x:Class="Paint.Views.StartupWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Paint.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="600"
+    Height="300"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ContentRendered="Window_ContentRendered"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Grid Background="Transparent">
+        <Border Background="White" CornerRadius="10">
+            <Grid>
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="{StaticResource PoppinsMedium}"
+                        FontSize="36">
+                        Paint
+                    </TextBlock>
+                </StackPanel>
+                <TextBlock
+                    Margin="15,5"
+                    VerticalAlignment="Bottom"
+                    FontSize="12"
+                    Text="{Binding LoadStatusMessage}" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

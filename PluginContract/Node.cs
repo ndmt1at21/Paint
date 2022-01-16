@@ -12,23 +12,10 @@ using System.Windows.Shapes;
 
 namespace PluginContract
 {
-    public abstract class Node
+    public interface INode
     {
-        public abstract string Name { get; }
-        public double Top { get; set; }
-        public double Left { get; set; }
-        public double Width { get; set; }
-        public double Height { get; set; }
-
-        public static string Serialize(Node node)
-        {
-            return JsonConvert.SerializeObject(node, Formatting.Indented);
-        }
-
-        public static Node? Deserialize(string serializeNode)
-        {
-            Node? node = JsonConvert.DeserializeObject<Node>(serializeNode);
-            return node;
-        }
+        public string ID { get; }
+        public string Name { get; }
+        //public Image Icon { get; }
     }
 }

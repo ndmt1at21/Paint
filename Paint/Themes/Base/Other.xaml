@@ -1,0 +1,68 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--  Reuseable Padding  -->
+    <Thickness x:Key="PaddingSmall">5,5,5,5</Thickness>
+    <Thickness x:Key="PaddingMedium">10,10,10,10</Thickness>
+
+    <Thickness x:Key="PaddingLeftSmall">5,0,0,0</Thickness>
+    <Thickness x:Key="PaddingLeftMedium">10,0,0,0</Thickness>
+    <Thickness x:Key="PaddingLeftLarge">25,0,0,0</Thickness>
+
+    <Thickness x:Key="PaddingBottomSmall">0,0,0,5</Thickness>
+    <Thickness x:Key="PaddingBottomMedium">0,0,0,10</Thickness>
+    <Thickness x:Key="PaddingBottomLarge">0,0,0,25</Thickness>
+
+    <Thickness x:Key="PaddingTopSmall">0,5,0,0</Thickness>
+    <Thickness x:Key="PaddingTopMedium">0,10,0,0</Thickness>
+    <Thickness x:Key="PaddingTopLarge">0,25,0,0</Thickness>
+
+    <Thickness x:Key="PaddingXSmall">5,0,5,0</Thickness>
+    <Thickness x:Key="PaddingXMedium">10,0,10,0</Thickness>
+    <Thickness x:Key="PaddingXLarge">25,0,20,0</Thickness>
+
+    <Thickness x:Key="PaddingXSmallYLarge">5,25,5,25</Thickness>
+    <Thickness x:Key="PaddingXSmallYMedium">5,10,5,10</Thickness>
+    <Thickness x:Key="PaddingXMediumYSmall">10,5,10,5</Thickness>
+    <Thickness x:Key="PaddingXMediumYLarge">10,25,10,25</Thickness>
+    <Thickness x:Key="PaddingXLargeYSmall">25,5,25,5</Thickness>
+    <Thickness x:Key="PaddingXLargeYMedium">25,10,25,10</Thickness>
+
+    <Thickness x:Key="PaddingYSmall">0,5,0,5</Thickness>
+
+    <!--  Corner Radius  -->
+    <CornerRadius x:Key="RadiusSmall">5</CornerRadius>
+    <CornerRadius x:Key="Radius">8</CornerRadius>
+    <CornerRadius x:Key="RadiusLarge">12</CornerRadius>
+
+    <!--  Titile Bar Size  -->
+    <sys:Double x:Key="TitleBarHeight">50</sys:Double>
+
+    <!--  Top Menu Size  -->
+    <sys:Double x:Key="LogoHeightTitleBar">40</sys:Double>
+    <sys:Double x:Key="LogoHeightSmall">25</sys:Double>
+
+    <sys:Double x:Key="TopMenuIconHeight">
+        25
+    </sys:Double>
+
+    <sys:Double x:Key="TopCommandButtonWidth">
+        45
+    </sys:Double>
+
+    <!--  Window Command Icon Size  -->
+    <sys:Double x:Key="WindowCommandIconHeight">
+        18
+    </sys:Double>
+
+    <!--  Drop shadow  -->
+    <DropShadowEffect
+        x:Key="DropShadowLight"
+        BlurRadius="30"
+        Direction="0"
+        Opacity="0.1"
+        ShadowDepth="0" />
+
+</ResourceDictionary>

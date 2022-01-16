@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\C#\Paint\Paint\Paint\App.xaml
-6-2112344641
+13644260217
 
-28-1297967138
-2091574568654
-AdornerTemplate\RectangleAdornerTemplate.xaml;AdornerTemplate\RectangleHoverAdornerTemplate.xaml;CustomControl\DesignItemContainer.xaml;CustomControl\DesignItemsControl.xaml;MainWindow.xaml;Themes\Generic.xaml;
+49-136311309
+210-2097724511
+AdornerTemplate\LineAdornerTemplate.xaml;AdornerTemplate\LineHoverAdornerTemplate.xaml;AdornerTemplate\RectangleAdornerTemplate.xaml;AdornerTemplate\RectangleHoverAdornerTemplate.xaml;CustomControl\DesignItemContainer.xaml;CustomControl\DesignItemsControl.xaml;Themes\Base\Colors.xaml;Themes\Base\Other.xaml;Themes\Base\Typography.xaml;Themes\Generic.xaml;Views\MainWindow.xaml;Views\RecentWindow.xaml;Views\StartupWindow.xaml;
 
-True
+False
 

@@ -127,6 +127,19 @@
           "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
       },
+      "BRControl/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/BRControl.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BRControl.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "PluginContract/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -392,6 +405,11 @@
         "version.txt"
       ]
     },
+    "BRControl/1.0.0": {
+      "type": "project",
+      "path": "../BRControl/BRControl.csproj",
+      "msbuildProject": "../BRControl/BRControl.csproj"
+    },
     "PluginContract/1.0.0": {
       "type": "project",
       "path": "../PluginContract/PluginContract.csproj",
@@ -400,6 +418,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "BRControl >= 1.0.0",
       "Fluent.Ribbon >= 9.0.1",
       "Newtonsoft.Json >= 13.0.1",
       "PluginContract >= 1.0.0",
@@ -434,6 +453,9 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
+            "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj": {
+              "projectPath": "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj"
+            },
             "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj": {
               "projectPath": "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj"
             }

@@ -15,12 +15,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\BRControl\BRControl.csproj" />
 		<ProjectReference Include="..\PluginContract\PluginContract.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="Models\" />
-		<Folder Include="PluginManager\" />
+		<Folder Include="Plugins\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 
 </Project>

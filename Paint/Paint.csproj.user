@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AdornerTemplate\LineAdornerTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdornerTemplate\LineHoverAdornerTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AdornerTemplate\RectangleHoverAdornerTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +21,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AdornerTemplate\LineAdornerTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdornerTemplate\LineHoverAdornerTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="AdornerTemplate\RectangleHoverAdornerTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -27,7 +39,22 @@
     <Page Update="CustomControl\DesignItemsControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Themes\Base\Colors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Base\Other.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Base\Typography.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\RecentWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StartupWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Generic.xaml">

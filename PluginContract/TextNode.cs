@@ -7,13 +7,14 @@ using System.Windows.Media;
 
 namespace PluginContract
 {
-    public class TextNode : Node
+    public class TextNode : INode
     {
         public string Text { get; set; }
         public int FontSize { get; set; }
         public double FontWeight { get; set; }
         public SolidColorBrush Color { get; set; } = Brushes.Black;
 
-        public override string Name => "Text";
+        public string Name => "Text";
+        public string ID => "Text";
     }
 }

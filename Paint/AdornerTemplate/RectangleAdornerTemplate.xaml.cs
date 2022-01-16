@@ -18,9 +18,9 @@ namespace Paint.AdornerTemplate
     /// <summary>
     /// Interaction logic for ResizeThumb.xaml
     /// </summary>
-    public partial class MoveResizeRotateAdornerTemplate : UserControl
+    public partial class RectangleAdornerTemplate : UserControl
     {
-        public MoveResizeRotateAdornerTemplate()
+        public RectangleAdornerTemplate()
         {
             InitializeComponent();
         }

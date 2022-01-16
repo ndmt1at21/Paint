@@ -1,4 +1,5 @@
 ﻿using Paint.Adorner;
+using Paint.Lib;
 using Paint.ViewModels;
 using PluginContract;
 using System;
@@ -20,7 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Paint
+namespace Paint.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -30,7 +31,7 @@ namespace Paint
     {
         public ObservableCollection<NodeViewModel> Nodes { get; set; }
 
-        public MainWindow()
+        public MainWindow(PluginManager pluginManager)
         {
             InitializeComponent();
             DataContext = this;
@@ -45,7 +46,7 @@ namespace Paint
                 Fill = Brushes.Black,
                 Left = 0,
                 Top = 0,
-                DefiningShape = new RectangleGeometry { Rect = new Rect(0, 0, Width, Height) }
+                DefiningShape = new RectangleGeometry { Rect = new Rect(0, 0, 1, 1) }
             });
         }
 
@@ -61,6 +62,11 @@ namespace Paint
 
             node.Left += 500;
             node.Top += 500;
+        }
+
+        public void LoadFrom(string path)
+        {
+
         }
     }
 }

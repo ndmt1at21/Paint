@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="PrimaryColor" Color="#3B82F6" />
+    <SolidColorBrush x:Key="PrimaryColorLight" Color="#60A5FA" />
+    <SolidColorBrush x:Key="PrimaryColorDark" Color="#2563EB" />
+
+    <SolidColorBrush x:Key="AlertColor" Color="#EF4444" />
+    <SolidColorBrush x:Key="AlertColorLight" Color="#F87171" />
+    <SolidColorBrush x:Key="AlertColorDark" Color="#DC2626" />
+
+    <SolidColorBrush x:Key="GrayColorLighter" Color="#ECECEC" />
+    <SolidColorBrush x:Key="GrayColor" Color="#6B7280" />
+    <SolidColorBrush x:Key="GrayColorLight" Color="#9CA3AF" />
+    <SolidColorBrush x:Key="GrayColorDark" Color="#4B5563" />
+
+    <SolidColorBrush x:Key="BackgroundColor" Color="#F5F5F4" />
+    <SolidColorBrush x:Key="SurfaceColor" Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="TextPrimaryColor" Color="#292524" />
+    <SolidColorBrush x:Key="TextSecondaryColor" Color="#525252" />
+    <SolidColorBrush x:Key="TextSmallColor" Color="#71717A" />
+    <SolidColorBrush x:Key="TextContrastColor" Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="VisualFocusBorderColor" Color="Black" />
+</ResourceDictionary>

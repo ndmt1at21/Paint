@@ -13,7 +13,7 @@ namespace Paint.Adorner
         public RectangleAdorner(UIElement adornedElement) :
             base(
                 adornedElement,
-                new MoveResizeRotateAdornerTemplate()
+                new RectangleAdornerTemplate()
             )
         {
         }

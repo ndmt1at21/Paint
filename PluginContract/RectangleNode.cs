@@ -11,15 +11,15 @@ using System.Windows.Shapes;
 
 namespace PluginContract
 {
-    public class RectangleNode : ShapeNode
+    public class RectangleNode : IShapeNode
     {
-        public override string Name => "Rectangle";
+        public string ID => "Rectangle";
 
-        public override Geometry DefiningShape => CreateGeometry();
+        public string Name => "Rectangle";
 
         public Geometry CreateGeometry()
         {
-            return new RectangleGeometry { Rect = new Rect(0, 0, Width, Height) };
+            return new RectangleGeometry { Rect = new Rect(0, 0, 1, 1) };
         }
     }
 }
