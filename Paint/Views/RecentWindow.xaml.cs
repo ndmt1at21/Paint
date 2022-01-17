@@ -74,7 +74,6 @@ namespace Paint.Views
             }
 
             MainWindow mainWindow = new MainWindow(_pluginManager);
-            mainWindow.LoadFrom(path);
             mainWindow.Show();
 
             Close();

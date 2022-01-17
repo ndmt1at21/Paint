@@ -63,7 +63,6 @@ namespace Paint.Views
         private void StartFromProject(string path)
         {
             MainWindow mainWindow = new MainWindow(_pluginManager);
-            mainWindow.LoadFrom(path);
             mainWindow.Show();
             Close();
         }

@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\C#\Paint\Paint\Paint\App.xaml
 13644260217
 
-49-136311309
+50-300874346
 210-2097724511
 AdornerTemplate\LineAdornerTemplate.xaml;AdornerTemplate\LineHoverAdornerTemplate.xaml;AdornerTemplate\RectangleAdornerTemplate.xaml;AdornerTemplate\RectangleHoverAdornerTemplate.xaml;CustomControl\DesignItemContainer.xaml;CustomControl\DesignItemsControl.xaml;Themes\Base\Colors.xaml;Themes\Base\Other.xaml;Themes\Base\Typography.xaml;Themes\Generic.xaml;Views\MainWindow.xaml;Views\RecentWindow.xaml;Views\StartupWindow.xaml;
 
-False
+True
 

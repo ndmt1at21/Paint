@@ -12,11 +12,6 @@ using System.Windows.Media;
 
 namespace Paint.Thumb
 {
-    internal enum ResizeDirection
-    {
-        Bottom, Top, Left, Right
-    }
-
     public class ResizeThumb : System.Windows.Controls.Primitives.Thumb
     {
         private DesignItemContainer container { get; set; }

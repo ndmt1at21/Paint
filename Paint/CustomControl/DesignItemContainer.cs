@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,11 @@ namespace Paint.CustomControl
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DesignItemContainer), new FrameworkPropertyMetadata(typeof(DesignItemContainer)));
         }
+
+        public ScaleTransform? ScaleTransform => RenderTransform is TransformGroup group ? group.Children.OfType<ScaleTransform>().FirstOrDefault() : null;
+        public TranslateTransform? TranslateTransform => RenderTransform is TransformGroup group ? group.Children.OfType<TranslateTransform>().FirstOrDefault() : null;
+        public RotateTransform? RotateTransform => RenderTransform is TransformGroup group ? group.Children.OfType<RotateTransform>().FirstOrDefault() : null;
+
 
         // Apply Transform 
         public static DependencyProperty ApplyTransformProperty =

@@ -27,49 +27,11 @@ namespace Paint.Views
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
-        public ObservableCollection<NodeViewModel> Nodes { get; set; }
-
         public MainWindow(PluginManager pluginManager)
         {
             InitializeComponent();
-            DataContext = this;
-
-            Nodes = new ObservableCollection<NodeViewModel>();
-            NodesControl.ItemsSource = Nodes;
-
-          
-        }
-
-        private static int count = 0;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Nodes.Add(new ShapeNodeViewModel
-            {
-                Width = 100,
-                Height = 100,
-                Fill = Brushes.Black,
-                Left = 0,
-                Top = 0,
-                RotateAngle = 10,
-                DefiningShape = new RectangleGeometry { Rect = new Rect(0, 0, 1, 1) }
-            });
-
-            count++;
-
-            var node = Nodes[0];
-
-            node.Left += 500;
-            node.Top += 500;
-        }
-
-        public void LoadFrom(string path)
-        {
-
         }
     }
 }
