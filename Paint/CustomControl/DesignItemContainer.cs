@@ -5,20 +5,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Paint.CustomControl
 {
-    [TemplatePart(Name = ContentPresenterName, Type = typeof(ContentPresenter))]
     public class DesignItemContainer : ContentControl, IGroupable, ISelectable
     {
-        private const string ContentPresenterName = "PART_ContentPresenter";
-
         static DesignItemContainer()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DesignItemContainer), new FrameworkPropertyMetadata(typeof(DesignItemContainer)));
         }
 
-        // Host Container
+        // Apply Transform 
+        public static DependencyProperty ApplyTransformProperty =
+            DependencyProperty.RegisterAttached(
+                "ApplyTransform",
+                typeof(Transform),
+                typeof(DesignItemContainer),
+                new FrameworkPropertyMetadata(default(Transform), OnApplyTransformChanged)
+            );
+
+        public static void SetApplyTransform(UIElement element, Transform value)
+        {
+            element.SetValue(ApplyTransformProperty, value);
+        }
+
+        public static Transform GetApplyTransform(UIElement element)
+        {
+            return (Transform)element.GetValue(ApplyTransformProperty);
+        }
+
+        private static void OnApplyTransformChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var designItemContainer = (DesignItemContainer)VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(d));
+            designItemContainer.ApplyTransform((Transform)e.NewValue);
+
+        }
+
+        public void ApplyTransform(Transform apply)
+        {
+            if (apply != null)
+                RenderTransform = apply.Clone();
+        }
+
+        // Host => DesignItemsControl
         public DesignItemsControl? Host => (DesignItemsControl)ItemsControl.ItemsControlFromItemContainer(this);
 
         // ID

@@ -25,13 +25,7 @@
                     <Setter Property="Width" Value="{Binding Width}" />
                     <Setter Property="Height" Value="{Binding Height}" />
                     <Setter Property="helpers:AttachedAdorner.ShowResizeAdorner" Value="True" />
-                    <Setter Property="RenderTransform">
-                        <Setter.Value>
-                            <TransformGroup>
-                                <RotateTransform Angle="{Binding RotateAngle}" />
-                            </TransformGroup>
-                        </Setter.Value>
-                    </Setter>
+                    <Setter Property="RenderTransformOrigin" Value="{Binding TransformOrigin}" />
                 </Style>
             </custom:DesignItemsControl.ItemContainerStyle>
             <custom:DesignItemsControl.ItemTemplate>
@@ -41,7 +35,19 @@
                         Height="{Binding Height}"
                         Data="{Binding DefiningShape}"
                         Fill="{Binding Fill}"
-                        Stretch="Fill" />
+                        Stretch="Fill">
+                        <Path.Style>
+                            <Style>
+                                <Setter Property="custom:DesignItemContainer.ApplyTransform">
+                                    <Setter.Value>
+                                        <TransformGroup>
+                                            <RotateTransform Angle="{Binding RotateAngle}" />
+                                        </TransformGroup>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Path.Style>
+                    </Path>
                 </DataTemplate>
             </custom:DesignItemsControl.ItemTemplate>
         </custom:DesignItemsControl>

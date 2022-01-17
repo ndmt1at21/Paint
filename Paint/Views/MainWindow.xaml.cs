@@ -39,15 +39,7 @@ namespace Paint.Views
             Nodes = new ObservableCollection<NodeViewModel>();
             NodesControl.ItemsSource = Nodes;
 
-            Nodes.Add(new ShapeNodeViewModel
-            {
-                Width = 100,
-                Height = 100,
-                Fill = Brushes.Black,
-                Left = 0,
-                Top = 0,
-                DefiningShape = new RectangleGeometry { Rect = new Rect(0, 0, 1, 1) }
-            });
+          
         }
 
         private static int count = 0;
@@ -56,6 +48,17 @@ namespace Paint.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Nodes.Add(new ShapeNodeViewModel
+            {
+                Width = 100,
+                Height = 100,
+                Fill = Brushes.Black,
+                Left = 0,
+                Top = 0,
+                RotateAngle = 10,
+                DefiningShape = new RectangleGeometry { Rect = new Rect(0, 0, 1, 1) }
+            });
+
             count++;
 
             var node = Nodes[0];

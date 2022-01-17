@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace Paint.Thumb
 {
@@ -19,6 +20,7 @@ namespace Paint.Thumb
     public class ResizeThumb : System.Windows.Controls.Primitives.Thumb
     {
         private DesignItemContainer container { get; set; }
+        private DesignCanvas designCanvas { get; set; }
         private NodeViewModel nodeVM { get; set; }
 
         private ResizeDirection direction { get; set; }
@@ -40,19 +42,16 @@ namespace Paint.Thumb
             if (container == null || nodeVM == null)
                 return;
 
-            double deltaVertical, deltaHorizontal;
-
             switch (VerticalAlignment)
             {
                 case VerticalAlignment.Bottom:
-                    deltaVertical = Math.Min(-e.VerticalChange, nodeVM.Height);
-                    nodeVM.Height -= deltaVertical;
+                    UpdateBottomResize(e);
                     break;
+
                 case VerticalAlignment.Top:
-                    deltaVertical = Math.Min(e.VerticalChange, nodeVM.Width);
-                    nodeVM.Top += deltaVertical;
-                    nodeVM.Height -= deltaVertical;
+                    UpdateTopResize(e);
                     break;
+
                 default:
                     break;
             }
@@ -60,17 +59,54 @@ namespace Paint.Thumb
             switch (HorizontalAlignment)
             {
                 case HorizontalAlignment.Left:
-                    deltaHorizontal = Math.Min(e.HorizontalChange, nodeVM.Width);
-                    nodeVM.Left += deltaHorizontal;
-                    nodeVM.Width -= deltaHorizontal;
+                    UpdateLeftResize(e);
                     break;
                 case HorizontalAlignment.Right:
-                    deltaHorizontal = Math.Min(-e.HorizontalChange, nodeVM.Width);
-                    nodeVM.Width -= deltaHorizontal;
+                    UpdateRightResize(e);
                     break;
                 default:
                     break;
             }
+        }
+
+        private void UpdateBottomResize(DragDeltaEventArgs e)
+        {
+            double deltaVertical = Math.Min(-e.VerticalChange, nodeVM.Height);
+            double angle = nodeVM.RotateAngle * Math.PI / 180;
+
+            nodeVM.Top += (nodeVM.TransformOrigin.Y * deltaVertical * (1 - Math.Cos(angle)));
+            nodeVM.Left += -(nodeVM.TransformOrigin.X * deltaVertical * Math.Sin(-angle));
+            nodeVM.Height -= deltaVertical;
+        }
+
+        private void UpdateTopResize(DragDeltaEventArgs e)
+        {
+            double deltaVertical = Math.Min(e.VerticalChange, nodeVM.Height);
+            double angle = nodeVM.RotateAngle * Math.PI / 180;
+
+            nodeVM.Top += deltaVertical * Math.Cos(-angle) + (nodeVM.TransformOrigin.Y * deltaVertical * (1 - Math.Cos(-angle)));
+            nodeVM.Left += deltaVertical * Math.Sin(-angle) - (nodeVM.TransformOrigin.Y * deltaVertical * Math.Sin(-angle));
+            nodeVM.Height -= deltaVertical;
+        }
+
+        private void UpdateLeftResize(DragDeltaEventArgs e)
+        {
+            double deltaHorizontal = Math.Min(e.HorizontalChange, nodeVM.Width);
+            double angle = nodeVM.RotateAngle * Math.PI / 180;
+
+            nodeVM.Top += deltaHorizontal * Math.Sin(angle) - nodeVM.TransformOrigin.X * deltaHorizontal * Math.Sin(angle);
+            nodeVM.Left += deltaHorizontal * Math.Cos(angle) + nodeVM.TransformOrigin.X * deltaHorizontal * (1 - Math.Cos(angle));
+            nodeVM.Width -= deltaHorizontal;
+        }
+
+        private void UpdateRightResize(DragDeltaEventArgs e)
+        {
+            double deltaHorizontal = Math.Min(-e.HorizontalChange, nodeVM.Width);
+            double angle = nodeVM.RotateAngle * Math.PI / 180;
+
+            nodeVM.Top -= nodeVM.TransformOrigin.X * deltaHorizontal * Math.Sin(angle);
+            nodeVM.Left += nodeVM.TransformOrigin.X * deltaHorizontal * (1 - Math.Cos(angle));
+            nodeVM.Width -= deltaHorizontal;
         }
 
         private void InitResizeDirection()
@@ -107,31 +143,6 @@ namespace Paint.Thumb
 
             if (deltaHeightChange < 0)
                 direction = ResizeDirection.Top;
-        }
-
-        private void UpdateTopChanged(DragDeltaEventArgs e)
-        {
-            double deltaHeightChange = nodeVM.Height + e.VerticalChange * -1;
-
-            if (deltaHeightChange > 0)
-            {
-                Debug.WriteLine(deltaHeightChange);
-                nodeVM.Top -= e.VerticalChange * -1;
-                nodeVM.Height += e.VerticalChange * -1;
-            }
-
-            if (deltaHeightChange < 0)
-                direction = ResizeDirection.Bottom;
-        }
-
-        private void UpdateLeftChanged(DragDeltaEventArgs e)
-        {
-
-        }
-
-        private void UpdateRightChanged(DragDeltaEventArgs e)
-        {
-            nodeVM.Width += e.VerticalChange;
         }
     }
 }
