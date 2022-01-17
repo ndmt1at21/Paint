@@ -20,10 +20,7 @@ namespace Paint.Thumb
     public class ResizeThumb : System.Windows.Controls.Primitives.Thumb
     {
         private DesignItemContainer container { get; set; }
-        private DesignCanvas designCanvas { get; set; }
         private NodeViewModel nodeVM { get; set; }
-
-        private ResizeDirection direction { get; set; }
 
         public ResizeThumb()
         {
@@ -107,42 +104,6 @@ namespace Paint.Thumb
             nodeVM.Top -= nodeVM.TransformOrigin.X * deltaHorizontal * Math.Sin(angle);
             nodeVM.Left += nodeVM.TransformOrigin.X * deltaHorizontal * (1 - Math.Cos(angle));
             nodeVM.Width -= deltaHorizontal;
-        }
-
-        private void InitResizeDirection()
-        {
-            switch (VerticalAlignment)
-            {
-                case VerticalAlignment.Bottom:
-                    direction = ResizeDirection.Bottom;
-                    break;
-
-                case VerticalAlignment.Top:
-                    direction = ResizeDirection.Top;
-                    break;
-            }
-
-            switch (HorizontalAlignment)
-            {
-                case HorizontalAlignment.Left:
-                    direction = ResizeDirection.Left;
-                    break;
-
-                case HorizontalAlignment.Right:
-                    direction = ResizeDirection.Right;
-                    break;
-            }
-        }
-
-        private void UpdateBottomChanged(DragDeltaEventArgs e)
-        {
-            double deltaHeightChange = nodeVM.Height + e.VerticalChange;
-
-            if (deltaHeightChange > 0)
-                nodeVM.Height += e.VerticalChange;
-
-            if (deltaHeightChange < 0)
-                direction = ResizeDirection.Top;
         }
     }
 }
