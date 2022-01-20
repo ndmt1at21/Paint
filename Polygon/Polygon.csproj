@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="PluginContract">
+      <HintPath>..\..\New folder\Paint\PluginContract\bin\Debug\net6.0-windows\PluginContract.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
