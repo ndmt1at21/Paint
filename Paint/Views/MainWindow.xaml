@@ -68,10 +68,46 @@
                     <RibbonApplicationMenuItem Header="New" />
                     <RibbonApplicationMenuItem Header="Open" />
                     <RibbonApplicationMenuItem Header="Save" />
-                    <RibbonApplicationMenuItem Header="Save img" />
+                    <RibbonApplicationSplitMenuItem  Header="Save img as" >
+                        <RibbonApplicationMenuItem Header="JPG" />
+                        <RibbonApplicationMenuItem Header="PNG" />
+                    </RibbonApplicationSplitMenuItem>
                     <RibbonApplicationMenuItem Header="Load" />
                     <RibbonApplicationMenuItem Header="Exit" />
+
+                    <RibbonApplicationMenu.AuxiliaryPaneContent>
+                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0">
+                                <TextBlock Text="Recent Items"
+                       FontWeight="Bold"
+                       Margin="5" />
+                            </Border>
+                            <ListBox x:Name="recentImgListBox" Grid.Row="1">
+                                <ListBox.Items>
+                                    <ListBoxItem Content="Readme.txt" />
+                                    <ListBoxItem Content="OriginalScript.dfs"
+                             IsSelected="True" />
+                                    <ListBoxItem Content="MyScript.dfs" />
+                                </ListBox.Items>
+                            </ListBox>
+                        </Grid>
+                    </RibbonApplicationMenu.AuxiliaryPaneContent>
+                    <RibbonApplicationMenu.FooterPaneContent>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <RibbonButton Label="Exit" Grid.Column="2"/>
+                        </Grid>
+                    </RibbonApplicationMenu.FooterPaneContent>
                 </RibbonApplicationMenu>
+                
             </Ribbon.ApplicationMenu>
 
             <!-- Ribbon Tab #1: Home -->
