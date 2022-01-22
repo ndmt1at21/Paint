@@ -9,15 +9,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginContract", "PluginCon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BRControl", "BRControl\BRControl.csproj", "{ADB76C8E-AF0D-4770-A0EE-FC0A19542E10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Star", "Star\Star.csproj", "{22E35CF2-9E3F-43F8-AE32-42FC48FDB72F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Star", "Star\Star.csproj", "{22E35CF2-9E3F-43F8-AE32-42FC48FDB72F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polygon", "Polygon\Polygon.csproj", "{F77B6B84-9207-49EA-AE8B-F2E5CD9215F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polygon", "Polygon\Polygon.csproj", "{F77B6B84-9207-49EA-AE8B-F2E5CD9215F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrow", "Arrow\Arrow.csproj", "{46C7460A-B919-415A-9654-D9695BA4C5C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrow", "Arrow\Arrow.csproj", "{46C7460A-B919-415A-9654-D9695BA4C5C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexagon", "Hexagon\Hexagon.csproj", "{2A3FEEE6-8AB5-463D-8C3E-4937C88C4327}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexagon", "Hexagon\Hexagon.csproj", "{2A3FEEE6-8AB5-463D-8C3E-4937C88C4327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pentagon", "Pentagon\Pentagon.csproj", "{C7F6E5B3-3D13-4A16-8AF2-13D18518B079}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pentagon", "Pentagon\Pentagon.csproj", "{C7F6E5B3-3D13-4A16-8AF2-13D18518B079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Triangle", "Triangle\Triangle.csproj", "{F62FAACF-D24B-48FD-9581-5A145AD439AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Circle", "Circle\Circle.csproj", "{CC1F5EEC-010E-4793-96AF-9CC7C8D14D9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heart", "Heart\Heart.csproj", "{B5AA48D8-CD89-4342-A5F2-F59BD4D90487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Donut", "Donut\Donut.csproj", "{98FE3936-CB83-428E-9B7B-1F00A71002B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diamond", "Diamond\Diamond.csproj", "{D859DB5C-00F7-46A7-8FAC-DA89BE7A4210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +67,26 @@ Global
 		{C7F6E5B3-3D13-4A16-8AF2-13D18518B079}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7F6E5B3-3D13-4A16-8AF2-13D18518B079}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7F6E5B3-3D13-4A16-8AF2-13D18518B079}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62FAACF-D24B-48FD-9581-5A145AD439AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62FAACF-D24B-48FD-9581-5A145AD439AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62FAACF-D24B-48FD-9581-5A145AD439AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62FAACF-D24B-48FD-9581-5A145AD439AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1F5EEC-010E-4793-96AF-9CC7C8D14D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1F5EEC-010E-4793-96AF-9CC7C8D14D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1F5EEC-010E-4793-96AF-9CC7C8D14D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1F5EEC-010E-4793-96AF-9CC7C8D14D9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5AA48D8-CD89-4342-A5F2-F59BD4D90487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5AA48D8-CD89-4342-A5F2-F59BD4D90487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5AA48D8-CD89-4342-A5F2-F59BD4D90487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5AA48D8-CD89-4342-A5F2-F59BD4D90487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98FE3936-CB83-428E-9B7B-1F00A71002B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98FE3936-CB83-428E-9B7B-1F00A71002B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98FE3936-CB83-428E-9B7B-1F00A71002B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98FE3936-CB83-428E-9B7B-1F00A71002B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D859DB5C-00F7-46A7-8FAC-DA89BE7A4210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D859DB5C-00F7-46A7-8FAC-DA89BE7A4210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D859DB5C-00F7-46A7-8FAC-DA89BE7A4210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D859DB5C-00F7-46A7-8FAC-DA89BE7A4210}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

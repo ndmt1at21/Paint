@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Win-2021\\Paint\\Paint\\Paint.csproj": {}
+    "D:\\Nam4\\LT_Windows\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj": {
+    "D:\\Nam4\\LT_Windows\\Paint\\BRControl\\BRControl.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj",
+        "projectUniqueName": "D:\\Nam4\\LT_Windows\\Paint\\BRControl\\BRControl.csproj",
         "projectName": "BRControl",
-        "projectPath": "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj",
-        "packagesPath": "C:\\Users\\Dinh Quang Tho\\.nuget\\packages\\",
-        "outputPath": "D:\\Win-2021\\Paint\\BRControl\\obj\\",
+        "projectPath": "D:\\Nam4\\LT_Windows\\Paint\\BRControl\\BRControl.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "D:\\Nam4\\LT_Windows\\Paint\\BRControl\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dinh Quang Tho\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows7.0"
@@ -53,34 +53,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WPF": {
-              "privateAssets": "none"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Win-2021\\Paint\\Paint\\Paint.csproj": {
+    "D:\\Nam4\\LT_Windows\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Win-2021\\Paint\\Paint\\Paint.csproj",
+        "projectUniqueName": "D:\\Nam4\\LT_Windows\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "D:\\Win-2021\\Paint\\Paint\\Paint.csproj",
-        "packagesPath": "C:\\Users\\Dinh Quang Tho\\.nuget\\packages\\",
-        "outputPath": "D:\\Win-2021\\Paint\\Paint\\obj\\",
+        "projectPath": "D:\\Nam4\\LT_Windows\\Paint\\Paint\\Paint.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "D:\\Nam4\\LT_Windows\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dinh Quang Tho\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows7.0"
@@ -93,11 +85,11 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj": {
-                "projectPath": "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj"
+              "D:\\Nam4\\LT_Windows\\Paint\\BRControl\\BRControl.csproj": {
+                "projectPath": "D:\\Nam4\\LT_Windows\\Paint\\BRControl\\BRControl.csproj"
               },
-              "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj": {
-                "projectPath": "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj"
+              "D:\\Nam4\\LT_Windows\\Paint\\PluginContract\\PluginContract.csproj": {
+                "projectPath": "D:\\Nam4\\LT_Windows\\Paint\\PluginContract\\PluginContract.csproj"
               }
             }
           }
@@ -111,24 +103,6 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "dependencies": {
-            "Fluent.Ribbon": {
-              "target": "Package",
-              "version": "[9.0.1, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.1, )"
-            },
-            "PropertyChanged.Fody": {
-              "target": "Package",
-              "version": "[3.4.0, )"
-            },
-            "System.Drawing.Common": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -139,34 +113,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WPF": {
-              "privateAssets": "none"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj": {
+    "D:\\Nam4\\LT_Windows\\Paint\\PluginContract\\PluginContract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj",
+        "projectUniqueName": "D:\\Nam4\\LT_Windows\\Paint\\PluginContract\\PluginContract.csproj",
         "projectName": "PluginContract",
-        "projectPath": "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj",
-        "packagesPath": "C:\\Users\\Dinh Quang Tho\\.nuget\\packages\\",
-        "outputPath": "D:\\Win-2021\\Paint\\PluginContract\\obj\\",
+        "projectPath": "D:\\Nam4\\LT_Windows\\Paint\\PluginContract\\PluginContract.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "D:\\Nam4\\LT_Windows\\Paint\\PluginContract\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dinh Quang Tho\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows7.0"
@@ -190,12 +156,6 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "dependencies": {
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.1, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -206,15 +166,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WPF": {
-              "privateAssets": "none"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
