@@ -8,10 +8,11 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid Margin="-2">
+    <Grid Margin="-1.5">
         <Rectangle
+            RenderOptions.BitmapScalingMode="HighQuality"
             SnapsToDevicePixels="True"
             Stroke="#0ea5e9"
-            StrokeThickness="2" />
+            StrokeThickness="1.5" />
     </Grid>
 </UserControl>

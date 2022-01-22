@@ -8,9 +8,9 @@ using System.Windows;
 
 namespace Paint.Adorner
 {
-    public class RectangleAdorner : AdornerWithTemplate
+    public class Adorner : AdornerWithTemplate
     {
-        public RectangleAdorner(UIElement adornedElement) :
+        public Adorner(UIElement adornedElement) :
             base(
                 adornedElement,
                 new RectangleAdornerTemplate()

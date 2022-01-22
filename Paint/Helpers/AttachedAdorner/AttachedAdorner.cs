@@ -16,6 +16,7 @@ namespace Paint.Helpers
     public partial class AttachedAdorner
     {
         // All adorner show on canvas
-        private static readonly List<RectangleAdorner> _rectAdorner = new List<RectangleAdorner>();
+        private static readonly List<System.Windows.Documents.Adorner> _rectAdorner
+            = new List<System.Windows.Documents.Adorner>();
     }
 }

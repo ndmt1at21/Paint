@@ -3,13 +3,14 @@ using Paint.CustomControl;
 using PluginContract;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Paint.Helpers
 {
@@ -37,23 +38,31 @@ namespace Paint.Helpers
 
             if (value)
             {
-                AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
-                RectangleAdorner adorner = new RectangleAdorner(element);
-                _rectAdorner.Add(adorner);
-                layer.Add(adorner);
+                element.MouseEnter += OnMouseEnterRectangle;
+                element.MouseLeave += OnMouseLeaveRectangle;
             }
             else
             {
-                var layer = AdornerLayer.GetAdornerLayer(element);
-                if (layer != null)
-                {
-                    foreach (RectangleAdorner adorner in _rectAdorner)
-                    {
-                        layer.Remove(adorner);
-                        _rectAdorner.Clear();
-                    }
-                }
+                element.MouseEnter -= OnMouseEnterRectangle;
+                element.MouseLeave -= OnMouseLeaveRectangle;
             }
+        }
+
+        private static void OnMouseEnterRectangle(object sender, MouseEventArgs e)
+        {
+            DesignItemContainer element = (DesignItemContainer)sender;
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
+            RectangleHoverAdorner adorner = new RectangleHoverAdorner(element);
+
+            _rectAdorner.Add(adorner);
+            layer.Add(adorner);
+
+            Debug.WriteLine("dfkjjkfjgfg");
+        }
+
+        private static void OnMouseLeaveRectangle(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

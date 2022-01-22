@@ -37,7 +37,7 @@ namespace Paint.Helpers
             if (value)
             {
                 AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
-                RectangleAdorner adorner = new RectangleAdorner(element);
+                Adorner.Adorner adorner = new Adorner.Adorner(element);
                 _rectAdorner.Add(adorner);
                 layer.Add(adorner);
             }
@@ -46,7 +46,7 @@ namespace Paint.Helpers
                 var layer = AdornerLayer.GetAdornerLayer(element);
                 if (layer != null)
                 {
-                    foreach (RectangleAdorner adorner in _rectAdorner)
+                    foreach (Adorner.Adorner adorner in _rectAdorner)
                     {
                         layer.Remove(adorner);
                         _rectAdorner.Clear();

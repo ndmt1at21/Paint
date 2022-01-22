@@ -69,7 +69,6 @@ namespace Paint.Views
 
         private void StartFromApp()
         {
-            Debug.WriteLine("fkgjfjkfg");
             MainWindow mainWindow = new MainWindow(_pluginManager);
             mainWindow.Show();
             Close();

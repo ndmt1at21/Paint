@@ -30,18 +30,20 @@
                     <Setter Property="Canvas.Left" Value="{Binding Left}" />
                     <Setter Property="Width" Value="{Binding Width}" />
                     <Setter Property="Height" Value="{Binding Height}" />
-                    <Setter Property="helpers:AttachedAdorner.ShowResizeAdorner" Value="True" />
+                    <Setter Property="helpers:AttachedAdorner.HasHoverAdorner" Value="True" />
+                    <Setter Property="helpers:AttachedAdorner.ShowResizeAdorner" Value="False" />
                     <Setter Property="RenderTransformOrigin" Value="{Binding TransformOrigin}" />
                 </Style>
             </custom:DesignItemsControl.ItemContainerStyle>
             <custom:DesignItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Path
-                        x:Name="path"
                         Width="{Binding Width}"
                         Height="{Binding Height}"
                         Data="{Binding DefiningShape}"
                         Fill="{Binding Fill}"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
                         Stretch="Fill">
                         <Path.Style>
                             <Style>

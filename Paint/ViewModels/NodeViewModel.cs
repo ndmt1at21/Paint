@@ -15,5 +15,7 @@ namespace Paint.ViewModels
         public double Height { get; set; }
         public double RotateAngle { get; set; }
         public Point TransformOrigin { get; set; } = new Point(0.5, 0.5);
+
+        public bool IsSelected { get; set; }
     }
 }

@@ -21,7 +21,6 @@ namespace Paint.CustomControl
         public TranslateTransform? TranslateTransform => RenderTransform is TransformGroup group ? group.Children.OfType<TranslateTransform>().FirstOrDefault() : null;
         public RotateTransform? RotateTransform => RenderTransform is TransformGroup group ? group.Children.OfType<RotateTransform>().FirstOrDefault() : null;
 
-
         // Apply Transform 
         public static DependencyProperty ApplyTransformProperty =
             DependencyProperty.RegisterAttached(

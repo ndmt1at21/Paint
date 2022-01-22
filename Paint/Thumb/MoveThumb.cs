@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
@@ -14,6 +15,8 @@ namespace Paint.Thumb
 {
     public class MoveThumb : System.Windows.Controls.Primitives.Thumb
     {
+        private DesignItemContainer container { get; set; }
+
         public MoveThumb()
         {
             DragStarted += MoveThumb_DragStarted;
@@ -30,10 +33,17 @@ namespace Paint.Thumb
             DesignItemContainer container = (DesignItemContainer)DataContext;
             NodeViewModel vm = (NodeViewModel)container.DataContext;
 
-            if (vm != null)
+            if (container != null)
             {
-                vm.Top += e.VerticalChange;
-                vm.Left += e.HorizontalChange;
+                Point dragDelta = new Point(e.HorizontalChange, e.VerticalChange);
+
+                dragDelta = container.RotateTransform.Transform(dragDelta);
+
+                if (vm != null)
+                {
+                    vm.Left += dragDelta.X;
+                    vm.Top += dragDelta.Y;
+                }
             }
 
             e.Handled = true;
