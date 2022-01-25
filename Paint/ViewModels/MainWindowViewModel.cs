@@ -25,7 +25,7 @@ namespace Paint.ViewModels
                 Left = 0,
                 Top = 0,
                 RotateAngle = 10,
-                DefiningShape = new RectangleGeometry { Rect = new Rect(0, 0, 1, 1) }
+                DefiningShape = Geometry.Parse("M76.5 0L113.883 27.5173L152.109 53.8967L136.987 97.2827L123.229 141.103L76.5 140.4L29.7711 141.103L16.0128 97.2827L0.891006 53.8967L39.1169 27.5173L76.5 0Z")
             });
         }
 
