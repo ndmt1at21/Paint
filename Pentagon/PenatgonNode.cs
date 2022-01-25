@@ -8,8 +8,8 @@ using System.Windows.Media;
 
 namespace Pentagon
 {
-	public class PenatgonNode:IShapeNode
-	{
+    public class PenatgonNode : IShapeNode
+    {
         public string ID => "Pentagon";
 
         public string Name => "Pentagon";

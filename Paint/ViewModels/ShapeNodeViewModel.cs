@@ -9,10 +9,10 @@ namespace Paint.ViewModels
 {
     public class ShapeNodeViewModel : NodeViewModel
     {
-        public Brush? Stroke { get; set; }
-        public Brush? Fill { get; set; }
+        public Brush Stroke { get; set; }
+        public Brush Fill { get; set; }
 
-        public DoubleCollection? StrokeDashArray { get; set; }
+        public DoubleCollection StrokeDashArray { get; set; }
 
         public PenLineCap StrokeDashCap { get; set; }
         public PenLineCap StrokeStartLineCap { get; set; }

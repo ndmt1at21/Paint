@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<BaseOutputPath>D:\C#\Paint\Paint\Paint\Plugins\Star</BaseOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>

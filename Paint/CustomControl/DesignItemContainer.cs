@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paint.Gestures;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Paint.CustomControl
@@ -17,9 +19,9 @@ namespace Paint.CustomControl
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DesignItemContainer), new FrameworkPropertyMetadata(typeof(DesignItemContainer)));
         }
 
-        public ScaleTransform? ScaleTransform => RenderTransform is TransformGroup group ? group.Children.OfType<ScaleTransform>().FirstOrDefault() : null;
-        public TranslateTransform? TranslateTransform => RenderTransform is TransformGroup group ? group.Children.OfType<TranslateTransform>().FirstOrDefault() : null;
-        public RotateTransform? RotateTransform => RenderTransform is TransformGroup group ? group.Children.OfType<RotateTransform>().FirstOrDefault() : null;
+        public ScaleTransform ScaleTransform => RenderTransform is TransformGroup group ? group.Children.OfType<ScaleTransform>().FirstOrDefault() : null;
+        public TranslateTransform TranslateTransform => RenderTransform is TransformGroup group ? group.Children.OfType<TranslateTransform>().FirstOrDefault() : null;
+        public RotateTransform RotateTransform => RenderTransform is TransformGroup group ? group.Children.OfType<RotateTransform>().FirstOrDefault() : null;
 
         // Apply Transform 
         public static DependencyProperty ApplyTransformProperty =
@@ -122,11 +124,22 @@ namespace Paint.CustomControl
                                         typeof(bool),
                                         typeof(DesignItemContainer),
                                         new FrameworkPropertyMetadata(false));
-
         public bool IsSelected
         {
             get { return (bool)GetValue(IsSelectedProperty); }
             set { SetValue(IsSelectedProperty, value); }
+        }
+
+        protected override void OnMouseEnter(MouseEventArgs e)
+        {
+            base.OnMouseEnter(e);
+            DragManager.IsDragging = true;
+        }
+
+        protected override void OnMouseLeave(MouseEventArgs e)
+        {
+            base.OnMouseLeave(e);
+            DragManager.IsDragging = false;
         }
     }
 }

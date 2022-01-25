@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iwd9R0l5wjQa+kcQh7f6GtPqD7SlYJ1F/tKdzoMqwjFgmwD5Evp6coSIvztdLa9jiFl37JqyC3EO9/uVQ+sZdQ==",
+  "dgSpecHash": "l+W+czeOhxw1IDJEmgRmeU6C3JDcSbLCzDbcVvGFlWzIbmXcO9kHSnrxock7shzHNyZRRtJ6JEQTJus53fhLSg==",
   "success": true,
   "projectFilePath": "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,11 @@
     "C:\\Users\\ndmt1at21\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\ndmt1at21\\.nuget\\packages\\propertychanged.fody\\3.4.0\\propertychanged.fody.3.4.0.nupkg.sha512",
     "C:\\Users\\ndmt1at21\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
-    "C:\\Users\\ndmt1at21\\.nuget\\packages\\system.text.json\\5.0.1\\system.text.json.5.0.1.nupkg.sha512"
+    "C:\\Users\\ndmt1at21\\.nuget\\packages\\system.text.json\\5.0.1\\system.text.json.5.0.1.nupkg.sha512",
+    "C:\\Users\\ndmt1at21\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512",
+    "C:\\Users\\ndmt1at21\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\ndmt1at21\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\ndmt1at21\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

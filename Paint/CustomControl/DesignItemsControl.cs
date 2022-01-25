@@ -1,5 +1,7 @@
 ﻿using Paint.Gestures;
+using Paint.ViewModels;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -11,14 +13,16 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Paint.CustomControl
 {
     public class DesignItemsControl : ItemsControl
     {
-        private Selecting _selectingGesture { get; set; }
-
+        public DesignCanvas DesignCanvas { get; set; }
         public bool IsDrawing { get; set; }
+
+        private Selecting _selectingGesture { get; set; }
 
         static DesignItemsControl()
         {
@@ -45,7 +49,6 @@ namespace Paint.CustomControl
             set { SetValue(SelectionRectangleProperty, value); }
         }
 
-
         // Selecting
         public static readonly DependencyProperty IsSelectingProperty =
              DependencyProperty.Register(
@@ -59,6 +62,21 @@ namespace Paint.CustomControl
         {
             get { return (bool)GetValue(IsSelectingProperty); }
             set { SetValue(IsSelectingProperty, value); }
+        }
+
+        // Selecting
+        public static readonly DependencyProperty SelectedItemsProperty =
+             DependencyProperty.Register(
+                 "SelectedItems",
+                 typeof(ObservableCollection<NodeViewModel>),
+                 typeof(DesignItemsControl),
+                 new UIPropertyMetadata(new ObservableCollection<NodeViewModel>())
+        );
+
+        public ObservableCollection<NodeViewModel> SelectedItems
+        {
+            get { return (ObservableCollection<NodeViewModel>)GetValue(SelectedItemsProperty); }
+            set { SetValue(SelectedItemsProperty, value); }
         }
 
         protected override bool IsItemItsOwnContainerOverride(object item)
@@ -83,15 +101,24 @@ namespace Paint.CustomControl
 
         }
 
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+        }
+
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnPreviewMouseLeftButtonDown(e);
 
-            if (!IsDrawing)
+            if (!IsDrawing && !DragManager.IsDragging)
             {
                 IsSelecting = true;
-                _selectingGesture.OnMouseDownStartSelect(e.GetPosition(this));
+                _selectingGesture.OnMouseDownStartAreaSelect(e.GetPosition(this));
                 CaptureMouse();
+            }
+            else
+            {
+                _selectingGesture.SelectByMouseDown(e);
             }
         }
 
@@ -99,9 +126,9 @@ namespace Paint.CustomControl
         {
             base.OnPreviewMouseMove(e);
 
-            if (IsSelecting)
+            if (IsSelecting && !DragManager.IsDragging)
             {
-                _selectingGesture.OnMouseMoveWhenSelecting(e.GetPosition(this));
+                _selectingGesture.OnMouseMoveAreaSelecting(e.GetPosition(this));
             }
         }
 
@@ -111,6 +138,13 @@ namespace Paint.CustomControl
 
             IsSelecting = false;
             ReleaseMouseCapture();
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            DesignCanvas = (DesignCanvas)GetTemplateChild("PART_Canvas");
         }
     }
 }

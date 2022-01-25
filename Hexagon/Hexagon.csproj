@@ -1,14 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<BaseOutputPath>D:\C#\Paint\Paint\Paint\Plugins\Hexagon</BaseOutputPath>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="PluginContract">
-      <HintPath>..\..\New folder\Paint\PluginContract\bin\Debug\net6.0-windows\PluginContract.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\PluginContract\PluginContract.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="PluginContract">
+			<HintPath>..\..\New folder\Paint\PluginContract\bin\Debug\net6.0-windows\PluginContract.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
 </Project>

@@ -10,7 +10,7 @@ namespace Paint.Utils
 {
     public class Control
     {
-        public static T? GetParentViewItemFromChild<T>(DependencyObject child) where T : DependencyObject
+        public static T GetParentControl<T>(DependencyObject child) where T : DependencyObject
         {
             var parent = VisualTreeHelper.GetParent(child);
 
@@ -19,7 +19,17 @@ namespace Paint.Utils
                 parent = VisualTreeHelper.GetParent(parent);
             }
 
-            if (parent == null) return null;
+            return (T)parent;
+        }
+
+        public static T GetParentControl<T>(DependencyObject child, Func<DependencyObject, bool> predicate) where T : DependencyObject
+        {
+            var parent = VisualTreeHelper.GetParent(child);
+
+            while (parent != null && predicate(parent))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
 
             return (T)parent;
         }

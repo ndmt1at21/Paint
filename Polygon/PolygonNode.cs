@@ -8,8 +8,8 @@ using System.Windows.Media;
 
 namespace Polygon
 {
-	public class PolygonNode:IShapeNode
-	{
+    public class PolygonNode : IShapeNode
+    {
         public string ID => "Polygon";
 
         public string Name => "Polygon";

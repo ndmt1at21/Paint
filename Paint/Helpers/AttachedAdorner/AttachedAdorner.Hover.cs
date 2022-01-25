@@ -54,15 +54,19 @@ namespace Paint.Helpers
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
             RectangleHoverAdorner adorner = new RectangleHoverAdorner(element);
 
-            _rectAdorner.Add(adorner);
             layer.Add(adorner);
-
-            Debug.WriteLine("dfkjjkfjgfg");
+            _currentAdorner = adorner;
         }
 
         private static void OnMouseLeaveRectangle(object sender, MouseEventArgs e)
         {
+            DesignItemContainer element = (DesignItemContainer)sender;
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
 
+            if (layer != null)
+            {
+                layer.Remove(_currentAdorner);
+            }
         }
     }
 }

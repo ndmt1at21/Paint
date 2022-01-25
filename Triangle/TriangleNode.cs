@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Media;
 namespace Triangle
 {
-    public class TriangleNode : IshapeNode
+    public class TriangleNode : IShapeNode
     {
         public string ID => "Triangle";
 

@@ -23,11 +23,34 @@ using System.Windows.Shapes;
 
 namespace Paint.Views
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : RibbonWindow
     {
+        private PluginManager _pluginManager { get; set; }
+
+        public ObservableCollection<NodeViewModel> Nodes { get; set; }
+
         public MainWindow(PluginManager pluginManager)
         {
             InitializeComponent();
+            Nodes = new ObservableCollection<NodeViewModel>();
+
+            _pluginManager = pluginManager;
+
+            NodesControl.ItemsSource = Nodes;
+
+            for (int i = 0; i < 10; i++)
+            {
+                Nodes.Add(new ShapeNodeViewModel
+                {
+                    DefiningShape = new RectangleGeometry(new Rect(0, 0, 1, 1)),
+                    Width = 100,
+                    Height = 100,
+                    Top = i * 50,
+                    Left = i * 50,
+                    Fill = new SolidColorBrush(Color.FromArgb(255, 255, (byte)(i * 10), (byte)(i * 10))),
+                    ZIndex = 10 - i
+                }); ;
+            }
         }
     }
 }

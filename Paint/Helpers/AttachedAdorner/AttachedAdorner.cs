@@ -18,5 +18,8 @@ namespace Paint.Helpers
         // All adorner show on canvas
         private static readonly List<System.Windows.Documents.Adorner> _rectAdorner
             = new List<System.Windows.Documents.Adorner>();
+
+
+        private static System.Windows.Documents.Adorner _currentAdorner { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using PluginContract;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Paint.Lib
 {
@@ -36,6 +37,17 @@ namespace Paint.Lib
                     prototype.Add(plugin.Name, plugin);
             }
         }
+
+        public IShapeNode CreateShape(string id)
+        {
+            if (prototype[id] is IShapeNode)
+            {
+                return (IShapeNode)prototype[id];
+            }
+
+            return null;
+        }
+
 
         public string[] GetPluginIDs()
         {
