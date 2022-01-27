@@ -182,7 +182,29 @@
                         </ListBox.ItemTemplate>
 
                     </ListBox>
+                    <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList2" SelectionChanged="colorList_SelectionChanged">
 
+                        <ListBox.ItemsPanel>
+
+                            <ItemsPanelTemplate>
+
+                                <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
+
+                            </ItemsPanelTemplate>
+
+                        </ListBox.ItemsPanel>
+
+                        <ListBox.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Rectangle Fill="{Binding Name}" Width="10" Height="10" Stroke="#FF211E1E" OpacityMask="Black" StrokeThickness="1" />
+
+                            </DataTemplate>
+
+                        </ListBox.ItemTemplate>
+
+                    </ListBox>
                 </RibbonGroup>
                 <RibbonGroup x:Name="ColorGroupPickerAdvantage" Header="">
 

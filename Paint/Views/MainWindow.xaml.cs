@@ -100,6 +100,13 @@ namespace Paint.Views
                 tempItemSource.Add(temp);
             }
             this.colorList.ItemsSource = tempItemSource;
+            BindingList<PropertyInfo> tempItemSource2 = new BindingList<PropertyInfo>();
+            for (var i = 20; i < 30; i++)
+            {
+                temp = typeof(Brushes).GetProperties()[i * 4];
+                tempItemSource2.Add(temp);
+            }
+            this.colorList2.ItemsSource = tempItemSource2;
 
         }
 
@@ -221,15 +228,7 @@ namespace Paint.Views
         {
 
         }
-        private void pickedBlackColorBtnEvenListener(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void pickedWhiteColorBtnEvenListener(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
         private void colorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
