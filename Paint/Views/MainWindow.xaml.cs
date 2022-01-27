@@ -106,10 +106,10 @@ namespace Paint.Views
                     newFileIcoPath = "../IconImg/newfileicon.png",
                     openIcoPath = "../IconImg/openfileicon.png",
                     exitIcoPath = "../IconImg/exiticon.png",
-                   
-    };
+
+                };
                 DataContext = imgPaths;
-                
+
                 //init set colorpick color
                 ClrPcker_Background.SelectedColor = Color.FromRgb(255, 255, 255);
             }
@@ -138,14 +138,14 @@ namespace Paint.Views
             {
                 temp = new ColorPickerForDataContext
                 {
-                    Name = typeof(Brushes).GetProperties()[i*5].Name 
+                    Name = typeof(Brushes).GetProperties()[i * 5].Name
                 };
 
-             tempItemSource.Add(temp);
+                tempItemSource.Add(temp);
             }
             this.colorList.ItemsSource = tempItemSource;
 
-           
+
 
         }
 
@@ -156,7 +156,7 @@ namespace Paint.Views
 
         }
 
-        
+
 
         private void undoBtnEvenListener(object sender, RoutedEventArgs e)
         {
@@ -267,7 +267,7 @@ namespace Paint.Views
         {
             rtlfill.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
         }
-     
+
         private void colorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -285,7 +285,7 @@ namespace Paint.Views
 
         private void chooseShapeBtnClick(object sender, RoutedEventArgs e)
         {
-           ;
+
         }
     }
 }
