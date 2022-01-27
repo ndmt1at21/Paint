@@ -19,9 +19,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type custom:DesignItemContainer}">
                     <Grid>
-
-                        <ContentPresenter />
                         <thumb:MoveThumb Style="{StaticResource MoveThumbStyle}" />
+                        <ContentPresenter />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

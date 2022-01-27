@@ -122,6 +122,8 @@ namespace Paint.CustomControl
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
+
+            Debug.WriteLine("On Mouse Left");
         }
 
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -147,6 +149,8 @@ namespace Paint.CustomControl
                 IsSelecting = false;
                 _selectingGesture.SelectByMouseDown(e);
             }
+
+            Debug.WriteLine("On Preview Mouse Left");
         }
 
         protected override void OnPreviewMouseMove(MouseEventArgs e)
