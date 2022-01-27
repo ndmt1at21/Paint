@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace PluginContract
@@ -16,5 +17,7 @@ namespace PluginContract
 
         public string Name => "Text";
         public string ID => "Text";
+
+        public Image Icon => throw new NotImplementedException();
     }
 }
