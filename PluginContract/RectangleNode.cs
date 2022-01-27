@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -16,6 +17,8 @@ namespace PluginContract
         public string ID => "Rectangle";
 
         public string Name => "Rectangle";
+
+        public Image Icon => throw new NotImplementedException();
 
         public Geometry CreateGeometry()
         {
