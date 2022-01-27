@@ -12,7 +12,7 @@
     xmlns:vm="clr-namespace:Paint.ViewModels"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="Paint"
-    Width="800"
+    Width="950"
     Height="600"
     Loaded="RibbonWindow_Loaded">
 
@@ -63,14 +63,14 @@
                     </RibbonApplicationMenu.SmallImageSource>
                     <!--  FUCKING NAME  -->
 
-                    <RibbonApplicationMenuItem Header="New" Click="createNewFileBtnEvenListener"/>
-                    <RibbonApplicationMenuItem Header="Open" Click="openFileBtnEvenListener"/>
-                    <RibbonApplicationMenuItem Header="Save" Click="saveBtnEvenListener"/>
-                    <RibbonApplicationSplitMenuItem Header="Save img as">
+                    <RibbonApplicationMenuItem Header="New" Click="createNewFileBtnEvenListener" ImageSource="{Binding newFileIcoPath}"/>
+                    <RibbonApplicationMenuItem Header="Open" Click="openFileBtnEvenListener" ImageSource="{Binding openIcoPath}"/>
+                    <RibbonApplicationMenuItem Header="Save" Click="saveBtnEvenListener" ImageSource="{Binding saveIcoPath}"/>
+                    <RibbonApplicationSplitMenuItem Header="Save img as" ImageSource="{Binding saveIcoPath}">
                         <RibbonApplicationMenuItem Header="JPG" Click="saveAsJPGBtnEvenListener"/>
                         <RibbonApplicationMenuItem Header="PNG" Click="saveAsPNGBtnEvenListener"/>
                     </RibbonApplicationSplitMenuItem>
-                    <RibbonApplicationMenuItem Header="Exit" Click="exitAsPNGBtnEvenListener" />
+                    <RibbonApplicationMenuItem Header="Exit" Click="exitAsPNGBtnEvenListener" ImageSource="{Binding exitIcoPath}"/>
 
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -113,7 +113,7 @@
                 <!--  Clipboard  group  -->
                 <RibbonGroup x:Name="ClipboardGroup" Header="Clipboard">
                     <RibbonButton KeyTip="V" Label="Paste" Click="pasteBtnEvenListener" LargeImageSource="{Binding Path=pasteIcoPath}">
-                 
+                        
                     </RibbonButton>
                     <RibbonButton KeyTip="X" Label="Cut" Click="cutBtnEvenListener" SmallImageSource="{Binding Path=cutIcoPath}"/>
                     <RibbonButton KeyTip="C" Label="Copy" Click="copyBtnEvenListener" SmallImageSource="{Binding Path=copyIcoPath}"/>
@@ -145,71 +145,54 @@
                 </RibbonGroup>
                 <!--  Shape  group  -->
                 <RibbonGroup x:Name="ShapeGroup" Header="Shape">
-                    <RibbonMenuButton x:Name="shapeMenuBtn" Label="Shape" LargeImageSource="{Binding Path=shapesIcoPath}"  VerticalAlignment="Bottom">
-                        <RibbonMenuItem Header="Rectangle" />
-
-                    </RibbonMenuButton>
+                        <RibbonGroup>
+                            <WrapPanel Width="200">
+                                <RibbonControlGroup  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  x:Name="shapeList">
+                                    <RibbonControlGroup.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel  IsItemsHost="True" Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </RibbonControlGroup.ItemsPanel>
+                                    <RibbonControlGroup.ItemTemplate>
+                                        <DataTemplate>
+                                            <RibbonMenuItem Header="{Binding PluginID}" Click="chooseShapeBtnClick" />
+                                        </DataTemplate>
+                                    </RibbonControlGroup.ItemTemplate>
+                                </RibbonControlGroup>
+                            </WrapPanel>
+                        </RibbonGroup>
                 </RibbonGroup>
 
                 <!--  Color  group  -->
                 <RibbonGroup x:Name="ColorGroupPicker" Header="Color">
 
-                    <Rectangle x:Name="rtlfill" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Width="20"  Margin="0,0,0,0" Stroke="Black" VerticalAlignment="Stretch" />
-
+                    <Rectangle x:Name="rtlfill" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="30" Width="30"  Margin="0,0,0,0" Stroke="Black" VerticalAlignment="Stretch" />
+                    
+                </RibbonGroup>
+                <RibbonGroup >
+                    <WrapPanel Width="200">
+                    <RibbonControlGroup  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  x:Name="colorList">
+                        <RibbonControlGroup.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel  IsItemsHost="True" Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </RibbonControlGroup.ItemsPanel>
+                        <RibbonControlGroup.ItemTemplate>
+                            <DataTemplate>
+                                <Rectangle MouseDown="Rectangle_MouseDown" Fill="{Binding Name}" Width="20" Height="20" Stroke="#FF211E1E" OpacityMask="Black" StrokeThickness="1" />
+                            </DataTemplate>
+                        </RibbonControlGroup.ItemTemplate>
+                    </RibbonControlGroup>
+                    </WrapPanel>
                 </RibbonGroup>
                 
-                <RibbonGroup x:Name="ColorGroupPickerAdvantage2" Header="" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch">
-                    <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList" SelectionChanged="colorList_SelectionChanged">
+                
 
-                        <ListBox.ItemsPanel>
-
-                            <ItemsPanelTemplate>
-
-                                <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
-
-                            </ItemsPanelTemplate>
-
-                        </ListBox.ItemsPanel>
-
-                        <ListBox.ItemTemplate>
-
-                            <DataTemplate>
-
-                                <Rectangle Fill="{Binding Name}" Width="10" Height="10" Stroke="#FF211E1E" OpacityMask="Black" StrokeThickness="1" />
-
-                            </DataTemplate>
-
-                        </ListBox.ItemTemplate>
-
-                    </ListBox>
-                    <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList2" SelectionChanged="colorList_SelectionChanged">
-
-                        <ListBox.ItemsPanel>
-
-                            <ItemsPanelTemplate>
-
-                                <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
-
-                            </ItemsPanelTemplate>
-
-                        </ListBox.ItemsPanel>
-
-                        <ListBox.ItemTemplate>
-
-                            <DataTemplate>
-
-                                <Rectangle Fill="{Binding Name}" Width="10" Height="10" Stroke="#FF211E1E" OpacityMask="Black" StrokeThickness="1" />
-
-                            </DataTemplate>
-
-                        </ListBox.ItemTemplate>
-
-                    </ListBox>
-                </RibbonGroup>
+                
                 <RibbonGroup x:Name="ColorGroupPickerAdvantage" Header="">
 
 
-                    <xctk:ColorPicker Name="ClrPcker_Background" DisplayColorAndName="True" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged"></xctk:ColorPicker>
+                    <xctk:ColorPicker Name="ClrPcker_Background" DisplayColorTooltip="True"  SelectedColorChanged="ClrPcker_Background_SelectedColorChanged"></xctk:ColorPicker>
 
                 </RibbonGroup>
             </RibbonTab>

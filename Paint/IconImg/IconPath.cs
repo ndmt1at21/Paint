@@ -27,6 +27,10 @@ namespace Paint.IconImg
         public string verticalIcoPath { get; set; }
         public string rotateleftIcoPath { get; set; }
         public string rotaterightIcoPath { get; set; }
+        public string newFileIcoPath { get; set; }
+        public string openIcoPath { get; set; }
+        public string exitIcoPath { get; set; }
+
         public string  lineIcoPath { get; set; }
         public string  color1IcoPath { get; set; }
         public string  color2IcoPath { get; set; }

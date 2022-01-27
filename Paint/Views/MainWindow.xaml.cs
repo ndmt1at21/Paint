@@ -42,6 +42,24 @@ namespace Paint.Views
 
                 NodesControl.ItemsSource = Nodes;
 
+
+                //load in plugin
+                string[] pluginIDs = _pluginManager.GetPluginIDs();
+                BindingList<PluginItemsForDataContext> shapeItemSource = new BindingList<PluginItemsForDataContext>();
+
+                for (int i = 0; i < pluginIDs.Length; i++)
+                {
+                    PluginItemsForDataContext pluginItemsForDataContext = new PluginItemsForDataContext
+                    {
+                        PluginID = pluginIDs[i]
+                    };
+                    shapeItemSource.Add(pluginItemsForDataContext);
+
+
+                }
+                shapeList.ItemsSource = shapeItemSource;
+
+
                 for (int i = 0; i < 10; i++)
                 {
                     Nodes.Add(new ShapeNodeViewModel
@@ -55,6 +73,8 @@ namespace Paint.Views
                         ZIndex = 10 - i
                     }); ;
                 }
+
+                //load in ico path
                 var imgPaths = new IconPath
                 {
                     saveIcoPath = "../IconImg/saveicon.png",
@@ -81,8 +101,15 @@ namespace Paint.Views
                     outlineIcoPath = "../IconImg/outlineicon.png",
                     zoomIcoPath = "../IconImg/zoomicon.png",
                     eraseIcoPath = "../IconImg/erasericon.png",
-                };
+                    newFileIcoPath = "../IconImg/newfileicon.png",
+                    openIcoPath = "../IconImg/openfileicon.png",
+                    exitIcoPath = "../IconImg/exiticon.png",
+                   
+    };
                 DataContext = imgPaths;
+                
+                //init set colorpick color
+                ClrPcker_Background.SelectedColor = Color.FromRgb(255, 255, 255);
             }
             catch (Exception e)
             {
@@ -92,21 +119,31 @@ namespace Paint.Views
 
         private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            BindingList<PropertyInfo> tempItemSource = new BindingList<PropertyInfo>();
-            PropertyInfo temp;
-            for (var i = 0; i < 10; i++)
+            BindingList<ColorPickerForDataContext> tempItemSource = new BindingList<ColorPickerForDataContext>();
+            ColorPickerForDataContext temp;
+
+            temp = new ColorPickerForDataContext
             {
-                temp = typeof(Brushes).GetProperties()[i*5];
-                tempItemSource.Add(temp);
+                Name = "Black"
+            };
+            tempItemSource.Add(temp);
+            temp = new ColorPickerForDataContext
+            {
+                Name = "White"
+            };
+            tempItemSource.Add(temp);
+            for (var i = 0; i < 25; i++)
+            {
+                temp = new ColorPickerForDataContext
+                {
+                    Name = typeof(Brushes).GetProperties()[i*5].Name 
+                };
+
+             tempItemSource.Add(temp);
             }
             this.colorList.ItemsSource = tempItemSource;
-            BindingList<PropertyInfo> tempItemSource2 = new BindingList<PropertyInfo>();
-            for (var i = 20; i < 30; i++)
-            {
-                temp = typeof(Brushes).GetProperties()[i * 4];
-                tempItemSource2.Add(temp);
-            }
-            this.colorList2.ItemsSource = tempItemSource2;
+
+           
 
         }
 
@@ -226,7 +263,7 @@ namespace Paint.Views
 
         private void ClrPcker_Background_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
-
+            rtlfill.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
         }
      
         private void colorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -238,5 +275,15 @@ namespace Paint.Views
 
         }
 
+        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Rectangle rectangle = e.Source as Rectangle;
+            rtlfill.Fill = rectangle.Fill;
+        }
+
+        private void chooseShapeBtnClick(object sender, RoutedEventArgs e)
+        {
+           ;
+        }
     }
 }

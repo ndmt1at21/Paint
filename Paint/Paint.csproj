@@ -13,8 +13,11 @@
 	  <None Remove="IconImg\copyicon.png" />
 	  <None Remove="IconImg\cuticon.png" />
 	  <None Remove="IconImg\erasericon.png" />
+	  <None Remove="IconImg\exiticon.png" />
 	  <None Remove="IconImg\fillicon.png" />
 	  <None Remove="IconImg\horizonicon.png" />
+	  <None Remove="IconImg\newfileicon.png" />
+	  <None Remove="IconImg\openfileicon.png" />
 	  <None Remove="IconImg\outlineicon.png" />
 	  <None Remove="IconImg\pasteicon.png" />
 	  <None Remove="IconImg\penicon.png" />
@@ -37,12 +40,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <DesignDataWithDesignTimeCreatableTypes Include="IconImg\rotatelefticon.png">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </DesignDataWithDesignTimeCreatableTypes>
-	  <DesignDataWithDesignTimeCreatableTypes Include="IconImg\rotaterighticon.png">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </DesignDataWithDesignTimeCreatableTypes>
+	  <Resource Include="IconImg\exiticon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\newfileicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\openfileicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\rotatelefticon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\rotaterighticon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 
 	<ItemGroup>
