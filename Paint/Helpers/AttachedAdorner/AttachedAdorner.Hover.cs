@@ -1,5 +1,6 @@
 ﻿using Paint.Adorner;
 using Paint.CustomControl;
+using Paint.ViewModels;
 using PluginContract;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,12 @@ namespace Paint.Helpers
         private static void OnMouseEnterRectangle(object sender, MouseEventArgs e)
         {
             DesignItemContainer element = (DesignItemContainer)sender;
+            NodeViewModel nodeVM = (NodeViewModel)element.DataContext;
+
+            if (nodeVM == null) return;
+
+            if (nodeVM.IsDrawing) return;
+
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
             RectangleHoverAdorner adorner = new RectangleHoverAdorner(element);
 
@@ -63,7 +70,7 @@ namespace Paint.Helpers
             DesignItemContainer element = (DesignItemContainer)sender;
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
 
-            if (layer != null)
+            if (layer != null && _currentAdorner != null)
             {
                 layer.Remove(_currentAdorner);
             }

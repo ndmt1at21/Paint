@@ -53,33 +53,51 @@ namespace Paint.Gestures
 
         public void UnselectAll()
         {
+            foreach (var item in _context.SelectedItems)
+            {
+                item.IsSelected = false;
+            }
             _context.SelectedItems.Clear();
         }
 
         public void SelectByMouseDown(MouseButtonEventArgs e)
         {
             HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
-
+       
             if (hitTestResult != null)
             {
                 DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
 
-                UnselectAll();
-
                 if (designItem != null)
                 {
+                    Debug.WriteLine("design item not nulll");
                     NodeViewModel nodeVM = (NodeViewModel)designItem.DataContext;
-                    _context.SelectedItems.Add(nodeVM);
-
-                    // test
                     nodeVM.IsSelected = true;
+
+                    // Press Ctrl
+                    if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
+                    {
+                        Debug.WriteLine("dfhjdhfdjh ctrl");
+                        _context.SelectedItems.Add(nodeVM);
+                    }
+                    else
+                    {
+                        UnselectAll();
+                        _context.SelectedItems.Add(nodeVM);
+                    }
                 }
+
 
                 if (designItem == null)
                 {
-
+                    Debug.WriteLine("!jhdfhjhjhdf");
+                    UnselectAll();
                 }
             }
+        }
+
+        public void SelectByArea(Rect rect)
+        {
         }
     }
 }

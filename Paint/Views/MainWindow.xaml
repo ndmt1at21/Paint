@@ -189,6 +189,7 @@
                     <Setter Property="ZIndex" Value="{Binding ZIndex}" />
                     <Setter Property="helpers:AttachedAdorner.HasHoverAdorner" Value="True" />
                     <Setter Property="helpers:AttachedAdorner.ShowResizeAdorner" Value="{Binding IsSelected}" />
+
                     <Setter Property="RenderTransformOrigin" Value="{Binding TransformOrigin}" />
                 </Style>
             </custom:DesignItemsControl.ItemContainerStyle>

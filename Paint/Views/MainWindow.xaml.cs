@@ -29,6 +29,8 @@ namespace Paint.Views
 
         public ObservableCollection<NodeViewModel> Nodes { get; set; }
 
+        public List<List<NodeViewModel>> NodesList { get; set; }
+
         public MainWindow(PluginManager pluginManager)
         {
             InitializeComponent();
@@ -38,19 +40,29 @@ namespace Paint.Views
 
             NodesControl.ItemsSource = Nodes;
 
-            for (int i = 0; i < 10; i++)
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Nodes.Add(new ShapeNodeViewModel
+            //    {
+            //        DefiningShape = new RectangleGeometry(new Rect(0, 0, 1, 1)),
+            //        Width = 100,
+            //        Height = 100,
+            //        Top = i * 50,
+            //        Left = i * 50,
+            //        Fill = new SolidColorBrush(Color.FromArgb(255, 255, (byte)(i * 10), (byte)(i * 10))),
+            //        ZIndex = 10 - i
+            //    });
+            //}
+            NodeViewModel model = new ShapeNodeViewModel
             {
-                Nodes.Add(new ShapeNodeViewModel
-                {
-                    DefiningShape = new RectangleGeometry(new Rect(0, 0, 1, 1)),
-                    Width = 100,
-                    Height = 100,
-                    Top = i * 50,
-                    Left = i * 50,
-                    Fill = new SolidColorBrush(Color.FromArgb(255, 255, (byte)(i * 10), (byte)(i * 10))),
-                    ZIndex = 10 - i
-                }); ;
-            }
+                DefiningShape = new RectangleGeometry(new Rect(0, 0, 1, 1)),
+                Fill = new SolidColorBrush(Color.FromArgb(255, 255, (byte)(10 * 10), (byte)(10 * 10))),
+                ZIndex = 10,
+                Width = 100,
+                Height = 100,
+            };
+
+            Nodes.Add(model);
         }
     }
 }

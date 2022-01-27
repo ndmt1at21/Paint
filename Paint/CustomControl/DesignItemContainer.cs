@@ -44,9 +44,8 @@ namespace Paint.CustomControl
 
         private static void OnApplyTransformChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var designItemContainer = (DesignItemContainer)VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(d));
+            var designItemContainer = Utils.Control.GetParentControl<DesignItemContainer>(d);
             designItemContainer.ApplyTransform((Transform)e.NewValue);
-
         }
 
         public void ApplyTransform(Transform apply)

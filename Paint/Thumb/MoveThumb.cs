@@ -25,26 +25,23 @@ namespace Paint.Thumb
 
         private void MoveThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
-
+            container = Utils.Control.GetParentControl<DesignItemContainer>((DependencyObject)sender);
         }
 
         private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
-            DesignItemContainer container = (DesignItemContainer)DataContext;
-            NodeViewModel vm = (NodeViewModel)container.DataContext;
+            NodeViewModel vm = (NodeViewModel)DataContext;
 
-            if (container != null)
+            Point dragDelta = new Point(e.HorizontalChange, e.VerticalChange);
+
+            dragDelta = container.RotateTransform.Transform(dragDelta);
+
+            if (vm != null)
             {
-                Point dragDelta = new Point(e.HorizontalChange, e.VerticalChange);
-
-                dragDelta = container.RotateTransform.Transform(dragDelta);
-
-                if (vm != null)
-                {
-                    vm.Left += dragDelta.X;
-                    vm.Top += dragDelta.Y;
-                }
+                vm.Left += dragDelta.X;
+                vm.Top += dragDelta.Y;
             }
+
 
             e.Handled = true;
         }

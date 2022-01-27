@@ -8,12 +8,12 @@ using System.Windows;
 
 namespace Paint.Adorner
 {
-    public class RectangleAdorner : AdornerWithTemplate
+    public class RectangleMoveAdorner : AdornerWithTemplate
     {
-        public RectangleAdorner(UIElement adornedElement) :
+        public RectangleMoveAdorner(UIElement adornedElement) :
             base(
                 adornedElement,
-                new RectangleAdornerTemplate()
+                new RectangleMoveAdornerTemplate()
             )
         {
         }

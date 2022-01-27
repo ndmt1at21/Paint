@@ -18,5 +18,6 @@ namespace Paint.ViewModels
         public Point TransformOrigin { get; set; } = new Point(0.5, 0.5);
 
         public bool IsSelected { get; set; }
+        public bool IsDrawing { get; set; }
     }
 }

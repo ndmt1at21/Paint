@@ -19,10 +19,12 @@ namespace Paint.CustomControl
 {
     public class DesignItemsControl : ItemsControl
     {
-        public DesignCanvas DesignCanvas { get; set; }
-        public bool IsDrawing { get; set; }
-
         private Selecting _selectingGesture { get; set; }
+        private Gestures.Drawing _drawingGesture;
+
+        public DesignCanvas DesignCanvas { get; set; }
+
+        public bool IsDrawing { get; set; }
 
         static DesignItemsControl()
         {
@@ -32,6 +34,22 @@ namespace Paint.CustomControl
         public DesignItemsControl()
         {
             _selectingGesture = new Selecting(this);
+            _drawingGesture = new Gestures.Drawing(this);
+        }
+
+        // Curent Node for drawing
+        public static readonly DependencyProperty DrawingNodeProperty =
+            DependencyProperty.Register(
+                "DrawingNode",
+                typeof(NodeViewModel),
+                typeof(DesignItemsControl),
+                new UIPropertyMetadata(null)
+       );
+
+        public NodeViewModel DrawingNode
+        {
+            get { return (NodeViewModel)GetValue(DrawingNodeProperty); }
+            set { SetValue(DrawingNodeProperty, value); }
         }
 
         // Selection Rectngle
@@ -64,7 +82,7 @@ namespace Paint.CustomControl
             set { SetValue(IsSelectingProperty, value); }
         }
 
-        // Selecting
+        // Selected Items
         public static readonly DependencyProperty SelectedItemsProperty =
              DependencyProperty.Register(
                  "SelectedItems",
@@ -110,14 +128,23 @@ namespace Paint.CustomControl
         {
             base.OnPreviewMouseLeftButtonDown(e);
 
+            if (DrawingNode != null)
+            {
+                IsDrawing = true;
+                _drawingGesture.OnMouseDown(e.GetPosition(this));
+            }
+
             if (!IsDrawing && !DragManager.IsDragging)
             {
                 IsSelecting = true;
                 _selectingGesture.OnMouseDownStartAreaSelect(e.GetPosition(this));
                 CaptureMouse();
             }
-            else
+
+            Debug.WriteLine("IsDrawing " + IsDrawing + "; IsSelecting " + IsSelecting);
+            if (IsSelecting)
             {
+                IsSelecting = false;
                 _selectingGesture.SelectByMouseDown(e);
             }
         }
@@ -130,14 +157,29 @@ namespace Paint.CustomControl
             {
                 _selectingGesture.OnMouseMoveAreaSelecting(e.GetPosition(this));
             }
+
+            if (IsDrawing)
+            {
+                _drawingGesture.OnMouseMove(e.GetPosition(this));
+            }
         }
 
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
 
-            IsSelecting = false;
-            ReleaseMouseCapture();
+            if (IsSelecting)
+            {
+                IsSelecting = false;
+                ReleaseMouseCapture();
+            }
+
+            if (IsDrawing)
+            {
+                _drawingGesture.OnMouseUp(e.GetPosition(this));
+                IsDrawing = false;
+            }
+
         }
 
         public override void OnApplyTemplate()

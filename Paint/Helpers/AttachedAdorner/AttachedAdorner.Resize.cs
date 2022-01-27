@@ -3,6 +3,7 @@ using Paint.CustomControl;
 using PluginContract;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,42 +30,60 @@ namespace Paint.Helpers
         public static bool GetShowResizeLine(UIElement element)
             => (bool)element.GetValue(ShowResizeAdornerProperty);
 
+        public static readonly DependencyProperty ShowOnlyMoveAdornerProperty =
+           DependencyProperty.RegisterAttached(
+               "ShowOnlyMoveAdorner",
+               typeof(bool),
+               typeof(AttachedAdorner),
+               new FrameworkPropertyMetadata(false, OnShowOnlyMoveAdornerChanged)
+           );
+
+        public static void SetShowOnlyMoveAdorner(UIElement element, bool value)
+            => element.SetValue(ShowOnlyMoveAdornerProperty, value);
+
+        public static bool GetShowOnlyMoveLine(UIElement element)
+            => (bool)element.GetValue(ShowOnlyMoveAdornerProperty);
+
         private static void OnShowResizeAdornerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DesignItemContainer element = (DesignItemContainer)d;
             bool value = (bool)e.NewValue;
 
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
+
             if (value)
             {
-                AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
-                Adorner.Adorner adorner = new Adorner.Adorner(element);
-                _rectAdorner.Add(adorner);
+                RectangleAdorner adorner = new RectangleAdorner(element);
                 layer.Add(adorner);
+
+                _currentAdorner = adorner;
             }
-            else
+
+            if (!value)
             {
-                var layer = AdornerLayer.GetAdornerLayer(element);
-                if (layer != null)
+                if (layer != null && _currentAdorner != null)
                 {
-                    foreach (Adorner.Adorner adorner in _rectAdorner)
-                    {
-                        layer.Remove(adorner);
-                        _rectAdorner.Clear();
-                    }
+                    layer.Remove(_currentAdorner);
                 }
             }
         }
 
-        // Rectangle Adorner
-        private static void OnShowResizeLineAdornerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnShowOnlyMoveAdornerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            DesignItemContainer element = (DesignItemContainer)d;
+            bool value = (bool)e.NewValue;
 
-        }
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
 
-        // Line Adorner
-        private static void Show(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
+            if (value)
+            {
 
+            }
+
+            if (!value)
+            {
+
+            }
         }
     }
 }
