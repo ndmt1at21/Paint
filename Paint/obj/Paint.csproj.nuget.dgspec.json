@@ -118,6 +118,10 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
+            "Extended.Wpf.Toolkit": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
             "Fluent.Ribbon": {
               "target": "Package",
               "version": "[9.0.1, )"
