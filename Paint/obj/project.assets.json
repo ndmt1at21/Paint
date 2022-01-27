@@ -18,6 +18,61 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "Extended.Wpf.Toolkit/4.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll": {},
+          "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll": {},
+          "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll": {},
+          "lib/net40/Xceed.Wpf.AvalonDock.dll": {},
+          "lib/net40/Xceed.Wpf.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll": {},
+          "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll": {},
+          "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll": {},
+          "lib/net40/Xceed.Wpf.AvalonDock.dll": {},
+          "lib/net40/Xceed.Wpf.Toolkit.dll": {}
+        },
+        "resource": {
+          "lib/net40/cs-CZ/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "cs-CZ"
+          },
+          "lib/net40/de/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net40/es/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net40/fr/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net40/hu/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/net40/it/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net40/ja-JP/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "ja-JP"
+          },
+          "lib/net40/pt-BR/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net40/ro/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "ro"
+          },
+          "lib/net40/ru/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net40/sv/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net40/zh-Hans/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "zh-Hans"
+          }
+        }
+      },
       "Fluent.Ribbon/9.0.1": {
         "type": "package",
         "dependencies": {
@@ -181,6 +236,38 @@
         "lib/netcoreapp3.1/ControlzEx.pdb",
         "lib/netcoreapp3.1/ControlzEx.xml",
         "logo-mini.png"
+      ]
+    },
+    "Extended.Wpf.Toolkit/4.2.0": {
+      "sha512": "1yxsUfhyNA8A85sO6R8avjmRHyJXSR3icB5Puk7Ri65L4IgejTElU9dVxAGfP21hLQGOFQbBRno4FyuN8dTo6w==",
+      "type": "package",
+      "path": "extended.wpf.toolkit/4.2.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "Xceed_Logo_Retina-400x400.png",
+        "extended.wpf.toolkit.4.2.0.nupkg.sha512",
+        "extended.wpf.toolkit.nuspec",
+        "lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll",
+        "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll",
+        "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll",
+        "lib/net40/Xceed.Wpf.AvalonDock.dll",
+        "lib/net40/Xceed.Wpf.Toolkit.dll",
+        "lib/net40/cs-CZ/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/de/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/es/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/fr/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/hu/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/it/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/ja-JP/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/pt-BR/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/ro/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/ru/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/sv/Xceed.Wpf.AvalonDock.resources.dll",
+        "lib/net40/zh-Hans/Xceed.Wpf.AvalonDock.resources.dll",
+        "tools/install.ps1"
       ]
     },
     "Fluent.Ribbon/9.0.1": {
@@ -419,6 +506,7 @@
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
       "BRControl >= 1.0.0",
+      "Extended.Wpf.Toolkit >= 4.2.0",
       "Fluent.Ribbon >= 9.0.1",
       "Newtonsoft.Json >= 13.0.1",
       "PluginContract >= 1.0.0",
@@ -427,19 +515,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ndmt1at21\\.nuget\\packages\\": {}
+    "C:\\Users\\ssd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj",
+      "projectUniqueName": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj",
       "projectName": "Paint",
-      "projectPath": "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj",
-      "packagesPath": "C:\\Users\\ndmt1at21\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\Paint\\Paint\\Paint\\obj\\",
+      "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj",
+      "packagesPath": "C:\\Users\\ssd\\.nuget\\packages\\",
+      "outputPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ndmt1at21\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ssd\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -453,11 +541,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj": {
-              "projectPath": "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj"
+            "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj": {
+              "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj"
             },
-            "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj": {
-              "projectPath": "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj"
+            "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj": {
+              "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj"
             }
           }
         }
@@ -472,6 +560,10 @@
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
         "dependencies": {
+          "Extended.Wpf.Toolkit": {
+            "target": "Package",
+            "version": "[4.2.0, )"
+          },
           "Fluent.Ribbon": {
             "target": "Package",
             "version": "[9.0.1, )"
@@ -499,24 +591,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.12, 5.0.12]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -525,8 +599,20 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Extended.Wpf.Toolkit 4.2.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Extended.Wpf.Toolkit",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
 }

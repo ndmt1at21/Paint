@@ -10,9 +10,11 @@
     xmlns:pc="clr-namespace:PluginContract;assembly=PluginContract"
     xmlns:ribbon="clr-namespace:System.Windows.Controls.Ribbon.Primitives;assembly=System.Windows.Controls.Ribbon"
     xmlns:vm="clr-namespace:Paint.ViewModels"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="Paint"
     Width="800"
-    Height="600">
+    Height="600"
+    Loaded="RibbonWindow_Loaded">
 
     <DockPanel LastChildFill="True">
         <Ribbon
@@ -28,13 +30,11 @@
             <!--  Quick Access Toolbar - located at the upper-left corner  -->
             <Ribbon.QuickAccessToolBar>
                 <RibbonQuickAccessToolBar>
-                    <RibbonButton x:Name="Save" />
-                    <RibbonSplitButton x:Name="Undo">
-                        <RibbonSplitMenuItem Header="Undo" />
-                    </RibbonSplitButton>
-                    <RibbonSplitButton x:Name="Redo">
-                        <RibbonSplitMenuItem Header="Redo" />
-                    </RibbonSplitButton>
+                    <RibbonButton x:Name="Save" Click="saveBtnEvenListener" SmallImageSource="{Binding Path=saveIcoPath}" />
+                    <RibbonButton x:Name="Undo" Click="undoBtnEvenListener" SmallImageSource="{Binding Path=undoIcoPath}">
+                    </RibbonButton>
+                    <RibbonButton x:Name="Redo" Click="redoBtnEvenListener" SmallImageSource="{Binding Path=redoIcoPath}">
+                    </RibbonButton>
                 </RibbonQuickAccessToolBar>
             </Ribbon.QuickAccessToolBar>
             <!--  Application Menu, located at the left-hand side (down arrow)  -->
@@ -63,15 +63,14 @@
                     </RibbonApplicationMenu.SmallImageSource>
                     <!--  FUCKING NAME  -->
 
-                    <RibbonApplicationMenuItem Header="New" />
-                    <RibbonApplicationMenuItem Header="Open" />
-                    <RibbonApplicationMenuItem Header="Save" />
+                    <RibbonApplicationMenuItem Header="New" Click="createNewFileBtnEvenListener"/>
+                    <RibbonApplicationMenuItem Header="Open" Click="openFileBtnEvenListener"/>
+                    <RibbonApplicationMenuItem Header="Save" Click="saveBtnEvenListener"/>
                     <RibbonApplicationSplitMenuItem Header="Save img as">
-                        <RibbonApplicationMenuItem Header="JPG" />
-                        <RibbonApplicationMenuItem Header="PNG" />
+                        <RibbonApplicationMenuItem Header="JPG" Click="saveAsJPGBtnEvenListener"/>
+                        <RibbonApplicationMenuItem Header="PNG" Click="saveAsPNGBtnEvenListener"/>
                     </RibbonApplicationSplitMenuItem>
-                    <RibbonApplicationMenuItem Header="Load" />
-                    <RibbonApplicationMenuItem Header="Exit" />
+                    <RibbonApplicationMenuItem Header="Exit" Click="exitAsPNGBtnEvenListener" />
 
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -113,60 +112,84 @@
 
                 <!--  Clipboard  group  -->
                 <RibbonGroup x:Name="ClipboardGroup" Header="Clipboard">
-                    <RibbonMenuButton KeyTip="V" Label="Paste">
-                        <!--  Large menu icon  -->
-                        <RibbonMenuItem Header="Paste" />
-                        <RibbonMenuItem Header="Paste From" />
-                    </RibbonMenuButton>
-                    <RibbonButton KeyTip="X" Label="Cut" />
-                    <RibbonButton KeyTip="C" Label="Copy" />
+                    <RibbonButton KeyTip="V" Label="Paste" Click="pasteBtnEvenListener" LargeImageSource="{Binding Path=pasteIcoPath}">
+                 
+                    </RibbonButton>
+                    <RibbonButton KeyTip="X" Label="Cut" Click="cutBtnEvenListener" SmallImageSource="{Binding Path=cutIcoPath}"/>
+                    <RibbonButton KeyTip="C" Label="Copy" Click="copyBtnEvenListener" SmallImageSource="{Binding Path=copyIcoPath}"/>
                 </RibbonGroup>
                 <!--  Image  group  -->
                 <RibbonGroup x:Name="ImageGroup" Header="Image">
-                    <RibbonMenuButton Label="Select">
-                        <RibbonMenuItem Header="Rectangle" />
-                        <RibbonMenuItem Header="Free" />
-                    </RibbonMenuButton>
-                    <RibbonButton Label="Resize" />
-                    <RibbonMenuButton Label="Rotate">
-                        <RibbonMenuItem Header="Flip horizontal" />
-                        <RibbonMenuItem Header="Flip vertical" />
-                        <RibbonMenuItem Header="Rotate left 90" />
-                        <RibbonMenuItem Header="Rotate right 90" />
+                    <RibbonButton Label="Select" Click="selectBtnEvenListener" LargeImageSource="{Binding Path=selectIcoPath}">
+                     
+                    </RibbonButton>
+                    <RibbonButton Label="Resize" Click="resizeBtnEvenListener"  SmallImageSource="{Binding Path=cropIcoPath}"/>
+                    <RibbonMenuButton Label="Rotate" SmallImageSource="{Binding Path=rotateIcoPath}">
+                        <RibbonMenuItem Header="Flip horizontal" Click="flipHorizontalBtnEvenListener"  ImageSource="{Binding Path=horizonIcoPath}"/>
+                        <RibbonMenuItem Header="Flip vertical" Click="filpVerticalBtnEvenListener"  ImageSource="{Binding Path=verticalIcoPath}"/>
+                        <RibbonMenuItem Header="Rotate left 90" Click="rotateLeftBtnEvenListener"  ImageSource="{Binding Path=rotateleftIcoPath}"/>
+                        <RibbonMenuItem Header="Rotate right 90" Click="rotateRightBtnEvenListener"  ImageSource="{Binding Path=rotaterightIcoPath}"/>
                     </RibbonMenuButton>
 
                 </RibbonGroup>
                 <!--  Tool  group  -->
                 <RibbonGroup x:Name="ToolGroup" Header="Tools">
 
-                    <RibbonButton Label="Pen" />
-                    <RibbonButton Label="Bucket fill" />
-                    <RibbonButton Label="Text" />
-                    <RibbonButton Label="Eraser" />
-                    <RibbonButton Label="Color picker" />
-                    <RibbonButton Label="Zoom" />
+                    <RibbonButton Label="Pen" Click="pickedPenBtnEvenListener"  SmallImageSource="{Binding Path=brushIcoPath}"/>
+                    <RibbonButton Label="Bucket fill" Click="pickedBucketFillBtnEvenListener"  SmallImageSource="{Binding Path=fillIcoPath}" />
+                    <RibbonButton Label="Text" Click="pickedTextBtnEvenListener"  SmallImageSource="{Binding Path=textIcoPath}"/>
+                    <RibbonButton Label="Eraser" Click="pickedEarserBtnEvenListener"  SmallImageSource="{Binding Path=eraseIcoPath}"/>
+
+                    <RibbonButton Label="Zoom" Click="zoomBtnEvenListener"  SmallImageSource="{Binding Path=zoomIcoPath}"/>
 
                 </RibbonGroup>
                 <!--  Shape  group  -->
                 <RibbonGroup x:Name="ShapeGroup" Header="Shape">
-                    <RibbonMenuButton x:Name="shapeMenuBtn" Label="Shape">
+                    <RibbonMenuButton x:Name="shapeMenuBtn" Label="Shape" LargeImageSource="{Binding Path=shapesIcoPath}"  VerticalAlignment="Bottom">
                         <RibbonMenuItem Header="Rectangle" />
 
                     </RibbonMenuButton>
-                    <RibbonButton Label="Outline" />
-                    <RibbonButton Label="Fill" />
                 </RibbonGroup>
 
                 <!--  Color  group  -->
-                <RibbonGroup x:Name="ColorGroup" Header="Color">
+                <RibbonGroup x:Name="ColorGroupPicker" Header="Color">
 
-                    <RibbonButton Label="Color 1" />
-                    <RibbonButton Label="Color 2" />
+                    <Rectangle x:Name="rtlfill" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Width="20"  Margin="0,0,0,0" Stroke="Black" VerticalAlignment="Stretch" />
 
-
-                    <RibbonButton Label="Color picker" />
                 </RibbonGroup>
+                
+                <RibbonGroup x:Name="ColorGroupPickerAdvantage2" Header="" HorizontalAlignment ="Stretch" VerticalAlignment="Stretch">
+                    <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList" SelectionChanged="colorList_SelectionChanged">
 
+                        <ListBox.ItemsPanel>
+
+                            <ItemsPanelTemplate>
+
+                                <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
+
+                            </ItemsPanelTemplate>
+
+                        </ListBox.ItemsPanel>
+
+                        <ListBox.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Rectangle Fill="{Binding Name}" Width="10" Height="10" Stroke="#FF211E1E" OpacityMask="Black" StrokeThickness="1" />
+
+                            </DataTemplate>
+
+                        </ListBox.ItemTemplate>
+
+                    </ListBox>
+
+                </RibbonGroup>
+                <RibbonGroup x:Name="ColorGroupPickerAdvantage" Header="">
+
+
+                    <xctk:ColorPicker Name="ClrPcker_Background" DisplayColorAndName="True" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged"></xctk:ColorPicker>
+
+                </RibbonGroup>
             </RibbonTab>
 
         </Ribbon>

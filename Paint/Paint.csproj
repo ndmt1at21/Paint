@@ -8,6 +8,45 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="IconImg\blackicon.png" />
+	  <None Remove="IconImg\colorpickicon.png" />
+	  <None Remove="IconImg\copyicon.png" />
+	  <None Remove="IconImg\cuticon.png" />
+	  <None Remove="IconImg\erasericon.png" />
+	  <None Remove="IconImg\fillicon.png" />
+	  <None Remove="IconImg\horizonicon.png" />
+	  <None Remove="IconImg\outlineicon.png" />
+	  <None Remove="IconImg\pasteicon.png" />
+	  <None Remove="IconImg\penicon.png" />
+	  <None Remove="IconImg\redoicon.png" />
+	  <None Remove="IconImg\resizeicon.png" />
+	  <None Remove="IconImg\rotateicon.png" />
+	  <None Remove="IconImg\rotatelefticon.png" />
+	  <None Remove="IconImg\rotaterighticon.png" />
+	  <None Remove="IconImg\saveicon.ico" />
+	  <None Remove="IconImg\saveicon.jpg" />
+	  <None Remove="IconImg\saveicon.png" />
+	  <None Remove="IconImg\selecticon.png" />
+	  <None Remove="IconImg\shapeicon.png" />
+	  <None Remove="IconImg\texticon.png" />
+	  <None Remove="IconImg\undoicon.png" />
+	  <None Remove="IconImg\verticalicon.png" />
+	  <None Remove="IconImg\whiteico.png" />
+	  <None Remove="IconImg\whiteicon.png" />
+	  <None Remove="IconImg\zoomicon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <DesignDataWithDesignTimeCreatableTypes Include="IconImg\rotatelefticon.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </DesignDataWithDesignTimeCreatableTypes>
+	  <DesignDataWithDesignTimeCreatableTypes Include="IconImg\rotaterighticon.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </DesignDataWithDesignTimeCreatableTypes>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Extended.Wpf.Toolkit" Version="4.2.0" />
 		<PackageReference Include="Fluent.Ribbon" Version="9.0.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
@@ -26,5 +65,80 @@
 
 	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="IconImg\blackicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\colorpickicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\copyicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\cuticon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\erasericon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\fillicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\horizonicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\outlineicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\pasteicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\penicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\redoicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\resizeicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\rotateicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\saveicon.ico">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\saveicon.jpg">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\saveicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\selecticon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\shapeicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\texticon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\undoicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\verticalicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\whiteico.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\whiteicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\zoomicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 </Project>
