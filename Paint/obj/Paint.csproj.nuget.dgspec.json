@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Win-2021\\Paint\\Paint\\Paint.csproj": {}
+    "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj": {
+    "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj",
+        "projectUniqueName": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj",
         "projectName": "BRControl",
-        "projectPath": "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj",
-        "packagesPath": "C:\\Users\\Dinh Quang Tho\\.nuget\\packages\\",
-        "outputPath": "D:\\Win-2021\\Paint\\BRControl\\obj\\",
+        "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj",
+        "packagesPath": "C:\\Users\\ssd\\.nuget\\packages\\",
+        "outputPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Dinh Quang Tho\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ssd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows7.0"
@@ -61,26 +57,22 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Win-2021\\Paint\\Paint\\Paint.csproj": {
+    "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Win-2021\\Paint\\Paint\\Paint.csproj",
+        "projectUniqueName": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "D:\\Win-2021\\Paint\\Paint\\Paint.csproj",
-        "packagesPath": "C:\\Users\\Dinh Quang Tho\\.nuget\\packages\\",
-        "outputPath": "D:\\Win-2021\\Paint\\Paint\\obj\\",
+        "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj",
+        "packagesPath": "C:\\Users\\ssd\\.nuget\\packages\\",
+        "outputPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Dinh Quang Tho\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ssd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows7.0"
@@ -93,11 +85,11 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj": {
-                "projectPath": "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj"
+              "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj": {
+                "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj"
               },
-              "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj": {
-                "projectPath": "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj"
+              "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj": {
+                "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj"
               }
             }
           }
@@ -151,26 +143,22 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj": {
+    "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj",
+        "projectUniqueName": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj",
         "projectName": "PluginContract",
-        "projectPath": "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj",
-        "packagesPath": "C:\\Users\\Dinh Quang Tho\\.nuget\\packages\\",
-        "outputPath": "D:\\Win-2021\\Paint\\PluginContract\\obj\\",
+        "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj",
+        "packagesPath": "C:\\Users\\ssd\\.nuget\\packages\\",
+        "outputPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Dinh Quang Tho\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ssd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows7.0"
@@ -218,7 +206,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
