@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Diamond
@@ -15,7 +16,9 @@ namespace Diamond
 
         public string Name => "Diamond";
 
-        public Geometry CreateGeometry()
+		public Image Icon => throw new NotImplementedException();
+
+		public Geometry CreateGeometry()
         {
             Geometry res = Geometry.Parse("m297.50999 255.24999l88 -105l88 105l-88 105l-88 -105z");
             return res;
