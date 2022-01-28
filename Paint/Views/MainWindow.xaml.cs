@@ -62,6 +62,32 @@ namespace Paint.Views
                 }
             }
         }
+        public void Copy()
+        {
+            foreach (var item in Nodes)
+                if (item.IsSelected)
+                {
+                    Clipboard.SetDataObject(item.Clone());
+                }
+        }
+        public void Cut()
+        {
+            foreach (var item in Nodes)
+                if (item.IsSelected)
+                {
+                    Clipboard.SetDataObject(item.Clone());
+                    Nodes.Remove(item);
+                }
+        }
+        public void Paste()
+        {
+            List<NodeViewModel> list = new List<NodeViewModel>();
+            list= Clipboard.GetDataObject() as List<NodeViewModel>;
+            if (list == null)
+                return;
+            foreach (var item in list)
+                Nodes.Add(item);
+        }
 
         public MainWindow(PluginManager pluginManager)
         {

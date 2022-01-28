@@ -515,20 +515,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ndmt1at21\\.nuget\\packages\\": {}
+    "C:\\Users\\Dinh Quang Tho\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj",
+      "projectUniqueName": "D:\\Win-2021\\Paint\\Paint\\Paint.csproj",
       "projectName": "Paint",
-      "projectPath": "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj",
-      "packagesPath": "C:\\Users\\ndmt1at21\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\Paint\\Paint\\Paint\\obj\\",
+      "projectPath": "D:\\Win-2021\\Paint\\Paint\\Paint.csproj",
+      "packagesPath": "C:\\Users\\Dinh Quang Tho\\.nuget\\packages\\",
+      "outputPath": "D:\\Win-2021\\Paint\\Paint\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ndmt1at21\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Dinh Quang Tho\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"
@@ -541,11 +546,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj": {
-              "projectPath": "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj"
+            "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj": {
+              "projectPath": "D:\\Win-2021\\Paint\\BRControl\\BRControl.csproj"
             },
-            "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj": {
-              "projectPath": "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj"
+            "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj": {
+              "projectPath": "D:\\Win-2021\\Paint\\PluginContract\\PluginContract.csproj"
             }
           }
         }
@@ -591,24 +596,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.12, 5.0.12]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -617,7 +604,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   },
