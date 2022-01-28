@@ -109,7 +109,8 @@ namespace Paint.Views
                 {
                     PluginItemsForDataContext pluginItemsForDataContext = new PluginItemsForDataContext
                     {
-                        PluginID = pluginIDs[i]
+                        PluginID = pluginIDs[i],
+                        PluginIconPath = "../IconImg/" + pluginIDs[i] + ".png"
                     };
                     shapeItemSource.Add(pluginItemsForDataContext);
 

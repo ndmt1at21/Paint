@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 namespace Triangle
 {
@@ -13,6 +14,8 @@ namespace Triangle
         public string ID => "Triangle";
 
         public string Name => "Triangle";
+
+        public Image Icon => throw new NotImplementedException();
 
         public Geometry CreateGeometry()
         {

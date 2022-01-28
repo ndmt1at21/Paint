@@ -223,7 +223,7 @@
                                 </RibbonControlGroup.ItemsPanel>
                                 <RibbonControlGroup.ItemTemplate>
                                     <DataTemplate>
-                                        <RibbonMenuItem Click="chooseShapeBtnClick" Header="{Binding PluginID}" />
+                                        <RibbonButton Click="chooseShapeBtnClick"  Width="20" Height="30" SmallImageSource="{Binding PluginIconPath}" Label="{Binding PluginID}" />
                                     </DataTemplate>
                                 </RibbonControlGroup.ItemTemplate>
                             </RibbonControlGroup>

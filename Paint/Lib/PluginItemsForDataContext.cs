@@ -9,5 +9,6 @@ namespace Paint.Lib
     class PluginItemsForDataContext
     {
         public string PluginID { get; set; }
+        public string PluginIconPath { get; set; }
     }
 }

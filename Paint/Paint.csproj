@@ -8,19 +8,27 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="IconImg\Arrow.png" />
 	  <None Remove="IconImg\blackicon.png" />
+	  <None Remove="IconImg\Circle.png" />
 	  <None Remove="IconImg\colorpickicon.png" />
 	  <None Remove="IconImg\copyicon.png" />
 	  <None Remove="IconImg\cuticon.png" />
+	  <None Remove="IconImg\Diamond.png" />
+	  <None Remove="IconImg\Donut.png" />
 	  <None Remove="IconImg\erasericon.png" />
 	  <None Remove="IconImg\exiticon.png" />
 	  <None Remove="IconImg\fillicon.png" />
+	  <None Remove="IconImg\Heart.png" />
+	  <None Remove="IconImg\Hexagon.png" />
 	  <None Remove="IconImg\horizonicon.png" />
 	  <None Remove="IconImg\newfileicon.png" />
 	  <None Remove="IconImg\openfileicon.png" />
 	  <None Remove="IconImg\outlineicon.png" />
 	  <None Remove="IconImg\pasteicon.png" />
 	  <None Remove="IconImg\penicon.png" />
+	  <None Remove="IconImg\Pentagon.png" />
+	  <None Remove="IconImg\Polygon.png" />
 	  <None Remove="IconImg\redoicon.png" />
 	  <None Remove="IconImg\resizeicon.png" />
 	  <None Remove="IconImg\rotateicon.png" />
@@ -31,7 +39,9 @@
 	  <None Remove="IconImg\saveicon.png" />
 	  <None Remove="IconImg\selecticon.png" />
 	  <None Remove="IconImg\shapeicon.png" />
+	  <None Remove="IconImg\Star.png" />
 	  <None Remove="IconImg\texticon.png" />
+	  <None Remove="IconImg\Triangle.png" />
 	  <None Remove="IconImg\undoicon.png" />
 	  <None Remove="IconImg\verticalicon.png" />
 	  <None Remove="IconImg\whiteico.png" />
@@ -40,13 +50,37 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Resource Include="IconImg\Arrow.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\Circle.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\Diamond.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\Donut.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
 	  <Resource Include="IconImg\exiticon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\Heart.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\Hexagon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\newfileicon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\openfileicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\Pentagon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\Polygon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\rotatelefticon.png">
@@ -134,7 +168,13 @@
 	  <Resource Include="IconImg\shapeicon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
+	  <Resource Include="IconImg\Star.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
 	  <Resource Include="IconImg\texticon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\Triangle.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\undoicon.png">
