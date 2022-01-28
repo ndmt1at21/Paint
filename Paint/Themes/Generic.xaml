@@ -3,6 +3,7 @@
         <ResourceDictionary Source="pack://application:,,,/Paint;component/Themes/Base/Colors.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Paint;component/Themes/Base/Typography.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Paint;component/Themes/Base/Other.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Paint;component/Themes/ThumbStyle.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/Paint;component/CustomControl/DesignItemContainer.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Paint;component/CustomControl/DesignItemsControl.xaml" />

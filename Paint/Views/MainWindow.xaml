@@ -292,25 +292,9 @@
             x:Name="NodesControl"
             Grid.Row="1"
             ItemsSource="{Binding Nodes}">
-            <custom:DesignItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <custom:DesignCanvas Background="White" IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </custom:DesignItemsControl.ItemsPanel>
-            <custom:DesignItemsControl.ItemContainerStyle>
-                <Style TargetType="{x:Type custom:DesignItemContainer}">
-                    <Setter Property="Canvas.Top" Value="{Binding Top}" />
-                    <Setter Property="Canvas.Left" Value="{Binding Left}" />
-                    <Setter Property="Width" Value="{Binding Width}" />
-                    <Setter Property="Height" Value="{Binding Height}" />
-                    <Setter Property="ZIndex" Value="{Binding ZIndex}" />
-                    <Setter Property="helpers:AttachedAdorner.HasHoverAdorner" Value="True" />
-                    <Setter Property="helpers:AttachedAdorner.ShowResizeAdorner" Value="{Binding IsSelected}" />
-                    <Setter Property="RenderTransformOrigin" Value="{Binding TransformOrigin}" />
-                </Style>
-            </custom:DesignItemsControl.ItemContainerStyle>
-            <custom:DesignItemsControl.ItemTemplate>
-                <DataTemplate>
+
+            <custom:DesignItemsControl.Resources>
+                <DataTemplate DataType="{x:Type vm:ShapeNodeViewModel}">
                     <Path
                         Width="{Binding Width}"
                         Height="{Binding Height}"
@@ -334,7 +318,39 @@
                         </Path.Style>
                     </Path>
                 </DataTemplate>
-            </custom:DesignItemsControl.ItemTemplate>
+
+                <DataTemplate DataType="{x:Type vm:LineNodeViewModel}">
+                    <Line
+                        Fill="{Binding Fill}"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stroke="Red"
+                        StrokeThickness="{Binding StrokeThickness}"
+                        X1="{Binding X1}"
+                        X2="{Binding X2}"
+                        Y1="{Binding Y1}"
+                        Y2="{Binding Y2}" />
+                </DataTemplate>
+            </custom:DesignItemsControl.Resources>
+
+            <custom:DesignItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <custom:DesignCanvas Background="White" IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </custom:DesignItemsControl.ItemsPanel>
+            <custom:DesignItemsControl.ItemContainerStyle>
+                <Style TargetType="{x:Type custom:DesignItemContainer}">
+                    <Setter Property="Canvas.Top" Value="{Binding Top}" />
+                    <Setter Property="Canvas.Left" Value="{Binding Left}" />
+                    <Setter Property="Width" Value="{Binding Width}" />
+                    <Setter Property="Height" Value="{Binding Height}" />
+                    <Setter Property="ZIndex" Value="{Binding ZIndex}" />
+                    <Setter Property="helpers:AttachedAdorner.HasHoverAdorner" Value="True" />
+                    <Setter Property="helpers:AttachedAdorner.ShowResizeAdorner" Value="{Binding IsSelected}" />
+                    <Setter Property="RenderTransformOrigin" Value="{Binding TransformOrigin}" />
+                </Style>
+            </custom:DesignItemsControl.ItemContainerStyle>
+
         </custom:DesignItemsControl>
     </DockPanel>
 

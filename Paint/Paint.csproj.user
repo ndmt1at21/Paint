@@ -7,12 +7,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AdornerTemplate\LineAdornerTemplate.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="AdornerTemplate\LineHoverAdornerTemplate.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="AdornerTemplate\RectangleHoverAdornerTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -21,12 +15,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="AdornerTemplate\LineAdornerTemplate.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="AdornerTemplate\LineHoverAdornerTemplate.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="AdornerTemplate\RectangleHoverAdornerTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -46,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Base\Typography.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ThumbStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

@@ -1,5 +1,6 @@
 ﻿using Paint.Adorner;
 using Paint.CustomControl;
+using Paint.ViewModels;
 using PluginContract;
 using System;
 using System.Collections.Generic;
@@ -33,28 +34,62 @@ namespace Paint.Helpers
         private static void OnShowResizeAdornerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DesignItemContainer element = (DesignItemContainer)d;
+            NodeViewModel nodeVM = (NodeViewModel)element.DataContext;
+
             bool value = (bool)e.NewValue;
 
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
 
             if (value)
             {
-                RectangleAdorner adorner = new RectangleAdorner(element);
-                layer.Add(adorner);
+                if (nodeVM is ShapeNodeViewModel)
+                    HandleAddResizeRectangleAdorner(element, layer);
 
-                _resizeAdorners.Add(adorner);
+                if (nodeVM is LineNodeViewModel)
+                    HandleAddResizeLineAdorner(element, layer);
             }
 
             if (!value)
             {
-                if (layer != null)
-                {
-                    System.Windows.Documents.Adorner[] adorners = layer.GetAdorners(element);
-                    foreach (System.Windows.Documents.Adorner adorner in adorners)
-                    {
-                        layer.Remove(adorner);
-                    }
-                }
+                if (nodeVM is ShapeNodeViewModel)
+                    HandleRemoveResizeRectangleAdorner(element, layer);
+
+                if (nodeVM is LineNodeViewModel)
+                    HandleRemoveResizeLineAdorner(element, layer);
+            }
+        }
+
+        private static void HandleAddResizeRectangleAdorner(DesignItemContainer element, AdornerLayer layer)
+        {
+            RectangleAdorner adorner = new RectangleAdorner(element);
+            layer.Add(adorner);
+        }
+
+        private static void HandleRemoveResizeRectangleAdorner(DesignItemContainer element, AdornerLayer layer)
+        {
+            if (layer == null) return;
+
+            System.Windows.Documents.Adorner[] adorners = layer.GetAdorners(element);
+            foreach (System.Windows.Documents.Adorner adorner in adorners)
+            {
+                layer.Remove(adorner);
+            }
+        }
+
+        private static void HandleAddResizeLineAdorner(DesignItemContainer element, AdornerLayer layer)
+        {
+            LineAdorner adorner = new LineAdorner(element);
+            layer.Add(adorner);
+        }
+
+        private static void HandleRemoveResizeLineAdorner(DesignItemContainer element, AdornerLayer layer)
+        {
+            if (layer == null) return;
+
+            System.Windows.Documents.Adorner[] adorners = layer.GetAdorners(element);
+            foreach (System.Windows.Documents.Adorner adorner in adorners)
+            {
+                layer.Remove(adorner);
             }
         }
     }

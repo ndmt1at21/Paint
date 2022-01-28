@@ -29,7 +29,7 @@ namespace Paint.Views
     {
         private PluginManager _pluginManager { get; set; }
 
-        public ObservableCollection<NodeViewModel> Nodes { get; set; }        
+        public ObservableCollection<NodeViewModel> Nodes { get; set; }
 
         public List<List<NodeViewModel>> NodeList { get; set; }
         public List<NodeViewModel> NodeListPresent { get; set; }
@@ -82,7 +82,7 @@ namespace Paint.Views
         public void Paste()
         {
             List<NodeViewModel> list = new List<NodeViewModel>();
-            list= Clipboard.GetDataObject() as List<NodeViewModel>;
+            list = Clipboard.GetDataObject() as List<NodeViewModel>;
             if (list == null)
                 return;
             foreach (var item in list)
@@ -118,18 +118,22 @@ namespace Paint.Views
                 shapeList.ItemsSource = shapeItemSource;
 
 
+                //test
                 for (int i = 0; i < 10; i++)
                 {
-                    Nodes.Add(new ShapeNodeViewModel
+                    Nodes.Add(new LineNodeViewModel
                     {
-                        DefiningShape = new RectangleGeometry(new Rect(0, 0, 1, 1)),
+                        Top = 10,
+                        Left = 10,
                         Width = 100,
                         Height = 100,
-                        Top = i * 50,
-                        Left = i * 50,
-                        Fill = new SolidColorBrush(Color.FromArgb(255, 255, (byte)(i * 10), (byte)(i * 10))),
-                        ZIndex = 10 - i
-                    }); ;
+                        X1 = 10,
+                        X2 = 100,
+                        Y1 = 10,
+                        Y2 = 100,
+                        StrokeThickness = 2,
+                        Stroke = new SolidColorBrush(Colors.Black),
+                    });
                 }
 
                 //load in ico path
