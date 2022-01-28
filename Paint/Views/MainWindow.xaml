@@ -304,8 +304,7 @@
                     <Setter Property="Width" Value="{Binding Width}" />
                     <Setter Property="Height" Value="{Binding Height}" />
                     <Setter Property="ZIndex" Value="{Binding ZIndex}" />
-                    <!--<Setter Property="helpers:AttachedAdorner.HasHoverAdorner" Value="True" />-->
-                    <!--<Setter Property="helpers:AttachedAdorner.HasMoveAdorner" Value="{Binding IsDragging}" />-->
+                    <Setter Property="helpers:AttachedAdorner.HasHoverAdorner" Value="True" />
                     <Setter Property="helpers:AttachedAdorner.ShowResizeAdorner" Value="{Binding IsSelected}" />
                     <Setter Property="RenderTransformOrigin" Value="{Binding TransformOrigin}" />
                 </Style>

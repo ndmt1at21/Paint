@@ -37,6 +37,7 @@ namespace Paint.Helpers
             DesignItemContainer element = (DesignItemContainer)d;
             bool value = (bool)e.NewValue;
 
+
             if (value)
             {
                 element.MouseEnter += OnMouseEnterRectangle;
@@ -61,7 +62,7 @@ namespace Paint.Helpers
             RectangleHoverAdorner adorner = new RectangleHoverAdorner(element);
 
             layer.Add(adorner);
-            _currentAdorner = adorner;
+            _currentHoverAdorner = adorner;
         }
 
         private static void OnMouseLeaveRectangle(object sender, MouseEventArgs e)
@@ -69,9 +70,9 @@ namespace Paint.Helpers
             DesignItemContainer element = (DesignItemContainer)sender;
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
 
-            if (layer != null && _currentAdorner != null)
+            if (layer != null && _currentHoverAdorner != null)
             {
-                layer.Remove(_currentAdorner);
+                layer.Remove(_currentHoverAdorner);
             }
         }
     }

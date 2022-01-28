@@ -37,20 +37,20 @@ namespace Paint.Helpers
 
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
 
+            Debug.WriteLine("resize changed" + value);
+
             if (value)
             {
                 RectangleAdorner adorner = new RectangleAdorner(element);
                 layer.Add(adorner);
 
-                _currentAdorner = adorner;
+                _currentResizeAdorner = adorner;
             }
 
             if (!value)
             {
-                if (layer != null && _currentAdorner != null)
-                {
-                    layer.Remove(_currentAdorner);
-                }
+                if (layer != null && _currentResizeAdorner != null)
+                    layer.Remove(_currentResizeAdorner);
             }
         }
     }

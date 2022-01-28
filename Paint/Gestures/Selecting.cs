@@ -85,31 +85,27 @@ namespace Paint.Gestures
 
                 if (designItem != null)
                 {
-                    Debug.WriteLine("design item not nulll");
                     NodeViewModel nodeVM = (NodeViewModel)designItem.DataContext;
                     nodeVM.IsSelected = true;
 
+                    Debug.WriteLine("Selected");
                     // Press Ctrl
                     if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
                     {
-                        Debug.WriteLine("dfhjdhfdjh ctrl");
                         _context.SelectedItems.Add(nodeVM);
                     }
                     else
                     {
-                        UnselectAll();
+                        //UnselectAll();
                         _context.SelectedItems.Add(nodeVM);
                     }
-
-                    Debug.WriteLine("Raiuse evebt agaiana");
-                    designItem.RaiseEvent(e);
                 }
 
 
                 if (designItem == null)
                 {
                     Debug.WriteLine("!jhdfhjhjhdf");
-                    UnselectAll();
+                    //UnselectAll();
                 }
             }
         }
