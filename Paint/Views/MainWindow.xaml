@@ -211,7 +211,7 @@
                 <!--  Shape  group  -->
                 <RibbonGroup x:Name="ShapeGroup" Header="Shape">
                     <RibbonGroup>
-                        <WrapPanel Width="200">
+                        <WrapPanel Width="120">
                             <RibbonControlGroup
                                 x:Name="shapeList"
                                 HorizontalAlignment="Stretch"
