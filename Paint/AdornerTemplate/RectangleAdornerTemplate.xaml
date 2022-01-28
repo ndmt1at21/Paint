@@ -39,7 +39,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid IsHitTestVisible="False">
+    <Grid>
         <!--  Rotate Thumbs  -->
         <Grid Opacity="0">
             <thumb:RotateThumb

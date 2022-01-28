@@ -143,17 +143,8 @@ namespace Paint.CustomControl
 
             foreach (var item in SelectedItems)
             {
-                var rotateTransform = new RotateTransform
-                (
-                    item.RotateAngle,
-                    item.TransformOrigin.X,
-                    item.TransformOrigin.Y
-                );
-
-                Point dragDelta = rotateTransform.Transform(point);
-
-                item.Left += dragDelta.X;
-                item.Top += dragDelta.Y;
+                item.Left += point.X;
+                item.Top += point.Y;
             }
         }
 
@@ -212,50 +203,34 @@ namespace Paint.CustomControl
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
-
         }
 
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
 
-            Debug.WriteLine("isDragging");
-            Debug.WriteLine(IsDragging);
-            
             if (!IsDragging)
             {
                 _selectingGesture.SelectByMouseUp(e);
             }
 
+            if (IsDrawing)
+            {
+                _drawingGesture.OnMouseUp(e.GetPosition(this));
+                IsDrawing = false;
+                return;
+            }
+
+            if (IsAreaSelecting)
+            {
+                _selectingGesture.OnMouseUpEndSelecting(e.GetPosition(this));
+                IsAreaSelecting = false;
+                return;
+            }
+
+            IsDrawing = false;
             IsDragging = false;
-
-            //if (IsDragging)
-            //{
-            //    IsDragging = false;
-            //}
-
-
-
-            //if (IsAreaSelecting)
-            //{
-            //    _selectingGesture.OnMouseUpEndSelecting(e.GetPosition(this));
-            //    IsAreaSelecting = false;
-            //    return;
-            //}
-
-            //if (IsDrawing)
-            //{
-            //    _drawingGesture.OnMouseUp(e.GetPosition(this));
-            //    IsDrawing = false;
-            //    return;
-            //}
-
-            //if (!IsAreaSelecting && !IsDrawing)
-            //{
-            //    Debug.WriteLine("fjdkfdfjdkfkjselecting");
-            //    _selectingGesture.SelectByMouseDown(e);
-            //}
-
+            IsAreaSelecting = false;
         }
 
         public override void OnApplyTemplate()
@@ -272,7 +247,6 @@ namespace Paint.CustomControl
             //    IsDrawing = true;
             //    DrawingNode.IsDrawing = true;
             //}
-
         }
     }
 }
