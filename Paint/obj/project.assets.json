@@ -515,19 +515,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ndmt1at21\\.nuget\\packages\\": {}
+    "C:\\Users\\PC\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj",
+      "projectUniqueName": "D:\\Nam4\\LT_Windows\\Paint\\Paint\\Paint.csproj",
       "projectName": "Paint",
-      "projectPath": "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj",
-      "packagesPath": "C:\\Users\\ndmt1at21\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\Paint\\Paint\\Paint\\obj\\",
+      "projectPath": "D:\\Nam4\\LT_Windows\\Paint\\Paint\\Paint.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "D:\\Nam4\\LT_Windows\\Paint\\Paint\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ndmt1at21\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -541,11 +546,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj": {
-              "projectPath": "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj"
+            "D:\\Nam4\\LT_Windows\\Paint\\BRControl\\BRControl.csproj": {
+              "projectPath": "D:\\Nam4\\LT_Windows\\Paint\\BRControl\\BRControl.csproj"
             },
-            "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj": {
-              "projectPath": "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj"
+            "D:\\Nam4\\LT_Windows\\Paint\\PluginContract\\PluginContract.csproj": {
+              "projectPath": "D:\\Nam4\\LT_Windows\\Paint\\PluginContract\\PluginContract.csproj"
             }
           }
         }
@@ -597,10 +602,6 @@
             "version": "[5.0.0, 5.0.0]"
           },
           {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.12, 5.0.12]"
-          },
-          {
             "name": "Microsoft.NETCore.App.Ref",
             "version": "[5.0.0, 5.0.0]"
           },
@@ -617,7 +618,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   },

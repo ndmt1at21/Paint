@@ -29,9 +29,39 @@ namespace Paint.Views
     {
         private PluginManager _pluginManager { get; set; }
 
-        public ObservableCollection<NodeViewModel> Nodes { get; set; }
+        public ObservableCollection<NodeViewModel> Nodes { get; set; }        
 
-        public List<List<NodeViewModel>> NodesList { get; set; }
+        public List<List<NodeViewModel>> NodeList { get; set; }
+        public List<NodeViewModel> NodeListPresent { get; set; }
+
+        public void UndoAction()
+        {
+            if (NodeList != null)
+            {
+                for (int i = 1; i < NodeList.Count(); i++)
+                {
+                    if (NodeList[i] == NodeListPresent)
+                    {
+                        NodeListPresent = NodeList[i - 1];
+                    }
+                }
+            }
+
+        }
+
+        public void RedoAction()
+        {
+            if (NodeList != null)
+            {
+                for (int i = 0; i < NodeList.Count() - 1; i++)
+                {
+                    if (NodeList[i] == NodeListPresent)
+                    {
+                        NodeListPresent = NodeList[i + 1];
+                    }
+                }
+            }
+        }
 
         public MainWindow(PluginManager pluginManager)
         {
