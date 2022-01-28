@@ -5,14 +5,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Paint.AdornerTemplate"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:thumb="clr-namespace:Paint.Thumb"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid Margin="-1.5">
+
+    <Grid Margin="-1.5" IsHitTestVisible="False">
         <Rectangle
             RenderOptions.BitmapScalingMode="HighQuality"
             SnapsToDevicePixels="True"
             Stroke="#0ea5e9"
             StrokeThickness="1.5" />
+
     </Grid>
 </UserControl>

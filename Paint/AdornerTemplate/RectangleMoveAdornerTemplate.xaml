@@ -22,6 +22,6 @@
     </UserControl.Resources>
 
     <Grid>
-        <thumb:MoveThumb Style="{StaticResource MoveThumbStyle}" />
+        <thumb:MoveThumb  Style="{StaticResource MoveThumbStyle}" />
     </Grid>
 </UserControl>

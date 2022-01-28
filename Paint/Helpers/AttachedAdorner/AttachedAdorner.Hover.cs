@@ -55,7 +55,6 @@ namespace Paint.Helpers
             NodeViewModel nodeVM = (NodeViewModel)element.DataContext;
 
             if (nodeVM == null) return;
-
             if (nodeVM.IsDrawing) return;
 
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);

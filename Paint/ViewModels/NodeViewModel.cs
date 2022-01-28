@@ -19,5 +19,6 @@ namespace Paint.ViewModels
 
         public bool IsSelected { get; set; }
         public bool IsDrawing { get; set; }
+        public bool IsDragging { get; set; }
     }
 }

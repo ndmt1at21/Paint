@@ -1,4 +1,5 @@
 ﻿using Paint.Gestures;
+using Paint.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -132,13 +133,13 @@ namespace Paint.CustomControl
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
-            DragManager.IsDragging = true;
+            DraggingAttached.SetIsPossibleDragging((DesignItemContainer)e.OriginalSource, true);
         }
 
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
-            DragManager.IsDragging = false;
+            DraggingAttached.SetIsPossibleDragging((DesignItemContainer)e.OriginalSource, false);
         }
     }
 }

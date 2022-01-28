@@ -23,7 +23,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Thumb}">
-                        <Rectangle Margin="-1.5" Fill="Orange" />
+                        <Rectangle Margin="-1.5" Fill="Transparent" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

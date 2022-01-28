@@ -25,6 +25,7 @@ namespace Paint.CustomControl
         public DesignCanvas DesignCanvas { get; set; }
 
         public bool IsDrawing { get; set; }
+        public bool IsDragging { get; set; }
 
         static DesignItemsControl()
         {
@@ -33,6 +34,7 @@ namespace Paint.CustomControl
 
         public DesignItemsControl()
         {
+            DraggingAttached.Context = this;
             _selectingGesture = new Selecting(this);
             _drawingGesture = new Gestures.Drawing(this);
         }
@@ -119,53 +121,35 @@ namespace Paint.CustomControl
 
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-
-            Debug.WriteLine("On Mouse Left");
-        }
-
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnPreviewMouseLeftButtonDown(e);
 
-            if (DrawingNode != null)
-            {
-                IsDrawing = true;
-                _drawingGesture.OnMouseDown(e.GetPosition(this));
-            }
+            EventAnalyze(e);
 
-            if (!IsDrawing && !DragManager.IsDragging)
-            {
-                IsSelecting = true;
-                _selectingGesture.OnMouseDownStartAreaSelect(e.GetPosition(this));
-                CaptureMouse();
-            }
-
-            Debug.WriteLine("IsDrawing " + IsDrawing + "; IsSelecting " + IsSelecting);
-            if (IsSelecting)
-            {
-                IsSelecting = false;
-                _selectingGesture.SelectByMouseDown(e);
-            }
-
-            Debug.WriteLine("On Preview Mouse Left");
+            _selectingGesture.SelectByMouseDown(e);
         }
 
         protected override void OnPreviewMouseMove(MouseEventArgs e)
         {
             base.OnPreviewMouseMove(e);
 
-            if (IsSelecting && !DragManager.IsDragging)
-            {
-                _selectingGesture.OnMouseMoveAreaSelecting(e.GetPosition(this));
-            }
+            //if (IsSelecting && !DragManager.IsDragging)
+            //{
+            //    _selectingGesture.OnMouseMoveAreaSelecting(e.GetPosition(this));
+            //}
 
-            if (IsDrawing)
-            {
-                _drawingGesture.OnMouseMove(e.GetPosition(this));
-            }
+            //if (IsDrawing)
+            //{
+            //    _drawingGesture.OnMouseMove(e.GetPosition(this));
+            //}
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            Debug.WriteLine("On Mouse Left");
         }
 
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
@@ -191,6 +175,23 @@ namespace Paint.CustomControl
             base.OnApplyTemplate();
 
             DesignCanvas = (DesignCanvas)GetTemplateChild("PART_Canvas");
+        }
+
+        private void EventAnalyze(MouseButtonEventArgs e)
+        {
+            if (DrawingNode != null)
+            {
+                IsDrawing = true;
+            }
+
+
+            Debug.WriteLine("IsDrawing " + IsDrawing + "; IsSelecting " + IsSelecting);
+            //if (IsSelecting)
+            //{
+            //    IsSelecting = false;
+            //}
+
+            //Debug.WriteLine("On Preview Mouse Left");
         }
     }
 }

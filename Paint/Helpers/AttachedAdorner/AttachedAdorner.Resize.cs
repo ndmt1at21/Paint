@@ -30,20 +30,6 @@ namespace Paint.Helpers
         public static bool GetShowResizeLine(UIElement element)
             => (bool)element.GetValue(ShowResizeAdornerProperty);
 
-        public static readonly DependencyProperty ShowOnlyMoveAdornerProperty =
-           DependencyProperty.RegisterAttached(
-               "ShowOnlyMoveAdorner",
-               typeof(bool),
-               typeof(AttachedAdorner),
-               new FrameworkPropertyMetadata(false, OnShowOnlyMoveAdornerChanged)
-           );
-
-        public static void SetShowOnlyMoveAdorner(UIElement element, bool value)
-            => element.SetValue(ShowOnlyMoveAdornerProperty, value);
-
-        public static bool GetShowOnlyMoveLine(UIElement element)
-            => (bool)element.GetValue(ShowOnlyMoveAdornerProperty);
-
         private static void OnShowResizeAdornerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DesignItemContainer element = (DesignItemContainer)d;
@@ -65,24 +51,6 @@ namespace Paint.Helpers
                 {
                     layer.Remove(_currentAdorner);
                 }
-            }
-        }
-
-        private static void OnShowOnlyMoveAdornerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            DesignItemContainer element = (DesignItemContainer)d;
-            bool value = (bool)e.NewValue;
-
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
-
-            if (value)
-            {
-
-            }
-
-            if (!value)
-            {
-
             }
         }
     }

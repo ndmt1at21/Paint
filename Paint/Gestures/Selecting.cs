@@ -21,6 +21,21 @@ namespace Paint.Gestures
         public Selecting(DesignItemsControl context)
         {
             _context = context;
+            DraggingAttached.DragDelta += HandleDragDelta;
+        }
+
+        private void HandleDragDelta(DesignItemContainer sender, Point point)
+        {
+            DesignItemContainer container = sender;
+            NodeViewModel vm = (NodeViewModel)container.DataContext;
+
+            Point dragDelta = container.RotateTransform.Transform(point);
+
+            if (vm != null)
+            {
+                vm.Left += dragDelta.X;
+                vm.Top += dragDelta.Y;
+            }
         }
 
         public void OnMouseDownStartAreaSelect(Point position)
@@ -63,7 +78,7 @@ namespace Paint.Gestures
         public void SelectByMouseDown(MouseButtonEventArgs e)
         {
             HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
-       
+
             if (hitTestResult != null)
             {
                 DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
@@ -85,6 +100,9 @@ namespace Paint.Gestures
                         UnselectAll();
                         _context.SelectedItems.Add(nodeVM);
                     }
+
+                    Debug.WriteLine("Raiuse evebt agaiana");
+                    designItem.RaiseEvent(e);
                 }
 
 
