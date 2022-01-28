@@ -36,6 +36,8 @@ namespace Paint.CustomControl
             DraggingAttached.Context = this;
             _selectingGesture = new Selecting(this);
             _drawingGesture = new Gestures.Drawing(this);
+
+            DraggingAttached.DragDelta += HandleDragDelta;
         }
 
         // Curent Node for drawing
@@ -84,18 +86,18 @@ namespace Paint.CustomControl
         }
 
         // Selecting
-        public static readonly DependencyProperty IsSelectingProperty =
+        public static readonly DependencyProperty IsAreaSelectingProperty =
              DependencyProperty.Register(
-                 "IsSelecting",
+                 "IsAreaSelecting",
                  typeof(bool),
                  typeof(DesignItemsControl),
                  new UIPropertyMetadata(false)
         );
 
-        public bool IsSelecting
+        public bool IsAreaSelecting
         {
-            get { return (bool)GetValue(IsSelectingProperty); }
-            set { SetValue(IsSelectingProperty, value); }
+            get { return (bool)GetValue(IsAreaSelectingProperty); }
+            set { SetValue(IsAreaSelectingProperty, value); }
         }
 
         // Selected Items
@@ -132,23 +134,61 @@ namespace Paint.CustomControl
                         })
                 }
             };
-
         }
+
+
+        private void HandleDragDelta(DesignItemContainer sender, Point point)
+        {
+            IsDragging = true;
+
+            foreach (var item in SelectedItems)
+            {
+                var rotateTransform = new RotateTransform
+                (
+                    item.RotateAngle,
+                    item.TransformOrigin.X,
+                    item.TransformOrigin.Y
+                );
+
+                Point dragDelta = rotateTransform.Transform(point);
+
+                item.Left += dragDelta.X;
+                item.Top += dragDelta.Y;
+            }
+        }
+
 
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnPreviewMouseLeftButtonDown(e);
 
-            //EventAnalyze(e);
-
             _selectingGesture.SelectByMouseDown(e);
+
+            //if (DrawingNode != null)
+            //{
+            //    IsDrawing = true;
+            //    DrawingNode.IsDrawing = true;
+            //    _drawingGesture.OnMouseDown(e.GetPosition(this));
+            //    return;
+            //}
+
+            //if (IsAreaSelecting)
+            //{
+            //    _selectingGesture.OnMouseDownStartAreaSelect(e.GetPosition(this));
+            //}
+
+            //if (IsDragging)
+            //{
+            //    Debug.WriteLine("drgaggging");
+            //    return;
+            //}
         }
 
         protected override void OnPreviewMouseMove(MouseEventArgs e)
         {
             base.OnPreviewMouseMove(e);
 
-            //if (IsSelecting && !IsDragging)
+            //if (IsAreaSelecting && !IsDragging)
             //{
             //    _selectingGesture.OnMouseMoveAreaSelecting(e.GetPosition(this));
             //}
@@ -157,27 +197,63 @@ namespace Paint.CustomControl
             //{
             //    _drawingGesture.OnMouseMove(e.GetPosition(this));
             //}
+
+            //if (IsDrawing)
+            //{
+            //    _drawingGesture.OnMouseMove(e.GetPosition(this));
+            //}
+
+            //if (IsAreaSelecting)
+            //{
+            //    _selectingGesture.OnMouseMoveAreaSelecting(e.GetPosition(this));
+            //}
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
+
         }
 
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
 
-            //if (IsSelecting)
+            Debug.WriteLine("isDragging");
+            Debug.WriteLine(IsDragging);
+            
+            if (!IsDragging)
+            {
+                _selectingGesture.SelectByMouseUp(e);
+            }
+
+            IsDragging = false;
+
+            //if (IsDragging)
             //{
-            //    IsSelecting = false;
-            //    ReleaseMouseCapture();
+            //    IsDragging = false;
+            //}
+
+
+
+            //if (IsAreaSelecting)
+            //{
+            //    _selectingGesture.OnMouseUpEndSelecting(e.GetPosition(this));
+            //    IsAreaSelecting = false;
+            //    return;
             //}
 
             //if (IsDrawing)
             //{
             //    _drawingGesture.OnMouseUp(e.GetPosition(this));
             //    IsDrawing = false;
+            //    return;
+            //}
+
+            //if (!IsAreaSelecting && !IsDrawing)
+            //{
+            //    Debug.WriteLine("fjdkfdfjdkfkjselecting");
+            //    _selectingGesture.SelectByMouseDown(e);
             //}
 
         }
@@ -189,9 +265,14 @@ namespace Paint.CustomControl
             DesignCanvas = (DesignCanvas)GetTemplateChild("PART_Canvas");
         }
 
-        private void EventAnalyze(MouseButtonEventArgs e)
+        private void EventAnalyzeOnButtonDown(MouseButtonEventArgs e)
         {
-            
+            //if (DrawingNode != null)
+            //{
+            //    IsDrawing = true;
+            //    DrawingNode.IsDrawing = true;
+            //}
+
         }
     }
 }

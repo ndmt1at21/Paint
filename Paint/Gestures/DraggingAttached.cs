@@ -1,6 +1,7 @@
 ﻿using Paint.CustomControl;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,19 +56,9 @@ namespace Paint.Gestures
 
         private static void OnSelectedContainerClicked(object sender, MouseButtonEventArgs e)
         {
-            var container = (DesignItemContainer)sender;
-            container.IsSelected = true;
-
-            Context.IsDragging = true;
-
             _initialPosition = e.GetPosition(Context.DesignCanvas);
-            container.CaptureMouse();
-        }
-
-        private static void OnSelectedContainerReleased(object sender, MouseButtonEventArgs e)
-        {
             var container = (DesignItemContainer)sender;
-            container.ReleaseMouseCapture();
+            container.CaptureMouse();
         }
 
         private static void OnSelectedContainerMove(object sender, MouseEventArgs e)
@@ -77,10 +68,19 @@ namespace Paint.Gestures
             if (container.IsMouseCaptured && e.LeftButton == MouseButtonState.Pressed)
             {
                 Point currentPosition = e.GetPosition(Context.DesignCanvas);
-                DragDelta?.Invoke((DesignItemContainer)sender, new Point(currentPosition.X - _initialPosition.X, currentPosition.Y - _initialPosition.Y));
 
+                if (_initialPosition == currentPosition) return;
+
+                DragDelta?.Invoke((DesignItemContainer)sender, new Point(currentPosition.X - _initialPosition.X, currentPosition.Y - _initialPosition.Y));
                 _initialPosition = currentPosition;
             }
+        }
+
+        private static void OnSelectedContainerReleased(object sender, MouseButtonEventArgs e)
+        {
+            var container = (DesignItemContainer)sender;
+            container.ReleaseMouseCapture();
+            IsPossibleDragging = false;
         }
     }
 }

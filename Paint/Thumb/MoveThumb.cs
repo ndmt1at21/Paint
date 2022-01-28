@@ -26,7 +26,6 @@ namespace Paint.Thumb
         private void MoveThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
             container = Utils.Control.GetParentControl<DesignItemContainer>((DependencyObject)sender);
-            Debug.WriteLine("djfhdfha3434");
         }
 
         private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)

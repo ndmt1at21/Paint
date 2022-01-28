@@ -18,24 +18,11 @@ namespace Paint.Gestures
 
         private Point _startPosition { get; set; }
 
+        private bool onePointSelectionHandleByMouseUp { get; set; }
+
         public Selecting(DesignItemsControl context)
         {
             _context = context;
-            DraggingAttached.DragDelta += HandleDragDelta;
-        }
-
-        private void HandleDragDelta(DesignItemContainer sender, Point point)
-        {
-            DesignItemContainer container = sender;
-            NodeViewModel vm = (NodeViewModel)container.DataContext;
-
-            Point dragDelta = container.RotateTransform.Transform(point);
-
-            if (vm != null)
-            {
-                vm.Left += dragDelta.X;
-                vm.Top += dragDelta.Y;
-            }
         }
 
         public void OnMouseDownStartAreaSelect(Point position)
@@ -66,52 +53,107 @@ namespace Paint.Gestures
             _context.SelectionRectangle = new Rect(left, top, width, height);
         }
 
+        public void OnMouseUpEndSelecting(Point endPosition)
+        {
+        }
+
+        public bool SelectByMouseDown(MouseButtonEventArgs e)
+        {
+            HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
+            DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
+
+            // Click outside all designItems
+            if (designItem == null)
+            {
+                UnselectAll();
+                return false;
+            }
+
+            NodeViewModel nodeVM = (NodeViewModel)designItem.DataContext;
+
+            // Selected item is ignored
+            if (nodeVM.IsSelected)
+            {
+                onePointSelectionHandleByMouseUp = true;
+                return false;
+            }
+
+            // Press Ctrl
+            if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
+            {
+                AddSelectedItem(nodeVM);
+            }
+            else
+            {
+                UnselectAll();
+                AddSelectedItem(nodeVM);
+            }
+
+            onePointSelectionHandleByMouseUp = false;
+
+            return false;
+        }
+
+        public bool SelectByMouseUp(MouseButtonEventArgs e)
+        {
+            if (!onePointSelectionHandleByMouseUp) return false;
+
+            HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
+            DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
+
+            if (designItem == null)
+            {
+                UnselectAll();
+                return false;
+            }
+
+            NodeViewModel nodeVM = (NodeViewModel)designItem.DataContext;
+
+            // Not selected item is ignored
+            if (!nodeVM.IsSelected)
+            {
+                return false;
+            }
+
+            if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
+            {
+                RemoveSelectedItem(nodeVM);
+            }
+            else
+            {
+                UnselectAll();
+                AddSelectedItem(nodeVM);
+            }
+
+            return true;
+        }
+
+        public void SelectByArea(Rect rect)
+        {
+        }
+
         public void UnselectAll()
         {
             foreach (var item in _context.SelectedItems)
             {
+                Debug.WriteLine("Unsleected all");
                 item.IsSelected = false;
             }
             _context.SelectedItems.Clear();
         }
 
-        public void SelectByMouseDown(MouseButtonEventArgs e)
+        public void AddSelectedItem(NodeViewModel vm)
         {
-            HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
-
-            if (hitTestResult != null)
-            {
-                DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
-
-                if (designItem != null)
-                {
-                    NodeViewModel nodeVM = (NodeViewModel)designItem.DataContext;
-                    nodeVM.IsSelected = true;
-
-                    Debug.WriteLine("Selected");
-                    // Press Ctrl
-                    if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
-                    {
-                        _context.SelectedItems.Add(nodeVM);
-                    }
-                    else
-                    {
-                        //UnselectAll();
-                        _context.SelectedItems.Add(nodeVM);
-                    }
-                }
-
-
-                if (designItem == null)
-                {
-                    Debug.WriteLine("!jhdfhjhjhdf");
-                    //UnselectAll();
-                }
-            }
+            vm.IsSelected = true;
+            _context.SelectedItems.Add(vm);
         }
 
-        public void SelectByArea(Rect rect)
+        public void RemoveSelectedItem(NodeViewModel vm)
         {
+            Debug.WriteLine("Remov eone ite,");
+            vm.IsSelected = false;
+            _context.SelectedItems.Remove(vm);
+            Debug.WriteLine(_context.SelectedItems.Count);
         }
     }
 }

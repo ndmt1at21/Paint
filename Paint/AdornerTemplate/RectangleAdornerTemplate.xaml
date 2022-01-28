@@ -10,6 +10,7 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <Style x:Key="ResizeThumbCornerStyle" TargetType="{x:Type Shape}">
+            <Setter Property="IsHitTestVisible" Value="True" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="Stroke" Value="#3b82f6 " />
             <Setter Property="StrokeThickness" Value="1.5" />
@@ -19,17 +20,8 @@
             <Setter Property="Fill" Value="White" />
         </Style>
 
-        <Style x:Key="MoveThumbStyle" TargetType="{x:Type Thumb}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Thumb}">
-                        <Rectangle Margin="-1.5" Fill="Transparent" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
         <Style TargetType="{x:Type thumb:RotateThumb}">
+            <Setter Property="IsHitTestVisible" Value="True" />
             <Setter Property="RenderTransformOrigin" Value="0.5 0.5" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Control.Template">
@@ -47,9 +39,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid>
-        <thumb:MoveThumb Style="{StaticResource MoveThumbStyle}" />
-
+    <Grid IsHitTestVisible="False">
         <!--  Rotate Thumbs  -->
         <Grid Opacity="0">
             <thumb:RotateThumb
