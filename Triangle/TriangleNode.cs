@@ -17,10 +17,9 @@ namespace Triangle
 
         public Image Icon => throw new NotImplementedException();
 
-        public Geometry CreateGeometry()
+        public string CreateGeometry()
         {
-            Geometry res = Geometry.Parse("m226.865 331.44813l127.5 -201.99998l127.5 201.99998l-255.00001 0z");
-            return res;
+            return "m226.865 331.44813l127.5 -201.99998l127.5 201.99998l-255.00001 0z";
         }
     }
 }

@@ -18,11 +18,9 @@ namespace PluginContract
 
         public string Name => "Rectangle";
 
-        public Image Icon => throw new NotImplementedException();
-
-        public Geometry CreateGeometry()
+        public string CreateGeometry()
         {
-            return new RectangleGeometry { Rect = new Rect(0, 0, 1, 1) };
+            return "M 1 1 H 90 V 90 H 1 L 1 1";
         }
     }
 }

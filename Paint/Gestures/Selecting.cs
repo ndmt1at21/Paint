@@ -60,24 +60,26 @@ namespace Paint.Gestures
 
         public bool SelectByMouseDown(MouseButtonEventArgs e)
         {
-            Debug.WriteLine("mouse down select");
             HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
             DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
 
+            Debug.WriteLine("selecting");
             // Click outside all designItems
             if (designItem == null)
             {
+                Debug.WriteLine("oututtuutside");
+                Debug.WriteLine(hitTestResult.VisualHit);
                 UnselectAll();
                 return false;
             }
 
             NodeViewModel nodeVM = (NodeViewModel)designItem.DataContext;
 
-            // Selected item is ignored
+            // Selected item is ignored     
             if (nodeVM.IsSelected)
             {
                 onePointSelectionHandleByMouseUp = true;
-                return false;
+                return true;
             }
 
             // Press Ctrl
@@ -92,7 +94,6 @@ namespace Paint.Gestures
             }
 
             onePointSelectionHandleByMouseUp = false;
-
             return false;
         }
 
@@ -123,13 +124,12 @@ namespace Paint.Gestures
 
         public bool SelectByMouseUp(MouseButtonEventArgs e)
         {
-
             if (!onePointSelectionHandleByMouseUp) return false;
-            Debug.WriteLine("mouse up select");
 
             HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
             DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
-
+            Debug.WriteLine(hitTestResult.VisualHit);
+            Debug.WriteLine(designItem);
             if (designItem == null)
             {
                 UnselectAll();
@@ -147,6 +147,7 @@ namespace Paint.Gestures
             if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
             {
                 RemoveSelectedItem(nodeVM);
+                Debug.WriteLine("seelcted upmouse moncotrol");
             }
             else
             {

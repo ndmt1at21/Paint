@@ -9,7 +9,7 @@ namespace Paint.ViewModels
 {
     public class ImageNodeViewModel : NodeViewModel
     {
-        public BitmapImage ImageSource { get; set; }
+        public string ImageSource { get; set; }
 
         public override NodeViewModel Clone()
         {
@@ -31,7 +31,7 @@ namespace Paint.ViewModels
                 RotateAngle = RotateAngle,
                 StrokeMiterLimit = StrokeMiterLimit,
                 StrokeThickness = StrokeThickness,
-                ImageSource = ImageSource.Clone(),
+                ImageSource = ImageSource,
             };
         }
     }

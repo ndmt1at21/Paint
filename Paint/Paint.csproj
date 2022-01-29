@@ -118,7 +118,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Commands\MoveData\" />
 		<Folder Include="Plugins\" />
 	</ItemGroup>
 

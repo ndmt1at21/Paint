@@ -26,8 +26,8 @@ namespace Paint.Models
         public Store()
         {
             RecentFiles = new List<RecentFileItem>();
-
             Nodes = new ObservableCollection<NodeViewModel>();
+
             Nodes.CollectionChanged += OnCollectionNodesChanged;
         }
 

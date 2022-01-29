@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -60,8 +61,8 @@ namespace Paint.Lib
             if (data == null)
                 throw new Exception("Invalid data");
 
-            DeleteAutoSaveFile();
             await SaveAsync(data, _tempPath);
+            DeleteAutoSaveFile();
         }
 
         private void DeleteAutoSaveFile()

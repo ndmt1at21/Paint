@@ -17,8 +17,47 @@
     Height="600"
     Loaded="RibbonWindow_Loaded">
 
+    <RibbonWindow.InputBindings>
+        <KeyBinding
+            Key="{Binding SaveOrSaveAsCommand.Gesture.Key}"
+            Command="{Binding SaveOrSaveAsCommand}"
+            Modifiers="{Binding SaveOrSaveAsCommand.Gesture.Modifiers}" />
+
+        <KeyBinding
+            Key="{Binding OpenCommand.Gesture.Key}"
+            Command="{Binding OpenCommand}"
+            Modifiers="{Binding OpenCommand.Gesture.Modifiers}" />
+
+        <KeyBinding
+            Key="{Binding NewCommand.Gesture.Key}"
+            Command="{Binding NewCommand}"
+            Modifiers="{Binding NewCommand.Gesture.Modifiers}" />
+
+        <KeyBinding
+            Key="{Binding ExitCommand.Gesture.Key}"
+            Command="{Binding ExitCommand}"
+            Modifiers="{Binding ExitCommand.Gesture.Modifiers}" />
+
+        <KeyBinding
+            Key="{Binding CopyCommand.Gesture.Key}"
+            Command="{Binding CopyCommand}"
+            Modifiers="{Binding CopyCommand.Gesture.Modifiers}" />
+
+        <KeyBinding
+            Key="{Binding CutCommand.Gesture.Key}"
+            Command="{Binding CutCommand}"
+            Modifiers="{Binding CutCommand.Gesture.Modifiers}" />
+
+        <KeyBinding
+            Key="{Binding PasteCommand.Gesture.Key}"
+            Command="{Binding PasteCommand}"
+            Modifiers="{Binding PasteCommand.Gesture.Modifiers}" />
+    </RibbonWindow.InputBindings>
+
+
     <RibbonWindow.Resources>
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        <converters:StringToGeometryConverter x:Key="StringToGeometryConverter" />
     </RibbonWindow.Resources>
 
     <DockPanel LastChildFill="True">
@@ -375,7 +414,8 @@
                     <Path
                         Width="{Binding Width}"
                         Height="{Binding Height}"
-                        Data="{Binding DefiningShape}"
+                        Data="{Binding DefiningShape,
+                                       Converter={StaticResource StringToGeometryConverter}}"
                         Fill="{Binding Fill}"
                         RenderOptions.BitmapScalingMode="HighQuality"
                         SnapsToDevicePixels="True"

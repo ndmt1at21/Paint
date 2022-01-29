@@ -22,6 +22,7 @@ namespace Paint.Gestures
         public void OnMouseDown(Point startPosition)
         {
             _startPosition = startPosition;
+            Debug.WriteLine("startDrawiing");
             _context.DrawingNode.IsDrawing = true;
         }
 
@@ -54,6 +55,7 @@ namespace Paint.Gestures
         {
             _context.DrawingNode.IsSelected = true;
             _context.DrawingNode.IsDrawing = false;
+            _context.SelectedItems.Add(_context.DrawingNode);
             _context.DrawingNode = null;
         }
     }

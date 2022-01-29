@@ -71,7 +71,6 @@ namespace Paint.Gestures
 
                 if (_initialPosition == currentPosition) return;
 
-                Debug.WriteLine((currentPosition.X - _initialPosition.X) + " " + (currentPosition.Y - _initialPosition.Y));
                 DragDelta?.Invoke((DesignItemContainer)sender, new Point(currentPosition.X - _initialPosition.X, currentPosition.Y - _initialPosition.Y));
                 _initialPosition = currentPosition;
             }

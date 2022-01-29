@@ -148,34 +148,32 @@ namespace Paint.CustomControl
             }
         }
 
-
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnPreviewMouseLeftButtonDown(e);
 
-            if (e.ClickCount == 2) return;
+            bool isSelectByOnePoint = false;
 
-            Debug.WriteLine("Clijc ciount" + e.ClickCount);
-            _selectingGesture.SelectByMouseDown(e);
+            if (DrawingNode != null)
+            {
+                IsDrawing = true;
+                DrawingNode.IsDrawing = true;
+                _drawingGesture.OnMouseDown(e.GetPosition(this));
+            }
 
-            //if (DrawingNode != null)
-            //{
-            //    IsDrawing = true;
-            //    DrawingNode.IsDrawing = true;
-            //    _drawingGesture.OnMouseDown(e.GetPosition(this));
-            //    return;
-            //}
+            if (!IsDrawing && !IsDragging && !IsAreaSelecting)
+            {
+                isSelectByOnePoint = _selectingGesture.SelectByMouseDown(e);
+            }
 
-            //if (IsAreaSelecting)
-            //{
-            //    _selectingGesture.OnMouseDownStartAreaSelect(e.GetPosition(this));
-            //}
+            Debug.WriteLine("OnPreviewMouseLeftButtonDown");
 
-            //if (IsDragging)
-            //{
-            //    Debug.WriteLine("drgaggging");
-            //    return;
-            //}
+            if (!IsDrawing && !isSelectByOnePoint)
+            {
+                Debug.WriteLine("issaaareaselec11`````" + IsAreaSelecting);
+                IsAreaSelecting = true;
+                _selectingGesture.OnMouseDownStartAreaSelect(e.GetPosition(this));
+            }
         }
 
         protected override void OnMouseDoubleClick(MouseButtonEventArgs e)
@@ -188,32 +186,22 @@ namespace Paint.CustomControl
         {
             base.OnPreviewMouseMove(e);
 
-            //if (IsAreaSelecting && !IsDragging)
-            //{
-            //    _selectingGesture.OnMouseMoveAreaSelecting(e.GetPosition(this));
-            //}
+            if (IsDrawing)
+            {
+                _drawingGesture.OnMouseMove(e.GetPosition(this));
+            }
 
-            //if (IsDrawing)
-            //{
-            //    _drawingGesture.OnMouseMove(e.GetPosition(this));
-            //}
-
-            //if (IsDrawing)
-            //{
-            //    _drawingGesture.OnMouseMove(e.GetPosition(this));
-            //}
-
-            //if (IsAreaSelecting)
-            //{
-            //    _selectingGesture.OnMouseMoveAreaSelecting(e.GetPosition(this));
-            //}
+            if (IsAreaSelecting && !IsDragging)
+            {
+                _selectingGesture.OnMouseMoveAreaSelecting(e.GetPosition(this));
+            }
         }
 
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
 
-            if (e.ClickCount == 2) return;
+            Debug.WriteLine("why dragiging" + IsDragging);
 
             if (!IsDragging)
             {
@@ -224,14 +212,12 @@ namespace Paint.CustomControl
             {
                 _drawingGesture.OnMouseUp(e.GetPosition(this));
                 IsDrawing = false;
-                return;
             }
 
             if (IsAreaSelecting)
             {
                 _selectingGesture.OnMouseUpEndSelecting(e.GetPosition(this));
                 IsAreaSelecting = false;
-                return;
             }
 
             IsDrawing = false;
