@@ -10,18 +10,17 @@ using System.Windows.Media;
 
 namespace Star
 {
-	public class StarNode : IShapeNode
-	{
+    public class StarNode : IShapeNode
+    {
         public string ID => "Star";
 
         public string Name => "Star";
 
-		public Image Icon => throw new NotImplementedException();
+        public Image Icon => throw new NotImplementedException();
 
-		public Geometry CreateGeometry()
+        public string CreateGeometry()
         {
-            Geometry res = Geometry.Parse("M156 0L192.596 105.029H311.022L215.213 169.941L251.809 274.971L156 210.059L60.191 274.971L96.7868 169.941L0.977783 105.029H119.404L156 0Z");
-            return res;
+            return "M156 0L192.596 105.029H311.022L215.213 169.941L251.809 274.971L156 210.059L60.191 274.971L96.7868 169.941L0.977783 105.029H119.404L156 0Z";
         }
     }
 }

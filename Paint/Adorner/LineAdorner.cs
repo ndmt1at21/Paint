@@ -48,10 +48,6 @@ namespace Paint.Adorner
                 _startThumb.Height
             );
 
-            Debug.WriteLine("NodeVM");
-            Debug.WriteLine(_nodeVM.Top + " " + _nodeVM.Left + " " + _nodeVM.Width);
-            Debug.WriteLine(startPointThumbRect.X + " " + startPointThumbRect.Y);
-
             _startThumb.Arrange(startPointThumbRect);
 
             Rect endPointThumbRect = new Rect

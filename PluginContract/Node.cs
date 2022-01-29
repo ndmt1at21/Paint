@@ -16,6 +16,5 @@ namespace PluginContract
     {
         public string ID { get; }
         public string Name { get; }
-        public Image Icon { get; }
     }
 }

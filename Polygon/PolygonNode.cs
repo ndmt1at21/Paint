@@ -15,12 +15,9 @@ namespace Polygon
 
         public string Name => "Polygon";
 
-		public Image Icon => throw new NotImplementedException();
-
-		public Geometry CreateGeometry()
+        public string CreateGeometry()
         {
-            Geometry res = Geometry.Parse("M106 0L211.655 132.75H0.344902L106 0Z");
-            return res;
+            return "M106 0L211.655 132.75H0.344902L106 0Z";
         }
     }
 }

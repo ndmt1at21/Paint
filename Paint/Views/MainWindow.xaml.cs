@@ -1,5 +1,8 @@
-﻿using Paint.Adorner;
+﻿using Newtonsoft.Json;
+using Paint.Adorner;
 using Paint.Commands;
+using Paint.Commands.Export;
+using Paint.Commands.MoveData;
 using Paint.IconImg;
 using Paint.Lib;
 using Paint.Models;
@@ -46,11 +49,15 @@ namespace Paint.Views
         public ICommand LoadProjectCommand { get; set; }
         public ICommand SaveAsCommand { get; set; }
         public ICommand SaveOrSaveAsCommand { get; set; }
-        public ICommand ImportCommand { get; set; }
         public ICommand ExportCommand { get; set; }
         public ICommand ExitCommand { get; set; }
 
+        public ICommand CutCommand { get; set; }
+        public ICommand PasteCommand { get; set; }
+        public ICommand CopyCommand { get; set; }
+
         public ObservableCollection<NodeViewModel> Nodes { get; set; }
+        public ObservableCollection<NodeViewModel> SelectedItems { get; set; }
         public Stack<ObservableCollection<NodeViewModel>> UndoStack { get; set; }
         public Stack<ObservableCollection<NodeViewModel>> RedoStack { get; set; }
     }
@@ -63,12 +70,56 @@ namespace Paint.Views
 
             _pluginManager = pluginManager;
 
-            DataContext = this;
-            NodesControl.ItemsSource = Nodes;
-
             InitializeStore();
             InitializeServices();
             InitializeCommands();
+
+            DataContext = this;
+            Nodes = _store.Nodes;
+            SelectedItems = new ObservableCollection<NodeViewModel>();
+            NodesControl.ItemsSource = Nodes;
+            NodesControl.SelectedItems = SelectedItems;
+
+            Nodes.Add(new ShapeNodeViewModel
+            {
+                Top = 100,
+                Left = 100,
+                Width = 100,
+                Height = 100,
+                Fill = Brushes.Red,
+                DefiningShape = "M 1 1 H 90 V 90 H 1 L 1 1"
+            });
+
+            var shape = new ShapeNodeViewModel
+            {
+                Top = 100,
+                Left = 100,
+                Width = 100,
+                Height = 100,
+                Fill = Brushes.Red,
+                DefiningShape = "M 1 1 H 90 V 90 H 1 L 1 1"
+            };
+
+            NodesControl.DrawingNode = shape;
+            Nodes.Add(shape);
+
+            Nodes.Add(new ImageNodeViewModel
+            {
+                Top = 0,
+                Left = 0,
+                Height = 100,
+                Width = 100,
+                ImageSource = "C:\\Users\\ndmt1at21\\Desktop\\escape.png"
+            });
+
+            Nodes.Add(new TextNodeViewModel
+            {
+                Top = 0,
+                Left = 0,
+                Height = 100,
+                Width = 100,
+                Content = "dfjghjfhfhjfg"
+            });
         }
 
         private void InitializeStore()
@@ -95,7 +146,6 @@ namespace Paint.Views
             };
 
             _persisterProject = new JsonPersister<Store>();
-
             _saveProjectService = new SaveService<Store>(_persisterProject);
             _loadProjectService = new LoadService<Store>(_persisterProject);
 
@@ -116,20 +166,22 @@ namespace Paint.Views
             LoadProjectCommand = new LoadProjectCommand(_store, _loadProjectService);
             SaveOrSaveAsCommand = new SaveOrSaveAsCommand(_store, _saveProjectService);
             SaveAsCommand = new SaveAsCommand(_store, _saveProjectService);
+            ExportCommand = new ExportCommand(NodesControl.DesignCanvas);
             ExitCommand = new ExitCommand(_store, this);
+
+            CopyCommand = new CopyCommand(this);
+            CutCommand = new CutCommand(this);
+            PasteCommand = new PasteCommand(this);
         }
 
         private void RegisterStoreChanged()
         {
-
+            Debug.WriteLine("Chanananan");
         }
     }
 
     public partial class MainWindow
     {
-        public List<List<NodeViewModel>> NodeList { get; set; }
-        public List<NodeViewModel> NodeListPresent { get; set; }
-
         public void LoadFrom(string path)
         {
             LoadProjectCommand.Execute(path);
@@ -154,50 +206,12 @@ namespace Paint.Views
             UndoStack.Push(new ObservableCollection<NodeViewModel>(Nodes));
         }
 
-        private void Copy()
-        {
-            foreach (var item in Nodes)
-            {
-                if (item.IsSelected)
-                {
-                    Clipboard.SetDataObject(item.Clone());
-                }
-            }
-        }
-
-        private void Cut()
-        {
-            foreach (var item in Nodes)
-            {
-                if (item.IsSelected)
-                {
-                    Clipboard.SetDataObject(item.Clone());
-                    Nodes.Remove(item);
-                }
-            }
-        }
-
-        private void Paste()
-        {
-            List<NodeViewModel> list = new List<NodeViewModel>();
-            list = Clipboard.GetDataObject() as List<NodeViewModel>;
-
-            if (list == null)
-                return;
-
-            foreach (var item in list)
-            {
-                Nodes.Add(item);
-            }
-        }
-
         // UI Load
         private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
                 InitializeComponent();
-                Nodes = new ObservableCollection<NodeViewModel>();
 
                 //load in plugin
                 string[] pluginIDs = _pluginManager.GetPluginIDs();
@@ -216,35 +230,9 @@ namespace Paint.Views
                 }
                 shapeList.ItemsSource = shapeItemSource;
 
-
                 //test
-                Nodes.Add(new ShapeNodeViewModel
-                {
-                    Top = 100,
-                    Left = 100,
-                    Width = 100,
-                    Height = 100,
-                    Fill = Brushes.Red,
-                    DefiningShape = new RectangleGeometry(new Rect(0, 0, 1, 1))
-                });
 
-                Nodes.Add(new ImageNodeViewModel
-                {
-                    Top = 0,
-                    Left = 0,
-                    Height = 100,
-                    Width = 100,
-                    ImageSource = new BitmapImage(new Uri("C:\\Users\\ndmt1at21\\Desktop\\escape.png"))
-                });
 
-                Nodes.Add(new TextNodeViewModel
-                {
-                    Top = 0,
-                    Left = 0,
-                    Height = 100,
-                    Width = 100,
-                    Content = "dfjghjfhfhjfg"
-                });
 
                 //load in ico path
                 var imgPaths = new IconPath
@@ -278,7 +266,6 @@ namespace Paint.Views
                     exitIcoPath = "../IconImg/exiticon.png",
 
                 };
-                DataContext = imgPaths;
 
                 //init set colorpick color
                 ClrPcker_Background.SelectedColor = Color.FromRgb(255, 255, 255);
@@ -324,52 +311,52 @@ namespace Paint.Views
 
         private void undoBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            UndoAction();
         }
 
         private void redoBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            RedoAction();
         }
 
         private void createNewFileBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            NewCommand.Execute(null);
         }
 
         private void openFileBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            OpenCommand.Execute(null);
         }
 
         private void saveAsJPGBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            ExportCommand.Execute("jpg");
         }
 
         private void saveAsPNGBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            ExportCommand.Execute("png");
         }
 
         private void exitAsPNGBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            ExitCommand.Execute(null);
         }
 
         private void pasteBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            PasteCommand.Execute(null);
         }
 
         private void cutBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            CutCommand.Execute(null);
         }
 
         private void copyBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            CopyCommand.Execute(null);
         }
 
         private void selectBtnEvenListener(object sender, RoutedEventArgs e)

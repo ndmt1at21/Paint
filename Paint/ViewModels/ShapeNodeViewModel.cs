@@ -9,7 +9,7 @@ namespace Paint.ViewModels
 {
     public class ShapeNodeViewModel : NodeViewModel
     {
-        public Geometry DefiningShape { get; set; } = Geometry.Empty;
+        public string DefiningShape { get; set; }
 
         public override NodeViewModel Clone()
         {
@@ -31,7 +31,7 @@ namespace Paint.ViewModels
                 RotateAngle = RotateAngle,
                 StrokeMiterLimit = StrokeMiterLimit,
                 StrokeThickness = StrokeThickness,
-                DefiningShape = DefiningShape.Clone(),
+                DefiningShape = DefiningShape,
             };
         }
     }

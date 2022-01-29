@@ -16,12 +16,11 @@ namespace Diamond
 
         public string Name => "Diamond";
 
-		public Image Icon => throw new NotImplementedException();
+        public Image Icon => throw new NotImplementedException();
 
-		public Geometry CreateGeometry()
+        public string CreateGeometry()
         {
-            Geometry res = Geometry.Parse("m297.50999 255.24999l88 -105l88 105l-88 105l-88 -105z");
-            return res;
+            return "m297.50999 255.24999l88 -105l88 105l-88 105l-88 -105z";
         }
     }
 }

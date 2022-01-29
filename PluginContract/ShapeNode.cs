@@ -12,6 +12,6 @@ namespace PluginContract
 {
     public interface IShapeNode : INode
     {
-        public Geometry CreateGeometry();
+        public string CreateGeometry();
     }
 }
