@@ -130,7 +130,6 @@ namespace Paint.Views
             LoadProjectCommand = new LoadProjectCommand(_store, _loadProjectService);
             SaveOrSaveAsCommand = new SaveOrSaveAsCommand(_store, _saveProjectService);
             SaveAsCommand = new SaveAsCommand(_store, _saveProjectService);
-            ExportCommand = new ExportCommand(NodesControl.DesignCanvas);
             ExitCommand = new ExitCommand(_store, this);
 
             CopyCommand = new CopyCommand(this);
@@ -219,6 +218,8 @@ namespace Paint.Views
             SelectedItems = new ObservableCollection<NodeViewModel>();
             NodesControl.ItemsSource = Nodes;
             NodesControl.SelectedItems = SelectedItems;
+
+            ExportCommand = new ExportCommand(NodesControl.DesignCanvas);
 
             try
             {
