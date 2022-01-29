@@ -328,6 +328,13 @@ namespace Paint.Views
             this.fontNameCombobox.ItemsSource = fontFamliles.Families;
 
             this.RibbonWin.DataContext = imgPaths;
+            tempCombobox = new TextSizeDataContext
+            {
+                size = 10.ToString(),
+            };
+            this.fontNameCombobox.SelectedItem = System.Drawing.FontFamily.Families[2];
+
+            this.textSizeCombobox.SelectedItem = tempCombobox;
         }
     }
 
@@ -564,6 +571,14 @@ namespace Paint.Views
                     }
                 }
             }
+        }
+
+        private void SelectFillOrOutline(object sender, SelectionChangedEventArgs e)
+        {
+            var selectOption = e.Source as ComboBox;
+            var selectedItem = selectOption.SelectedItem;
+            var comboBoxItem = selectedItem as ComboBoxItem;
+            var text = comboBoxItem.Tag;
         }
     }
 }

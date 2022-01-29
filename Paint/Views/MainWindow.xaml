@@ -116,7 +116,6 @@
                             </DrawingImage.Drawing>
                         </DrawingImage>
                     </RibbonApplicationMenu.SmallImageSource>
-                    <!--  FUCKING NAME  -->
 
                     <RibbonApplicationMenuItem
                         Click="createNewFileBtnEvenListener"
@@ -292,31 +291,38 @@
 
                 </RibbonGroup>
                 <!--  Shape  group  -->
-                <RibbonGroup x:Name="ShapeGroup" Header="Shape">
-
-                    <WrapPanel Width="120">
-
-                        <RibbonControlGroup
-                            x:Name="shapeList"
-                            HorizontalAlignment="Stretch"
-                            HorizontalContentAlignment="Stretch">
-                            <RibbonControlGroup.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </RibbonControlGroup.ItemsPanel>
-                            <RibbonControlGroup.ItemTemplate>
-                                <DataTemplate>
-                                    <RibbonButton
-                                        Width="20"
-                                        Height="20"
-                                        Click="chooseShapeBtnClick"
-                                        SmallImageSource="{Binding PluginIconPath}"
-                                        Tag="{Binding PluginID}" />
+                <RibbonGroup x:Name="ShapeGroup" Header="Shape" Width="200">
+                   
+                    <WrapPanel Width="140">
+                            
+                            <RibbonControlGroup
+                                x:Name="shapeList"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Stretch">
+                                <RibbonControlGroup.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </RibbonControlGroup.ItemsPanel>
+                                <RibbonControlGroup.ItemTemplate>
+                                    <DataTemplate>
+                                    <RibbonButton Width="20" Height="20" 
+                                                  Click="chooseShapeBtnClick" 
+                                                  Tag="{Binding PluginID}" 
+                                                  SmallImageSource="{Binding PluginIconPath}"/>
                                 </DataTemplate>
-                            </RibbonControlGroup.ItemTemplate>
-                        </RibbonControlGroup>
-                    </WrapPanel>
+                                </RibbonControlGroup.ItemTemplate>
+                            </RibbonControlGroup>
+                        </WrapPanel>
+                    <ComboBox SelectionChanged="SelectFillOrOutline">
+                        <ComboBoxItem Tag="Outline">
+                            <TextBlock >Outline</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Fill">
+                                <TextBlock >Fill</TextBlock>
+                        </ComboBoxItem>
+                        
+                    </ComboBox>
                 </RibbonGroup>
 
                 <!--  Color  group  -->
