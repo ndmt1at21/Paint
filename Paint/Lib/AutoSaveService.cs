@@ -61,7 +61,15 @@ namespace Paint.Lib
             if (data == null)
                 throw new Exception("Invalid data");
 
-            await SaveAsync(data, _tempPath);
+            try
+            {
+                await SaveAsync(data, _tempPath);
+            }
+            catch
+            {
+
+            }
+
             DeleteAutoSaveFile();
         }
 

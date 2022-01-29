@@ -474,71 +474,24 @@
         </Ribbon>
 
 
-        <custom:DesignItemsControl x:Name="NodesControl" ItemsSource="{Binding Nodes}">
+        <Grid Background="#e2e8f0">
+            <custom:DesignItemsControl x:Name="NodesControl" ItemsSource="{Binding Nodes}">
 
-            <custom:DesignItemsControl.Resources>
-                <DataTemplate DataType="{x:Type vm:ShapeNodeViewModel}">
-                    <Path
-                        Width="{Binding Width}"
-                        Height="{Binding Height}"
-                        Data="{Binding DefiningShape,
-                                       Converter={StaticResource StringToGeometryConverter}}"
-                        Fill="{Binding Fill}"
-                        RenderOptions.BitmapScalingMode="HighQuality"
-                        SnapsToDevicePixels="True"
-                        Stretch="Fill"
-                        Stroke="{Binding Stroke}"
-                        StrokeDashArray="{Binding StrokeDashArray}"
-                        StrokeThickness="{Binding StrokeThickness}">
-                        <Path.Style>
-                            <Style>
-                                <Setter Property="custom:DesignItemContainer.ApplyTransform">
-                                    <Setter.Value>
-                                        <TransformGroup>
-                                            <TranslateTransform />
-                                            <ScaleTransform />
-                                            <RotateTransform Angle="{Binding RotateAngle}" />
-                                        </TransformGroup>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </Path.Style>
-                    </Path>
-                </DataTemplate>
-
-                <DataTemplate DataType="{x:Type vm:LineNodeViewModel}">
-                    <Line
-                        RenderOptions.BitmapScalingMode="HighQuality"
-                        SnapsToDevicePixels="True"
-                        Stroke="{Binding Stroke}"
-                        StrokeThickness="{Binding StrokeThickness}"
-                        X1="{Binding X1}"
-                        X2="{Binding X2}"
-                        Y1="{Binding Y1}"
-                        Y2="{Binding Y2}">
-                        <Line.Style>
-                            <Style>
-                                <Setter Property="custom:DesignItemContainer.ApplyTransform">
-                                    <Setter.Value>
-                                        <TransformGroup>
-                                            <TranslateTransform />
-                                            <ScaleTransform />
-                                            <RotateTransform Angle="{Binding RotateAngle}" />
-                                        </TransformGroup>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </Line.Style>
-                    </Line>
-                </DataTemplate>
-
-                <DataTemplate DataType="{x:Type vm:ImageNodeViewModel}">
-                    <Border
-                        Background="{Binding Fill}"
-                        BorderBrush="{Binding Stroke}"
-                        BorderThickness="{Binding StrokeThickness}">
-                        <Image SnapsToDevicePixels="True" Source="{Binding ImageSource}">
-                            <Image.Style>
+                <custom:DesignItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type vm:ShapeNodeViewModel}">
+                        <Path
+                            Width="{Binding Width}"
+                            Height="{Binding Height}"
+                            Data="{Binding DefiningShape,
+                                           Converter={StaticResource StringToGeometryConverter}}"
+                            Fill="{Binding Fill}"
+                            RenderOptions.BitmapScalingMode="HighQuality"
+                            SnapsToDevicePixels="True"
+                            Stretch="Fill"
+                            Stroke="{Binding Stroke}"
+                            StrokeDashArray="{Binding StrokeDashArray}"
+                            StrokeThickness="{Binding StrokeThickness}">
+                            <Path.Style>
                                 <Style>
                                     <Setter Property="custom:DesignItemContainer.ApplyTransform">
                                         <Setter.Value>
@@ -550,62 +503,112 @@
                                         </Setter.Value>
                                     </Setter>
                                 </Style>
-                            </Image.Style>
-                        </Image>
-                    </Border>
-                </DataTemplate>
+                            </Path.Style>
+                        </Path>
+                    </DataTemplate>
 
-                <DataTemplate DataType="{x:Type vm:TextNodeViewModel}">
-                    <TextBox
-                        Width="{Binding Width}"
-                        Height="{Binding Height}"
-                        Background="{Binding Fill}"
-                        BorderThickness="0"
-                        Cursor="Arrow"
-                        Focusable="{Binding IsFocusable}"
-                        FontFamily="{Binding FontFamily}"
-                        FontSize="{Binding FontSize}"
-                        FontStyle="{Binding FontStyle}"
-                        FontWeight="{Binding FontWeight}"
-                        Text="{Binding Content}"
-                        TextDecorations="{Binding TextDecorations}"
-                        TextWrapping="Wrap">
-                        <TextBox.Style>
-                            <Style>
-                                <Setter Property="custom:DesignItemContainer.ApplyTransform">
-                                    <Setter.Value>
-                                        <TransformGroup>
-                                            <TranslateTransform />
-                                            <ScaleTransform />
-                                            <RotateTransform Angle="{Binding RotateAngle}" />
-                                        </TransformGroup>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </TextBox.Style>
-                    </TextBox>
-                </DataTemplate>
-            </custom:DesignItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type vm:LineNodeViewModel}">
+                        <Line
+                            RenderOptions.BitmapScalingMode="HighQuality"
+                            SnapsToDevicePixels="True"
+                            Stroke="{Binding Stroke}"
+                            StrokeThickness="{Binding StrokeThickness}"
+                            X1="{Binding X1}"
+                            X2="{Binding X2}"
+                            Y1="{Binding Y1}"
+                            Y2="{Binding Y2}">
+                            <Line.Style>
+                                <Style>
+                                    <Setter Property="custom:DesignItemContainer.ApplyTransform">
+                                        <Setter.Value>
+                                            <TransformGroup>
+                                                <TranslateTransform />
+                                                <ScaleTransform />
+                                                <RotateTransform Angle="{Binding RotateAngle}" />
+                                            </TransformGroup>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Line.Style>
+                        </Line>
+                    </DataTemplate>
 
-            <custom:DesignItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <custom:DesignCanvas IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </custom:DesignItemsControl.ItemsPanel>
+                    <DataTemplate DataType="{x:Type vm:ImageNodeViewModel}">
+                        <Border
+                            Background="{Binding Fill}"
+                            BorderBrush="{Binding Stroke}"
+                            BorderThickness="{Binding StrokeThickness}">
+                            <Image SnapsToDevicePixels="True" Source="{Binding ImageSource}">
+                                <Image.Style>
+                                    <Style>
+                                        <Setter Property="custom:DesignItemContainer.ApplyTransform">
+                                            <Setter.Value>
+                                                <TransformGroup>
+                                                    <TranslateTransform />
+                                                    <ScaleTransform />
+                                                    <RotateTransform Angle="{Binding RotateAngle}" />
+                                                </TransformGroup>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </Border>
+                    </DataTemplate>
 
-            <custom:DesignItemsControl.ItemContainerStyle>
-                <Style TargetType="{x:Type custom:DesignItemContainer}">
-                    <Setter Property="Canvas.Top" Value="{Binding Top}" />
-                    <Setter Property="Canvas.Left" Value="{Binding Left}" />
-                    <Setter Property="Width" Value="{Binding Width}" />
-                    <Setter Property="Height" Value="{Binding Height}" />
-                    <Setter Property="ZIndex" Value="{Binding ZIndex}" />
-                    <Setter Property="helpers:AttachedAdorner.HasHoverAdorner" Value="True" />
-                    <Setter Property="helpers:AttachedAdorner.ShowResizeAdorner" Value="{Binding IsSelected}" />
-                    <Setter Property="RenderTransformOrigin" Value="{Binding TransformOrigin}" />
-                </Style>
-            </custom:DesignItemsControl.ItemContainerStyle>
-        </custom:DesignItemsControl>
+                    <DataTemplate DataType="{x:Type vm:TextNodeViewModel}">
+                        <TextBox
+                            Width="{Binding Width}"
+                            Height="{Binding Height}"
+                            Background="{Binding Fill}"
+                            BorderThickness="0"
+                            Cursor="Arrow"
+                            Focusable="{Binding IsFocusable}"
+                            FontFamily="{Binding FontFamily}"
+                            FontSize="{Binding FontSize}"
+                            FontStyle="{Binding FontStyle}"
+                            FontWeight="{Binding FontWeight}"
+                            Text="{Binding Content}"
+                            TextDecorations="{Binding TextDecorations}"
+                            TextWrapping="Wrap">
+                            <TextBox.Style>
+                                <Style>
+                                    <Setter Property="custom:DesignItemContainer.ApplyTransform">
+                                        <Setter.Value>
+                                            <TransformGroup>
+                                                <TranslateTransform />
+                                                <ScaleTransform />
+                                                <RotateTransform Angle="{Binding RotateAngle}" />
+                                            </TransformGroup>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </DataTemplate>
+                </custom:DesignItemsControl.Resources>
+
+                <custom:DesignItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <custom:DesignCanvas IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </custom:DesignItemsControl.ItemsPanel>
+
+                <custom:DesignItemsControl.ItemContainerStyle>
+                    <Style TargetType="{x:Type custom:DesignItemContainer}">
+                        <Setter Property="Canvas.Top" Value="{Binding Top}" />
+                        <Setter Property="Canvas.Left" Value="{Binding Left}" />
+                        <Setter Property="Width" Value="{Binding Width}" />
+                        <Setter Property="Height" Value="{Binding Height}" />
+                        <Setter Property="ZIndex" Value="{Binding ZIndex}" />
+                        <Setter Property="helpers:AttachedAdorner.HasHoverAdorner" Value="True" />
+                        <Setter Property="helpers:AttachedAdorner.ShowResizeAdorner" Value="{Binding IsSelected}" />
+                        <Setter Property="RenderTransformOrigin" Value="{Binding TransformOrigin}" />
+                    </Style>
+                </custom:DesignItemsControl.ItemContainerStyle>
+            </custom:DesignItemsControl>
+        </Grid>
+
     </DockPanel>
 
 </RibbonWindow>

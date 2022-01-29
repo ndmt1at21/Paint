@@ -15,9 +15,9 @@ namespace Paint.Commands
     public class SaveAsCommand : CommandBase
     {
         private Store _store { get; set; }
-        private SaveService<Store> _saveService { get; set; }
+        private SaveService<ProjectStore> _saveService { get; set; }
 
-        public SaveAsCommand(Store store, SaveService<Store> saveService)
+        public SaveAsCommand(Store store, SaveService<ProjectStore> saveService)
         {
             _store = store;
             _saveService = saveService;
@@ -37,7 +37,7 @@ namespace Paint.Commands
             {
                 string savePath = saveFileDialog.FileName;
 
-                _saveService.Save(_store, savePath);
+                _saveService.Save(ProjectStore.CreateFromStore(_store), savePath);
                 _store.CurrentProjectPath = savePath;
                 _store.IsSaveBefore = true;
                 _store.IsBlankProject = false;

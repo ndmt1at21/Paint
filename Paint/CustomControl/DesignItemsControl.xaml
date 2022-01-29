@@ -31,7 +31,7 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             helpers:AttachedAdorner.ShowCanvasResizeAdorner="True"
-                            Background="Yellow"
+                            Background="White"
                             ClipToBounds="True">
                             <ItemsPresenter />
                             <Rectangle

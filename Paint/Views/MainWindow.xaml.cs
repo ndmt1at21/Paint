@@ -38,11 +38,11 @@ namespace Paint.Views
         private PluginManager _pluginManager { get; set; }
         private Store _store { get; set; }
         private IconPath imgPaths;
-        private BackupService<Store> _backupService { get; set; }
-        private SaveService<Store> _saveProjectService { get; set; }
-        private LoadService<Store> _loadProjectService { get; set; }
-        private AutoSaveService<Store> _autoSaveService { get; set; }
-        private IPersister<Store> _persisterProject { get; set; }
+        private BackupService<ProjectStore> _backupService { get; set; }
+        private SaveService<ProjectStore> _saveProjectService { get; set; }
+        private LoadService<ProjectStore> _loadProjectService { get; set; }
+        private AutoSaveService<ProjectStore> _autoSaveService { get; set; }
+        private IPersister<ProjectStore> _persisterProject { get; set; }
         private FontFamily fontStyle;
 
         private string fontSize;
@@ -79,6 +79,11 @@ namespace Paint.Views
 
             UndoStack = new Stack<List<NodeViewModel>>();
             RedoStack = new Stack<List<NodeViewModel>>();
+
+            InitializeStore();
+            InitializeServices();
+            InitializeCommands();
+
         }
 
         private void InitializeStore()
@@ -104,16 +109,16 @@ namespace Paint.Views
                 Extension = "paitup",
             };
 
-            _persisterProject = new JsonPersister<Store>();
-            _saveProjectService = new SaveService<Store>(_persisterProject);
-            _loadProjectService = new LoadService<Store>(_persisterProject);
+            _persisterProject = new JsonPersister<ProjectStore>();
+            _saveProjectService = new SaveService<ProjectStore>(_persisterProject);
+            _loadProjectService = new LoadService<ProjectStore>(_persisterProject);
 
-            _autoSaveService = new AutoSaveService<Store>(_autoSaveConfig, _persisterProject);
+            _autoSaveService = new AutoSaveService<ProjectStore>(_autoSaveConfig, _persisterProject);
             _autoSaveService.GetSavePath = () => _store.CurrentProjectPath;
-            _autoSaveService.GetSaveData = () => _store;
+            _autoSaveService.GetSaveData = () => ProjectStore.CreateFromStore(_store);
 
-            _backupService = new BackupService<Store>(_backupConfig, _persisterProject);
-            _backupService.GetBackupData = () => new Store();
+            _backupService = new BackupService<ProjectStore>(_backupConfig, _persisterProject);
+            _backupService.GetBackupData = () => new ProjectStore();
             _backupService.GetBackupPath = () => _store.CurrentProjectPath;
             _backupService.StartBackup();
         }
@@ -142,17 +147,22 @@ namespace Paint.Views
 
         private void HandleNodesChanged(ObservableCollection<NodeViewModel> nodes)
         {
-            if (nodes != null)
+            if (nodes != null && !isUpdateFromUndo)
             {
+                Debug.WriteLine("handle node changesss");
                 UndoStack.Push(Utils.Object.DeepClone(nodes.ToList()));
-                Debug.WriteLine("psusususus");
             }
 
+            isUpdateFromUndo = false;
+            isUpdateFromRedo = false;
         }
     }
 
     public partial class MainWindow
     {
+        private static bool isUpdateFromUndo { get; set; }
+        private static bool isUpdateFromRedo { get; set; }
+
         public void LoadFrom(string path)
         {
             LoadProjectCommand.Execute(path);
@@ -163,67 +173,52 @@ namespace Paint.Views
 
         private void UndoAction()
         {
-            if (UndoStack.Count == 0) return;
+            if (UndoStack.Count < 2) return;
 
+            isUpdateFromUndo = true;
+
+            var currentItem = UndoStack.Pop();
             var undoItem = UndoStack.Pop();
-            Debug.WriteLine(undoItem.Count);
 
             Nodes.Clear();
+            SelectedItems.Clear();
             undoItem.ForEach(item =>
             {
-                Debug.WriteLine(item.Top);
-                Debug.WriteLine(item.Left);
+                item.IsSelected = false;
                 Nodes.Add(item);
-
             });
 
-            RedoStack.Push(undoItem);
+            RedoStack.Push(currentItem);
         }
 
         private void RedoAction()
         {
-            if (RedoStack.Count == 0) return;
+            if (RedoStack.Count < 2) return;
 
+            isUpdateFromRedo = true;
+
+            var currentItem = RedoStack.Pop();
             var redoItem = RedoStack.Pop();
-            Nodes = new ObservableCollection<NodeViewModel>(redoItem);
-            UndoStack.Push(redoItem);
+
+            Nodes.Clear();
+            SelectedItems.Clear();
+            redoItem.ForEach(item =>
+            {
+                item.IsSelected = false;
+                Nodes.Add(item);
+            });
+
+            UndoStack.Push(currentItem);
         }
 
         // UI Load
         private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            InitializeStore();
-            InitializeServices();
-            InitializeCommands();
-
             DataContext = this;
             Nodes = _store.Nodes;
             SelectedItems = new ObservableCollection<NodeViewModel>();
             NodesControl.ItemsSource = Nodes;
             NodesControl.SelectedItems = SelectedItems;
-
-            Nodes.Add(new ShapeNodeViewModel
-            {
-                Top = 100,
-                Left = 100,
-                Width = 100,
-                Height = 100,
-                Fill = Brushes.Red,
-                DefiningShape = "M 1 1 H 90 V 90 H 1 L 1 1"
-            });
-
-            var shape = new ShapeNodeViewModel
-            {
-                Top = 100,
-                Left = 100,
-                Width = 100,
-                Height = 100,
-                Fill = Brushes.Red,
-                DefiningShape = "M 1 1 H 90 V 90 H 1 L 1 1"
-            };
-
-            NodesControl.DrawingNode = shape;
-            Nodes.Add(shape);
 
             try
             {
@@ -359,7 +354,6 @@ namespace Paint.Views
 
         private void undoBtnEvenListener(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("dfjhdfdjfhdfhjdundoddodood");
             UndoAction();
         }
 

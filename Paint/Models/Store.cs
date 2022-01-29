@@ -33,10 +33,15 @@ namespace Paint.Models
             Nodes.CollectionChanged += OnCollectionNodesChanged;
         }
 
-        public void LoadStoreFrom(Store store)
+        public void LoadStoreFrom(ProjectStore projectStore)
         {
-            MainWindowPosition = store.MainWindowPosition;
-            Nodes = store.Nodes;
+            MainWindowPosition = projectStore.MainWindowPosition;
+            Nodes = new ObservableCollection<NodeViewModel>(projectStore.Nodes);
+            RecentFiles = projectStore.RecentFiles;
+            CurrentProjectPath = projectStore.CurrentProjectPath;
+            IsSaveBefore = true;
+            IsBlankProject = false;
+            HasContentUnsaved = false;
         }
 
         private void OnCollectionNodesChanged(object sender, NotifyCollectionChangedEventArgs e)
