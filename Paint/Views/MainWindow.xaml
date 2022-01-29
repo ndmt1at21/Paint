@@ -203,7 +203,7 @@
                                                StrokeDashArray="1,0"/>
                                 </RibbonGalleryItem>
                                 <RibbonGalleryItem Selected="brushSelected" >
-                                    <Rectangle Height="4" Width="80" 
+                                    <Rectangle Height="4" Width="84" 
                                                Stroke="Black" 
                                                StrokeThickness="4" 
                                                StrokeDashArray="1,0"  />
@@ -211,7 +211,7 @@
 
                                 </RibbonGalleryItem>
                                 <RibbonGalleryItem Selected="brushSelected" >
-                                    <Rectangle Height="8" Width="80" 
+                                    <Rectangle Height="8" Width="82" 
                                                Stroke="Black" 
                                                StrokeThickness="8" 
                                                StrokeDashArray="1,0" />
@@ -241,11 +241,6 @@
                                 </RibbonGalleryItem>
                             </RibbonGalleryCategory>
                         </RibbonGallery>
-                        
-                        
-                        
-                        
-                        
                     </RibbonMenuButton>
 
 
@@ -347,7 +342,7 @@
 
 
 
-                <RibbonGroup x:Name="ColorGroupPickerAdvantage" Header="">
+                <RibbonGroup x:Name="ColorGroupPickerAdvantage" Header="Color picker">
 
 
                     <xctk:ColorPicker

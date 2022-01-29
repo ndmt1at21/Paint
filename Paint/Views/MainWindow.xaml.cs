@@ -37,7 +37,7 @@ namespace Paint.Views
 
         private PluginManager _pluginManager { get; set; }
         private Store _store { get; set; }
-
+        private IconPath imgPaths;
         private BackupService<Store> _backupService { get; set; }
         private SaveService<Store> _saveProjectService { get; set; }
         private LoadService<Store> _loadProjectService { get; set; }
@@ -237,7 +237,7 @@ namespace Paint.Views
 
 
                 //load in ico path
-                var imgPaths = new IconPath
+                imgPaths = new IconPath
                 {
                     saveIcoPath = "../IconImg/saveicon.png",
 
@@ -271,7 +271,6 @@ namespace Paint.Views
                     boldStyleIcoPath = "../IconImg/boldicon.png",
                     underlineStyleIcoPath = "../IconImg/underlineicon.png",
                 };
-
                 //init set colorpick color
                 ClrPcker_Background.SelectedColor = Color.FromRgb(255, 255, 255);
             }
@@ -329,7 +328,8 @@ namespace Paint.Views
 
             var fontFamliles = new System.Drawing.Text.InstalledFontCollection();
             this.fontNameCombobox.ItemsSource = fontFamliles.Families;
-            
+
+            this.RibbonWin.DataContext = imgPaths;
         }
     }
 
