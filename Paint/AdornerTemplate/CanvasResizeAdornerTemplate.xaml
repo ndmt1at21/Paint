@@ -18,11 +18,13 @@
             <Rectangle
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
+                IsHitTestVisible="True"
                 Style="{StaticResource ResizeThumbCornerStyle}" />
 
             <Rectangle
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
+                IsHitTestVisible="True"
                 Style="{StaticResource ResizeThumbCornerStyle}" />
 
             <Rectangle
@@ -39,7 +41,8 @@
                 Margin="-5"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Cursor="SizeNWSE" />
+                Cursor="SizeNWSE"
+                IsHitTestVisible="True" />
 
             <thumb:CanvasResizeThumb
                 Width="10"
@@ -47,7 +50,8 @@
                 Margin="-5"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Cursor="SizeWE" />
+                Cursor="SizeWE"
+                IsHitTestVisible="True" />
 
             <thumb:CanvasResizeThumb
                 Width="10"
@@ -55,7 +59,8 @@
                 Margin="-5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
-                Cursor="SizeNS" />
+                Cursor="SizeNS"
+                IsHitTestVisible="True" />
         </Grid>
     </Grid>
 </UserControl>

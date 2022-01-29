@@ -166,11 +166,8 @@ namespace Paint.CustomControl
                 isSelectByOnePoint = _selectingGesture.SelectByMouseDown(e);
             }
 
-            Debug.WriteLine("OnPreviewMouseLeftButtonDown");
-
             if (!IsDrawing && !isSelectByOnePoint)
             {
-                Debug.WriteLine("issaaareaselec11`````" + IsAreaSelecting);
                 IsAreaSelecting = true;
                 _selectingGesture.OnMouseDownStartAreaSelect(e.GetPosition(this));
             }
@@ -200,8 +197,6 @@ namespace Paint.CustomControl
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
-
-            Debug.WriteLine("why dragiging" + IsDragging);
 
             if (!IsDragging)
             {

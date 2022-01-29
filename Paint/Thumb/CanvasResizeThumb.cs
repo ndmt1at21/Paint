@@ -14,7 +14,7 @@ namespace Paint.Thumb
 {
     public class CanvasResizeThumb : System.Windows.Controls.Primitives.Thumb
     {
-        private DesignItemsControl _canvas { get; set; }
+        private DesignCanvas _canvas { get; set; }
 
         public CanvasResizeThumb()
         {
@@ -24,7 +24,7 @@ namespace Paint.Thumb
 
         private void ResizeThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
-            _canvas = Utils.Control.GetParentControl<DesignItemsControl>((DependencyObject)sender);
+            _canvas = (DesignCanvas)DataContext;
         }
 
         private void ResizeThumb_DragDelta(object sender, DragDeltaEventArgs e)
@@ -34,7 +34,7 @@ namespace Paint.Thumb
 
             switch (VerticalAlignment)
             {
-                case VerticalAlignment.Top:
+                case VerticalAlignment.Bottom:
                     UpdateBottomResize(e);
                     break;
 

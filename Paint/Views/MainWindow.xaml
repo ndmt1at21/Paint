@@ -175,7 +175,10 @@
             </Ribbon.ApplicationMenu>
 
             <!--  Ribbon Tab #1: Home  -->
-            <RibbonTab Header="Home" KeyTip="H" TabIndex="0">
+            <RibbonTab
+                Header="Home"
+                KeyTip="H"
+                TabIndex="0">
 
                 <!--  Clipboard  group  -->
                 <RibbonGroup x:Name="ClipboardGroup" Header="Clipboard">
@@ -200,48 +203,60 @@
                     <RibbonMenuButton Label="Brush" LargeImageSource="{Binding Path=brushesIcoPath}">
                         <RibbonGallery>
                             <RibbonGalleryCategory>
-                                <RibbonGalleryItem Selected="brushSelected"  >
-                                    <Rectangle Height="2" Width="80" 
-                                               Stroke="Black" 
-                                               StrokeThickness="1" 
-                                               StrokeDashArray="1,0"/>
+                                <RibbonGalleryItem Selected="brushSelected">
+                                    <Rectangle
+                                        Width="80"
+                                        Height="2"
+                                        Stroke="Black"
+                                        StrokeDashArray="1,0"
+                                        StrokeThickness="1" />
                                 </RibbonGalleryItem>
-                                <RibbonGalleryItem Selected="brushSelected" >
-                                    <Rectangle Height="4" Width="84" 
-                                               Stroke="Black" 
-                                               StrokeThickness="4" 
-                                               StrokeDashArray="1,0"  />
-
-
-                                </RibbonGalleryItem>
-                                <RibbonGalleryItem Selected="brushSelected" >
-                                    <Rectangle Height="8" Width="82" 
-                                               Stroke="Black" 
-                                               StrokeThickness="8" 
-                                               StrokeDashArray="1,0" />
+                                <RibbonGalleryItem Selected="brushSelected">
+                                    <Rectangle
+                                        Width="84"
+                                        Height="4"
+                                        Stroke="Black"
+                                        StrokeDashArray="1,0"
+                                        StrokeThickness="4" />
 
 
                                 </RibbonGalleryItem>
-                               
-                                <RibbonGalleryItem Selected="brushSelected" >
-                                    <Rectangle Height="2" Width="80" 
-                                               Stroke="Black" 
-                                               StrokeThickness="1" 
-                                               StrokeDashArray="4,3" />
+                                <RibbonGalleryItem Selected="brushSelected">
+                                    <Rectangle
+                                        Width="82"
+                                        Height="8"
+                                        Stroke="Black"
+                                        StrokeDashArray="1,0"
+                                        StrokeThickness="8" />
 
 
                                 </RibbonGalleryItem>
-                                <RibbonGalleryItem Selected="brushSelected" >
-                                    <Rectangle Height="2" Width="80" 
-                                               Stroke="Black" 
-                                               StrokeThickness="1" 
-                                               StrokeDashArray="6,5" />
+
+                                <RibbonGalleryItem Selected="brushSelected">
+                                    <Rectangle
+                                        Width="80"
+                                        Height="2"
+                                        Stroke="Black"
+                                        StrokeDashArray="4,3"
+                                        StrokeThickness="1" />
+
+
                                 </RibbonGalleryItem>
-                                <RibbonGalleryItem Selected="brushSelected" >
-                                    <Rectangle Height="4" Width="80" 
-                                               Stroke="Black" 
-                                               StrokeThickness="3" 
-                                               StrokeDashArray="3,2"  />
+                                <RibbonGalleryItem Selected="brushSelected">
+                                    <Rectangle
+                                        Width="80"
+                                        Height="2"
+                                        Stroke="Black"
+                                        StrokeDashArray="6,5"
+                                        StrokeThickness="1" />
+                                </RibbonGalleryItem>
+                                <RibbonGalleryItem Selected="brushSelected">
+                                    <Rectangle
+                                        Width="80"
+                                        Height="4"
+                                        Stroke="Black"
+                                        StrokeDashArray="3,2"
+                                        StrokeThickness="3" />
                                 </RibbonGalleryItem>
                             </RibbonGalleryCategory>
                         </RibbonGallery>
@@ -278,28 +293,30 @@
                 </RibbonGroup>
                 <!--  Shape  group  -->
                 <RibbonGroup x:Name="ShapeGroup" Header="Shape">
-                   
+
                     <WrapPanel Width="120">
-                            
-                            <RibbonControlGroup
-                                x:Name="shapeList"
-                                HorizontalAlignment="Stretch"
-                                HorizontalContentAlignment="Stretch">
-                                <RibbonControlGroup.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
-                                    </ItemsPanelTemplate>
-                                </RibbonControlGroup.ItemsPanel>
-                                <RibbonControlGroup.ItemTemplate>
-                                    <DataTemplate>
-                                    <RibbonButton Width="20" Height="20" 
-                                                  Click="chooseShapeBtnClick" 
-                                                  Tag="{Binding PluginID}" 
-                                                  SmallImageSource="{Binding PluginIconPath}"/>
+
+                        <RibbonControlGroup
+                            x:Name="shapeList"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch">
+                            <RibbonControlGroup.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </RibbonControlGroup.ItemsPanel>
+                            <RibbonControlGroup.ItemTemplate>
+                                <DataTemplate>
+                                    <RibbonButton
+                                        Width="20"
+                                        Height="20"
+                                        Click="chooseShapeBtnClick"
+                                        SmallImageSource="{Binding PluginIconPath}"
+                                        Tag="{Binding PluginID}" />
                                 </DataTemplate>
-                                </RibbonControlGroup.ItemTemplate>
-                            </RibbonControlGroup>
-                        </WrapPanel>
+                            </RibbonControlGroup.ItemTemplate>
+                        </RibbonControlGroup>
+                    </WrapPanel>
                 </RibbonGroup>
 
                 <!--  Color  group  -->
@@ -358,47 +375,52 @@
             </RibbonTab>
             <RibbonTab Header="Font" TabIndex="1">
                 <RibbonGroup Width="200" Header="Font">
-                        
-                        <ComboBox Name="fontNameCombobox" 
-                                  VerticalAlignment="Center" 
-                                  Width="180" 
-                                  SelectionChanged="fontChangeEventListenter">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Name}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <ComboBox Name="textSizeCombobox" 
-                                  VerticalAlignment="Center" 
-                                  Width="70" 
-                                  SelectionChanged="textSizeChangeEventListenter">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                            <TextBlock Text="{Binding size}" />
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        
-                            
+
+                    <ComboBox
+                        Name="fontNameCombobox"
+                        Width="180"
+                        VerticalAlignment="Center"
+                        SelectionChanged="fontChangeEventListenter">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox
+                        Name="textSizeCombobox"
+                        Width="70"
+                        VerticalAlignment="Center"
+                        SelectionChanged="textSizeChangeEventListenter">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding size}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+
 
                 </RibbonGroup>
-                <RibbonGroup Header="Text style" Width="100">
-                    <RibbonButton SmallImageSource="{Binding boldStyleIcoPath}" Width="30" Height="30"
-                                  Tag="Bold" 
-                                  Click="textStyleClick">
-
-                    </RibbonButton>
-                    <RibbonButton SmallImageSource="{Binding italicStyleIcoPath}" Width="30" Height="30"
-                                  Tag="Italic" 
-                                  Click="textStyleClick">
-
-                    </RibbonButton>
-                    <RibbonButton SmallImageSource="{Binding underlineStyleIcoPath}" Width="30" Height="30"
-                                  Tag="Underline" 
-                                  Click="textStyleClick">
-
-                    </RibbonButton>
+                <RibbonGroup Width="100" Header="Text style">
+                    <RibbonButton
+                        Width="30"
+                        Height="30"
+                        Click="textStyleClick"
+                        SmallImageSource="{Binding boldStyleIcoPath}"
+                        Tag="Bold" />
+                    <RibbonButton
+                        Width="30"
+                        Height="30"
+                        Click="textStyleClick"
+                        SmallImageSource="{Binding italicStyleIcoPath}"
+                        Tag="Italic" />
+                    <RibbonButton
+                        Width="30"
+                        Height="30"
+                        Click="textStyleClick"
+                        SmallImageSource="{Binding underlineStyleIcoPath}"
+                        Tag="Underline" />
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
@@ -492,7 +514,12 @@
                         BorderThickness="0"
                         Cursor="Arrow"
                         Focusable="{Binding IsFocusable}"
+                        FontFamily="{Binding FontFamily}"
+                        FontSize="{Binding FontSize}"
+                        FontStyle="{Binding FontStyle}"
+                        FontWeight="{Binding FontWeight}"
                         Text="{Binding Content}"
+                        TextDecorations="{Binding TextDecorations}"
                         TextWrapping="Wrap">
                         <TextBox.Style>
                             <Style>
