@@ -10,6 +10,8 @@
 	<ItemGroup>
 	  <None Remove="IconImg\Arrow.png" />
 	  <None Remove="IconImg\blackicon.png" />
+	  <None Remove="IconImg\boldicon.png" />
+	  <None Remove="IconImg\brushesicon.png" />
 	  <None Remove="IconImg\Circle.png" />
 	  <None Remove="IconImg\colorpickicon.png" />
 	  <None Remove="IconImg\copyicon.png" />
@@ -22,6 +24,7 @@
 	  <None Remove="IconImg\Heart.png" />
 	  <None Remove="IconImg\Hexagon.png" />
 	  <None Remove="IconImg\horizonicon.png" />
+	  <None Remove="IconImg\italicicon.png" />
 	  <None Remove="IconImg\newfileicon.png" />
 	  <None Remove="IconImg\openfileicon.png" />
 	  <None Remove="IconImg\outlineicon.png" />
@@ -42,6 +45,7 @@
 	  <None Remove="IconImg\Star.png" />
 	  <None Remove="IconImg\texticon.png" />
 	  <None Remove="IconImg\Triangle.png" />
+	  <None Remove="IconImg\underlineicon.png" />
 	  <None Remove="IconImg\undoicon.png" />
 	  <None Remove="IconImg\verticalicon.png" />
 	  <None Remove="IconImg\whiteico.png" />
@@ -51,6 +55,12 @@
 
 	<ItemGroup>
 	  <Resource Include="IconImg\Arrow.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\boldicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\brushesicon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\Circle.png">
@@ -69,6 +79,9 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\Hexagon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\italicicon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\newfileicon.png">
@@ -174,6 +187,9 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\Triangle.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\underlineicon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\undoicon.png">

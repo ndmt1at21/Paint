@@ -37,7 +37,7 @@ namespace Paint.Views
 
         private PluginManager _pluginManager { get; set; }
         private Store _store { get; set; }
-
+        private IconPath imgPaths;
         private BackupService<Store> _backupService { get; set; }
         private SaveService<Store> _saveProjectService { get; set; }
         private LoadService<Store> _loadProjectService { get; set; }
@@ -61,6 +61,8 @@ namespace Paint.Views
         public ObservableCollection<NodeViewModel> SelectedItems { get; set; }
         public Stack<ObservableCollection<NodeViewModel>> UndoStack { get; set; }
         public Stack<ObservableCollection<NodeViewModel>> RedoStack { get; set; }
+
+   
     }
 
     public partial class MainWindow
@@ -227,7 +229,7 @@ namespace Paint.Views
                         PluginIconPath = "../IconImg/" + pluginIDs[i] + ".png"
                     };
                     shapeItemSource.Add(pluginItemsForDataContext);
-
+                    
 
                 }
                 shapeList.ItemsSource = shapeItemSource;
@@ -237,7 +239,7 @@ namespace Paint.Views
 
 
                 //load in ico path
-                var imgPaths = new IconPath
+                imgPaths = new IconPath
                 {
                     saveIcoPath = "../IconImg/saveicon.png",
 
@@ -266,9 +268,11 @@ namespace Paint.Views
                     newFileIcoPath = "../IconImg/newfileicon.png",
                     openIcoPath = "../IconImg/openfileicon.png",
                     exitIcoPath = "../IconImg/exiticon.png",
-
+                    brushesIcoPath = "../IconImg/brushesicon.png",
+                    italicStyleIcoPath = "../IconImg/italicicon.png",
+                    boldStyleIcoPath = "../IconImg/boldicon.png",
+                    underlineStyleIcoPath = "../IconImg/underlineicon.png",
                 };
-
                 //init set colorpick color
                 ClrPcker_Background.SelectedColor = Color.FromRgb(255, 255, 255);
             }
@@ -279,7 +283,10 @@ namespace Paint.Views
 
             BindingList<ColorPickerForDataContext> tempItemSource = new BindingList<ColorPickerForDataContext>();
             ColorPickerForDataContext temp;
-
+            BindingList<TextSizeDataContext> tempItemSourceCombobox = new BindingList<TextSizeDataContext>();
+            TextSizeDataContext tempCombobox;
+       
+            
             temp = new ColorPickerForDataContext
             {
                 Name = "Black"
@@ -298,8 +305,33 @@ namespace Paint.Views
                 };
 
                 tempItemSource.Add(temp);
+
+                tempCombobox = new TextSizeDataContext
+                {
+                    size = (i + 1).ToString()
+                };
+                tempItemSourceCombobox.Add(tempCombobox);
+
+            }
+            for (var i = 0; i < 50; i++)
+            {
+               
+
+                tempCombobox = new TextSizeDataContext
+                {
+                    size = (i + 1).ToString()
+                };
+                tempItemSourceCombobox.Add(tempCombobox);
+
             }
             this.colorList.ItemsSource = tempItemSource;
+
+            this.textSizeCombobox.ItemsSource = tempItemSourceCombobox;
+
+            var fontFamliles = new System.Drawing.Text.InstalledFontCollection();
+            this.fontNameCombobox.ItemsSource = fontFamliles.Families;
+
+            this.RibbonWin.DataContext = imgPaths;
         }
     }
 
@@ -447,13 +479,36 @@ namespace Paint.Views
                 item.Fill = rectangle.Fill;
             }
         }
-
+        private void brushSelected(object sender, RoutedEventArgs e)
+        {
+            var brushe1 = e.Source as RibbonGalleryItem;
+            var brush = brushe1.Content as Rectangle;
+            var stoke = brush.Stroke;
+            var strokedash = brush.StrokeDashArray;
+        }
         private void chooseShapeBtnClick(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine(sender);
             var a = e.Source as RibbonButton;
             Debug.WriteLine(a);
-            var pluginID = a.Label;
+            var pluginID = a.Tag;
+        }
+        private void textSizeChangeEventListenter(object sender, SelectionChangedEventArgs e)
+        {
+            var textSize = e.Source as ComboBox;
+            var textSizeString = textSize.SelectedItem;
+        }
+        private void fontChangeEventListenter(object sender, SelectionChangedEventArgs e)
+        {
+            var font = e.Source as ComboBox;
+            var fontString = font.SelectedItem;
+        }
+
+
+        private void textStyleClick(object sender, RoutedEventArgs e)
+        {
+            var textStyle = e.Source as RibbonButton;
+            var textStyleTag = textStyle.Tag;
         }
     }
 }

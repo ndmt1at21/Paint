@@ -515,19 +515,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ndmt1at21\\.nuget\\packages\\": {}
+    "C:\\Users\\ssd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj",
+      "projectUniqueName": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj",
       "projectName": "Paint",
-      "projectPath": "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj",
-      "packagesPath": "C:\\Users\\ndmt1at21\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\Paint\\Paint\\Paint\\obj\\",
+      "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj",
+      "packagesPath": "C:\\Users\\ssd\\.nuget\\packages\\",
+      "outputPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ndmt1at21\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ssd\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -541,11 +541,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj": {
-              "projectPath": "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj"
+            "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj": {
+              "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj"
             },
-            "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj": {
-              "projectPath": "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj"
+            "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj": {
+              "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj"
             }
           }
         }
@@ -591,24 +591,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.12, 5.0.12]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -617,17 +599,11 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\C#\\Paint\\Paint\\Paint\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    },
     {
       "code": "NU1701",
       "level": "Warning",
