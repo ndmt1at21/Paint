@@ -30,13 +30,16 @@ namespace Paint.IconImg
         public string newFileIcoPath { get; set; }
         public string openIcoPath { get; set; }
         public string exitIcoPath { get; set; }
-
+        public string brushesIcoPath { get; set; }
         public string  lineIcoPath { get; set; }
         public string  color1IcoPath { get; set; }
         public string  color2IcoPath { get; set; }
         public string  colorpickerIcoPath { get; set; }
 
         public string  eraseIcoPath { get; set; }
+        public string italicStyleIcoPath { get; set; }
+        public string boldStyleIcoPath { get; set; }
+        public string underlineStyleIcoPath { get; set; }
 
 
     }
