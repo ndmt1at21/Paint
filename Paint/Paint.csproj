@@ -42,6 +42,7 @@
 	  <None Remove="IconImg\saveicon.png" />
 	  <None Remove="IconImg\selecticon.png" />
 	  <None Remove="IconImg\shapeicon.png" />
+	  <None Remove="IconImg\sizeicon.png" />
 	  <None Remove="IconImg\Star.png" />
 	  <None Remove="IconImg\texticon.png" />
 	  <None Remove="IconImg\Triangle.png" />
@@ -178,6 +179,9 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\shapeicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\sizeicon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\Star.png">

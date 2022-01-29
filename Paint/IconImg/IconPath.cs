@@ -40,6 +40,7 @@ namespace Paint.IconImg
         public string italicStyleIcoPath { get; set; }
         public string boldStyleIcoPath { get; set; }
         public string underlineStyleIcoPath { get; set; }
+        public string sizeIcoPath { get; set; }
 
 
     }
