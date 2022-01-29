@@ -52,6 +52,11 @@
             Key="{Binding PasteCommand.Gesture.Key}"
             Command="{Binding PasteCommand}"
             Modifiers="{Binding PasteCommand.Gesture.Modifiers}" />
+
+        <KeyBinding
+            Key="{Binding DeleteCommand.Gesture.Key}"
+            Command="{Binding DeleteCommand}"
+            Modifiers="{Binding DeleteCommand.Gesture.Modifiers}" />
     </RibbonWindow.InputBindings>
 
 
@@ -63,7 +68,6 @@
     <DockPanel LastChildFill="True">
         <Ribbon
             x:Name="RibbonWin"
-            Grid.Row="0"
             Panel.ZIndex="999"
             DockPanel.Dock="Top"
             SelectedIndex="0">
@@ -407,10 +411,8 @@
             </RibbonTab>
         </Ribbon>
 
-        <custom:DesignItemsControl
-            x:Name="NodesControl"
-            Grid.Row="1"
-            ItemsSource="{Binding Nodes}">
+
+        <custom:DesignItemsControl x:Name="NodesControl" ItemsSource="{Binding Nodes}">
 
             <custom:DesignItemsControl.Resources>
                 <DataTemplate DataType="{x:Type vm:ShapeNodeViewModel}">
@@ -519,9 +521,10 @@
 
             <custom:DesignItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <custom:DesignCanvas Background="White" IsItemsHost="True" />
+                    <custom:DesignCanvas IsItemsHost="True" />
                 </ItemsPanelTemplate>
             </custom:DesignItemsControl.ItemsPanel>
+
             <custom:DesignItemsControl.ItemContainerStyle>
                 <Style TargetType="{x:Type custom:DesignItemContainer}">
                     <Setter Property="Canvas.Top" Value="{Binding Top}" />
