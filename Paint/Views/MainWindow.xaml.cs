@@ -61,7 +61,6 @@ namespace Paint.Views
         public Stack<ObservableCollection<NodeViewModel>> UndoStack { get; set; }
         public Stack<ObservableCollection<NodeViewModel>> RedoStack { get; set; }
 
-   
     }
 
     public partial class MainWindow
@@ -330,6 +329,13 @@ namespace Paint.Views
             this.fontNameCombobox.ItemsSource = fontFamliles.Families;
 
             this.RibbonWin.DataContext = imgPaths;
+            tempCombobox = new TextSizeDataContext
+            {
+                size = 10.ToString(),
+            };
+            this.fontNameCombobox.SelectedItem = System.Drawing.FontFamily.Families[2];
+
+            this.textSizeCombobox.SelectedItem = tempCombobox;
         }
     }
 
@@ -494,12 +500,14 @@ namespace Paint.Views
         private void textSizeChangeEventListenter(object sender, SelectionChangedEventArgs e)
         {
             var textSize = e.Source as ComboBox;
-            var textSizeString = textSize.SelectedItem;
+            var textSizeString = textSize.SelectedItem as Paint.Lib.TextSizeDataContext;
+            var text = textSizeString.size;
         }
         private void fontChangeEventListenter(object sender, SelectionChangedEventArgs e)
         {
             var font = e.Source as ComboBox;
-            var fontString = font.SelectedItem;
+            var fontString = font.SelectedItem as System.Drawing.FontFamily;
+            var text = fontString.Name;
         }
 
 
@@ -507,6 +515,14 @@ namespace Paint.Views
         {
             var textStyle = e.Source as RibbonButton;
             var textStyleTag = textStyle.Tag;
+        }
+
+        private void SelectFillOrOutline(object sender, SelectionChangedEventArgs e)
+        {
+            var selectOption = e.Source as ComboBox;
+            var selectedItem = selectOption.SelectedItem;
+            var comboBoxItem = selectedItem as ComboBoxItem;
+            var text = comboBoxItem.Tag;
         }
     }
 }

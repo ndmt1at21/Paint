@@ -112,7 +112,6 @@
                             </DrawingImage.Drawing>
                         </DrawingImage>
                     </RibbonApplicationMenu.SmallImageSource>
-                    <!--  FUCKING NAME  -->
 
                     <RibbonApplicationMenuItem
                         Click="createNewFileBtnEvenListener"
@@ -273,9 +272,9 @@
 
                 </RibbonGroup>
                 <!--  Shape  group  -->
-                <RibbonGroup x:Name="ShapeGroup" Header="Shape">
+                <RibbonGroup x:Name="ShapeGroup" Header="Shape" Width="200">
                    
-                    <WrapPanel Width="120">
+                    <WrapPanel Width="140">
                             
                             <RibbonControlGroup
                                 x:Name="shapeList"
@@ -296,6 +295,15 @@
                                 </RibbonControlGroup.ItemTemplate>
                             </RibbonControlGroup>
                         </WrapPanel>
+                    <ComboBox SelectionChanged="SelectFillOrOutline">
+                        <ComboBoxItem Tag="Outline">
+                            <TextBlock >Outline</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="Fill">
+                                <TextBlock >Fill</TextBlock>
+                        </ComboBoxItem>
+                        
+                    </ComboBox>
                 </RibbonGroup>
 
                 <!--  Color  group  -->
