@@ -63,12 +63,9 @@ namespace Paint.Gestures
             HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
             DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
 
-            Debug.WriteLine("selecting");
             // Click outside all designItems
             if (designItem == null)
             {
-                Debug.WriteLine("oututtuutside");
-                Debug.WriteLine(hitTestResult.VisualHit);
                 UnselectAll();
                 return false;
             }
@@ -147,7 +144,6 @@ namespace Paint.Gestures
             if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
             {
                 RemoveSelectedItem(nodeVM);
-                Debug.WriteLine("seelcted upmouse moncotrol");
             }
             else
             {

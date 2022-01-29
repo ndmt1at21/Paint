@@ -1,4 +1,5 @@
 ﻿using Paint.CustomControl;
+using Paint.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -64,9 +65,12 @@ namespace Paint.Gestures
         private static void OnSelectedContainerMove(object sender, MouseEventArgs e)
         {
             var container = (DesignItemContainer)sender;
+            var nodeVM = (NodeViewModel)container.DataContext;
 
             if (container.IsMouseCaptured && e.LeftButton == MouseButtonState.Pressed)
             {
+                nodeVM.IsCommitChanged = false;
+
                 Point currentPosition = e.GetPosition(Context.DesignCanvas);
 
                 if (_initialPosition == currentPosition) return;
@@ -79,8 +83,11 @@ namespace Paint.Gestures
         private static void OnSelectedContainerReleased(object sender, MouseButtonEventArgs e)
         {
             var container = (DesignItemContainer)sender;
+            var nodeVM = (NodeViewModel)container.DataContext;
+
             container.ReleaseMouseCapture();
             IsPossibleDragging = false;
+            nodeVM.IsCommitChanged = true;
         }
     }
 }

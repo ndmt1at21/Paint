@@ -31,6 +31,7 @@ namespace Paint.Thumb
         {
             DragDelta += new DragDeltaEventHandler(this.RotateThumb_DragDelta);
             DragStarted += new DragStartedEventHandler(this.RotateThumb_DragStarted);
+            DragCompleted += RotateThumb_DragCompleted;
         }
 
         private void RotateThumb_DragStarted(object sender, DragStartedEventArgs e)
@@ -43,6 +44,7 @@ namespace Paint.Thumb
             {
                 initialAngle = nodeVM.RotateAngle;
                 startVector = CalculateStartVector();
+                nodeVM.IsCommitChanged = false;
             }
         }
 
@@ -55,8 +57,15 @@ namespace Paint.Thumb
             Vector deltaVector = Point.Subtract(currentPoint, centerPoint);
 
             double angle = Vector.AngleBetween(startVector, deltaVector);
-
             nodeVM.RotateAngle = initialAngle + Math.Round(angle, 0);
+        }
+
+        private void RotateThumb_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            if (nodeVM != null)
+            {
+                nodeVM.IsCommitChanged = true;
+            }
         }
 
         private Vector CalculateStartVector()

@@ -21,12 +21,16 @@ namespace Paint.Thumb
         {
             DragStarted += ResizeThumb_DragStarted;
             DragDelta += ResizeThumb_DragDelta;
+            DragCompleted += ResizeThumb_DragCompleted;
         }
 
         private void ResizeThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
             container = (DesignItemContainer)DataContext;
             nodeVM = (NodeViewModel)container.DataContext;
+
+            if (nodeVM != null)
+                nodeVM.IsCommitChanged = false;
         }
 
         private void ResizeThumb_DragDelta(object sender, DragDeltaEventArgs e)
@@ -59,6 +63,12 @@ namespace Paint.Thumb
                 default:
                     break;
             }
+        }
+
+        private void ResizeThumb_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            if (nodeVM != null)
+                nodeVM.IsCommitChanged = true;
         }
 
         private void UpdateBottomResize(DragDeltaEventArgs e)

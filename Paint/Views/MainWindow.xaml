@@ -207,12 +207,14 @@
                     <RibbonMenuButton Label="Brush" LargeImageSource="{Binding Path=brushesIcoPath}">
                         <RibbonGallery>
                             <RibbonGalleryCategory>
-                               
-                                <RibbonGalleryItem Selected="brushSelected" >
-                                    <Rectangle Height="2" Width="80" 
-                                               Stroke="Black" 
-                                               StrokeThickness="1" 
-                                               StrokeDashArray="4,3" />
+
+                                <RibbonGalleryItem Selected="brushSelected">
+                                    <Rectangle
+                                        Width="80"
+                                        Height="2"
+                                        Stroke="Black"
+                                        StrokeDashArray="4,3"
+                                        StrokeThickness="1" />
 
 
                                 </RibbonGalleryItem>
@@ -242,7 +244,7 @@
                 <!--  Tool  group  -->
                 <RibbonGroup x:Name="ToolGroup" Header="Tools">
 
-                    
+
                     <RibbonButton
                         Click="pickedTextBtnEvenListener"
                         Label="Text"
@@ -297,38 +299,48 @@
                     <RibbonMenuButton Label="Size" LargeImageSource="{Binding Path=sizeIcoPath}">
                         <RibbonGallery>
                             <RibbonGalleryCategory>
-                                <RibbonGalleryItem Selected="sizeSelected"  >
-                                    <Rectangle Height="1" Width="80" 
-                                               Stroke="Black" 
-                                               Fill="Black"
-                                               StrokeThickness="0" 
-                                               StrokeDashArray="1,0"/>
+                                <RibbonGalleryItem Selected="sizeSelected">
+                                    <Rectangle
+                                        Width="80"
+                                        Height="1"
+                                        Fill="Black"
+                                        Stroke="Black"
+                                        StrokeDashArray="1,0"
+                                        StrokeThickness="0" />
                                 </RibbonGalleryItem>
-                                <RibbonGalleryItem Selected="sizeSelected"  >
-                                    <Rectangle Height="2" Width="80" 
-                                               Stroke="Black" 
-                                               StrokeThickness="1" 
-                                               StrokeDashArray="1,0"/>
+                                <RibbonGalleryItem Selected="sizeSelected">
+                                    <Rectangle
+                                        Width="80"
+                                        Height="2"
+                                        Stroke="Black"
+                                        StrokeDashArray="1,0"
+                                        StrokeThickness="1" />
                                 </RibbonGalleryItem>
-                                <RibbonGalleryItem Selected="sizeSelected"  >
-                                    <Rectangle Height="2" Width="80" 
-                                               Stroke="Black" 
-                                               StrokeThickness="2" 
-                                               StrokeDashArray="1,0"/>
+                                <RibbonGalleryItem Selected="sizeSelected">
+                                    <Rectangle
+                                        Width="80"
+                                        Height="2"
+                                        Stroke="Black"
+                                        StrokeDashArray="1,0"
+                                        StrokeThickness="2" />
                                 </RibbonGalleryItem>
-                                <RibbonGalleryItem Selected="sizeSelected" >
-                                    <Rectangle Height="4" Width="84" 
-                                               Stroke="Black" 
-                                               StrokeThickness="4" 
-                                               StrokeDashArray="1,0"  />
+                                <RibbonGalleryItem Selected="sizeSelected">
+                                    <Rectangle
+                                        Width="84"
+                                        Height="4"
+                                        Stroke="Black"
+                                        StrokeDashArray="1,0"
+                                        StrokeThickness="4" />
 
 
                                 </RibbonGalleryItem>
-                                <RibbonGalleryItem Selected="sizeSelected" >
-                                    <Rectangle Height="8" Width="82" 
-                                               Stroke="Black" 
-                                               StrokeThickness="8" 
-                                               StrokeDashArray="1,0" />
+                                <RibbonGalleryItem Selected="sizeSelected">
+                                    <Rectangle
+                                        Width="82"
+                                        Height="8"
+                                        Stroke="Black"
+                                        StrokeDashArray="1,0"
+                                        StrokeThickness="8" />
 
 
                                 </RibbonGalleryItem>
@@ -476,6 +488,7 @@
                         SnapsToDevicePixels="True"
                         Stretch="Fill"
                         Stroke="{Binding Stroke}"
+                        StrokeDashArray="{Binding StrokeDashArray}"
                         StrokeThickness="{Binding StrokeThickness}">
                         <Path.Style>
                             <Style>

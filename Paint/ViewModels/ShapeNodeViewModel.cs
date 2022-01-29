@@ -27,7 +27,7 @@ namespace Paint.ViewModels
                 StrokeDashOffset = StrokeDashOffset,
                 IsSelected = IsSelected,
                 IsDrawing = IsDrawing,
-                IsDragging = IsDragging,
+                IsCommitChanged = IsCommitChanged,
                 RotateAngle = RotateAngle,
                 StrokeMiterLimit = StrokeMiterLimit,
                 StrokeThickness = StrokeThickness,

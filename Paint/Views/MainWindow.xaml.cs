@@ -65,8 +65,8 @@ namespace Paint.Views
 
         public ObservableCollection<NodeViewModel> Nodes { get; set; }
         public ObservableCollection<NodeViewModel> SelectedItems { get; set; }
-        public Stack<ObservableCollection<NodeViewModel>> UndoStack { get; set; }
-        public Stack<ObservableCollection<NodeViewModel>> RedoStack { get; set; }
+        public Stack<List<NodeViewModel>> UndoStack { get; set; }
+        public Stack<List<NodeViewModel>> RedoStack { get; set; }
     }
 
     public partial class MainWindow
@@ -76,6 +76,9 @@ namespace Paint.Views
             InitializeComponent();
 
             _pluginManager = pluginManager;
+
+            UndoStack = new Stack<List<NodeViewModel>>();
+            RedoStack = new Stack<List<NodeViewModel>>();
         }
 
         private void InitializeStore()
@@ -134,7 +137,17 @@ namespace Paint.Views
 
         private void RegisterStoreChanged()
         {
-            Debug.WriteLine("Chanananan");
+            _store.OnNodesChanged += HandleNodesChanged;
+        }
+
+        private void HandleNodesChanged(ObservableCollection<NodeViewModel> nodes)
+        {
+            if (nodes != null)
+            {
+                UndoStack.Push(Utils.Object.DeepClone(nodes.ToList()));
+                Debug.WriteLine("psusususus");
+            }
+
         }
     }
 
@@ -152,16 +165,28 @@ namespace Paint.Views
         {
             if (UndoStack.Count == 0) return;
 
-            Nodes = UndoStack.Pop();
-            RedoStack.Push(new ObservableCollection<NodeViewModel>(Nodes));
+            var undoItem = UndoStack.Pop();
+            Debug.WriteLine(undoItem.Count);
+
+            Nodes.Clear();
+            undoItem.ForEach(item =>
+            {
+                Debug.WriteLine(item.Top);
+                Debug.WriteLine(item.Left);
+                Nodes.Add(item);
+
+            });
+
+            RedoStack.Push(undoItem);
         }
 
         private void RedoAction()
         {
             if (RedoStack.Count == 0) return;
 
-            Nodes = RedoStack.Pop();
-            UndoStack.Push(new ObservableCollection<NodeViewModel>(Nodes));
+            var redoItem = RedoStack.Pop();
+            Nodes = new ObservableCollection<NodeViewModel>(redoItem);
+            UndoStack.Push(redoItem);
         }
 
         // UI Load
@@ -334,6 +359,7 @@ namespace Paint.Views
 
         private void undoBtnEvenListener(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("dfjhdfdjfhdfhjdundoddodood");
             UndoAction();
         }
 
@@ -412,7 +438,7 @@ namespace Paint.Views
 
         }
 
-       
+
 
         private void pickedTextBtnEvenListener(object sender, RoutedEventArgs e)
         {
@@ -427,7 +453,10 @@ namespace Paint.Views
 
         private void pickedEarserBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            foreach (var item in NodesControl.SelectedItems)
+            {
+                Nodes.Remove(item);
+            }
         }
 
 
@@ -452,7 +481,7 @@ namespace Paint.Views
                 }
             }
 
-            
+
         }
 
         private void colorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -492,12 +521,10 @@ namespace Paint.Views
         {
             var brushe1 = e.Source as RibbonGalleryItem;
             var brush = brushe1.Content as Rectangle;
-            var stroke = brush.Stroke;
             var strokedash = brush.StrokeDashArray;
 
             foreach (var item in NodesControl.SelectedItems)
             {
-                item.Stroke = stroke;
                 item.StrokeDashArray = strokedash;
             }
         }
@@ -595,7 +622,12 @@ namespace Paint.Views
         {
             var brushe1 = e.Source as RibbonGalleryItem;
             var brush = brushe1.Content as Rectangle;
-            var stoke = brush.Stroke;
+            var strokeThick = brush.StrokeThickness;
+
+            foreach (var item in NodesControl.SelectedItems)
+            {
+                item.StrokeThickness = strokeThick;
+            }
         }
     }
 }
