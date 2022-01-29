@@ -237,10 +237,16 @@
                             </RibbonGalleryCategory>
                         </RibbonGallery>
                     </RibbonMenuButton>
-
-
-
                 </RibbonGroup>
+
+                <RibbonGroup x:Name="Image" Header="Image">
+                    <RibbonButton
+                        Name="ImageButton"
+                        Click="ImageButton_Click"
+                        Label="Image"
+                        LargeImageSource="{Binding Path=imageIcoPath}" />
+                </RibbonGroup>
+
                 <!--  Tool  group  -->
                 <RibbonGroup x:Name="ToolGroup" Header="Tools">
 

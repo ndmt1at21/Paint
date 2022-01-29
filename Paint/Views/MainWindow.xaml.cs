@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using Paint.Adorner;
 using Paint.Commands;
 using Paint.Commands.Export;
@@ -67,6 +68,29 @@ namespace Paint.Views
         public ObservableCollection<NodeViewModel> SelectedItems { get; set; }
         public Stack<List<NodeViewModel>> UndoStack { get; set; }
         public Stack<List<NodeViewModel>> RedoStack { get; set; }
+
+        private void RibbonButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image file |*.bmp;*.jpeg; *jpg;*.png";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Nodes.Add(new ImageNodeViewModel
+                {
+                    Top = 50,
+                    Left = 100,
+                    Width = 100,
+                    Height = 200,
+                    ImageSource = openFileDialog.FileName
+                });
+            }
+        }
     }
 
     public partial class MainWindow
@@ -148,7 +172,6 @@ namespace Paint.Views
         {
             if (nodes != null && !isUpdateFromUndo)
             {
-                Debug.WriteLine("handle node changesss");
                 UndoStack.Push(Utils.Object.DeepClone(nodes.ToList()));
             }
 
@@ -246,7 +269,7 @@ namespace Paint.Views
                 imgPaths = new IconPath
                 {
                     saveIcoPath = "../IconImg/saveicon.png",
-
+                    imageIcoPath = "../IconImg/imageicon.png",
                     undoIcoPath = "../IconImg/undoicon.png",
                     redoIcoPath = "../IconImg/redoicon.png",
                     cutIcoPath = "../IconImg/cuticon.png",
@@ -276,7 +299,7 @@ namespace Paint.Views
                     italicStyleIcoPath = "../IconImg/italicicon.png",
                     boldStyleIcoPath = "../IconImg/boldicon.png",
                     underlineStyleIcoPath = "../IconImg/underlineicon.png",
-                    sizeIcoPath = "../IconImg/sizeicon.png"
+                    sizeIcoPath = "../IconImg/sizeicon.png",
                 };
                 //init set colorpick color
                 ClrPcker_Background.SelectedColor = Color.FromRgb(255, 255, 255);

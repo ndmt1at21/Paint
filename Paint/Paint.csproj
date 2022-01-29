@@ -24,6 +24,7 @@
 	  <None Remove="IconImg\Heart.png" />
 	  <None Remove="IconImg\Hexagon.png" />
 	  <None Remove="IconImg\horizonicon.png" />
+	  <None Remove="IconImg\imageicon.png" />
 	  <None Remove="IconImg\italicicon.png" />
 	  <None Remove="IconImg\newfileicon.png" />
 	  <None Remove="IconImg\openfileicon.png" />
@@ -32,6 +33,7 @@
 	  <None Remove="IconImg\penicon.png" />
 	  <None Remove="IconImg\Pentagon.png" />
 	  <None Remove="IconImg\Polygon.png" />
+	  <None Remove="IconImg\Rectangle.png" />
 	  <None Remove="IconImg\redoicon.png" />
 	  <None Remove="IconImg\resizeicon.png" />
 	  <None Remove="IconImg\rotateicon.png" />
@@ -82,6 +84,9 @@
 	  <Resource Include="IconImg\Hexagon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
+	  <Resource Include="IconImg\imageicon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
 	  <Resource Include="IconImg\italicicon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
@@ -95,6 +100,9 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\Polygon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="IconImg\Rectangle.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="IconImg\rotatelefticon.png">
