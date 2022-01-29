@@ -357,7 +357,8 @@ namespace Paint.Views
 
         private void chooseShapeBtnClick(object sender, RoutedEventArgs e)
         {
-
+            var a = e.Source as RibbonButton;
+            var pluginID = a.Label;
         }
     }
 }
