@@ -66,7 +66,6 @@ namespace Paint.Views
         public ObservableCollection<NodeViewModel> SelectedItems { get; set; }
         public Stack<ObservableCollection<NodeViewModel>> UndoStack { get; set; }
         public Stack<ObservableCollection<NodeViewModel>> RedoStack { get; set; }
-
     }
 
     public partial class MainWindow
@@ -233,7 +232,7 @@ namespace Paint.Views
                         PluginIconPath = "../IconImg/" + pluginIDs[i] + ".png"
                     };
                     shapeItemSource.Add(pluginItemsForDataContext);
-                    
+
 
                 }
                 shapeList.ItemsSource = shapeItemSource;
@@ -320,8 +319,6 @@ namespace Paint.Views
             }
             for (var i = 0; i < 50; i++)
             {
-               
-
                 tempCombobox = new TextSizeDataContext
                 {
                     size = (i + 1).ToString()
@@ -439,7 +436,13 @@ namespace Paint.Views
 
         private void pickedTextBtnEvenListener(object sender, RoutedEventArgs e)
         {
+            TextNodeViewModel viewModel = new TextNodeViewModel
+            {
+                Fill = Brushes.Transparent,
+            };
 
+            Nodes.Add(viewModel);
+            NodesControl.DrawingNode = viewModel;
         }
 
         private void pickedEarserBtnEvenListener(object sender, RoutedEventArgs e)
@@ -500,36 +503,85 @@ namespace Paint.Views
         {
             var brushe1 = e.Source as RibbonGalleryItem;
             var brush = brushe1.Content as Rectangle;
-            var stoke = brush.Stroke;
+            var stroke = brush.Stroke;
             var strokedash = brush.StrokeDashArray;
+
+            foreach (var item in NodesControl.SelectedItems)
+            {
+                item.Stroke = stroke;
+                item.StrokeDashArray = strokedash;
+            }
         }
         private void chooseShapeBtnClick(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(sender);
             var a = e.Source as RibbonButton;
-            Debug.WriteLine(a);
-            var pluginID = a.Tag;
+            var pluginID = (string)a.Tag;
+
+            IShapeNode shapeNode = _pluginManager.CreateShape(pluginID);
+
+            var shapeNodeVM = new ShapeNodeViewModel
+            {
+                DefiningShape = shapeNode.CreateGeometry(),
+                Fill = Brushes.LightGray
+            };
+
+            Nodes.Add(shapeNodeVM);
+            NodesControl.DrawingNode = shapeNodeVM;
         }
+
         private void textSizeChangeEventListenter(object sender, SelectionChangedEventArgs e)
         {
             var textSize = e.Source as ComboBox;
-            var textSizeString = textSize.SelectedItem as Paint.Lib.TextSizeDataContext;
-            var text = textSizeString.size;
-            fontSize = text;
+            var data = (TextSizeDataContext)textSize.SelectedItem;
+
+            foreach (var item in NodesControl.SelectedItems)
+            {
+                if (item is TextNodeViewModel textNodeVM)
+                {
+                    textNodeVM.FontSize = int.Parse(data.size);
+                }
+            }
         }
         private void fontChangeEventListenter(object sender, SelectionChangedEventArgs e)
         {
             var font = e.Source as ComboBox;
-            var fontString = font.SelectedItem as System.Drawing.FontFamily;
-            var text = fontString.Name;
-            fontStyle = new FontFamily(text);
+            var fontFamily = (System.Drawing.FontFamily)font.SelectedItem;
+
+            foreach (var item in NodesControl.SelectedItems)
+            {
+                if (item is TextNodeViewModel textNodeVM)
+                {
+                    textNodeVM.FontFamily = new FontFamily(fontFamily.Name);
+                }
+            }
         }
 
 
         private void textStyleClick(object sender, RoutedEventArgs e)
         {
             var textStyle = e.Source as RibbonButton;
-            var textStyleTag = textStyle.Tag;
+            var textStyleTag = (string)textStyle.Tag;
+
+            foreach (var item in NodesControl.SelectedItems)
+            {
+                if (item is TextNodeViewModel textNodeVM)
+                {
+                    if (textStyleTag == "Bold")
+                    {
+                        textNodeVM.FontWeight = FontWeights.Bold;
+                    }
+
+                    if (textStyleTag == "Italic")
+                    {
+                        textNodeVM.FontStyle = FontStyles.Italic;
+                    }
+
+                    if (textStyleTag == "Underline")
+                    {
+                        textNodeVM.TextDecorations = TextDecorations.Underline;
+                    }
+                }
+            }
         }
 
         private void SelectFillOrOutline(object sender, SelectionChangedEventArgs e)
