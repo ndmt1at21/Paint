@@ -44,6 +44,7 @@ namespace Paint.Views
         private AutoSaveService<Store> _autoSaveService { get; set; }
         private IPersister<Store> _persisterProject { get; set; }
         private FontFamily fontStyle;
+
         private string fontSize;
         private String typeOfColour { get; set; }
         private string isFill { get; set; }
@@ -275,6 +276,7 @@ namespace Paint.Views
                     italicStyleIcoPath = "../IconImg/italicicon.png",
                     boldStyleIcoPath = "../IconImg/boldicon.png",
                     underlineStyleIcoPath = "../IconImg/underlineicon.png",
+                    sizeIcoPath = "../IconImg/sizeicon.png"
                 };
                 //init set colorpick color
                 ClrPcker_Background.SelectedColor = Color.FromRgb(255, 255, 255);
@@ -433,15 +435,7 @@ namespace Paint.Views
 
         }
 
-        private void pickedPenBtnEvenListener(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void pickedBucketFillBtnEvenListener(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void pickedTextBtnEvenListener(object sender, RoutedEventArgs e)
         {
@@ -453,24 +447,27 @@ namespace Paint.Views
 
         }
 
-        private void zoomBtnEvenListener(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void ClrPcker_Background_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             if (typeOfColour == "rtlfill")
+            {
                 rtlfill.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
+                foreach (var item in NodesControl.SelectedItems)
+                {
+                    item.Fill = rtlfill.Fill;
+                }
+            }
             else if (typeOfColour == "rtloutline")
             {
                 rtloutline.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
+                foreach (var item in NodesControl.SelectedItems)
+                {
+                    item.Fill = rtloutline.Fill;
+                }
             }
 
-            foreach (var item in NodesControl.SelectedItems)
-            {
-                item.Fill = rtlfill.Fill;
-            }
+            
         }
 
         private void colorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -555,6 +552,13 @@ namespace Paint.Views
             typeOfColour = "rtlfill";
             rtloutline.StrokeThickness = 0;
             rtlfill.StrokeThickness = 3;
+        }
+
+        private void sizeSelected(object sender, RoutedEventArgs e)
+        {
+            var brushe1 = e.Source as RibbonGalleryItem;
+            var brush = brushe1.Content as Rectangle;
+            var stoke = brush.Stroke;
         }
     }
 }
