@@ -302,7 +302,9 @@
                         Fill="{Binding Fill}"
                         RenderOptions.BitmapScalingMode="HighQuality"
                         SnapsToDevicePixels="True"
-                        Stretch="Fill">
+                        Stretch="Fill"
+                        Stroke="{Binding Stroke}"
+                        StrokeThickness="{Binding StrokeThickness}">
                         <Path.Style>
                             <Style>
                                 <Setter Property="custom:DesignItemContainer.ApplyTransform">
@@ -321,10 +323,9 @@
 
                 <DataTemplate DataType="{x:Type vm:LineNodeViewModel}">
                     <Line
-                        Fill="{Binding Fill}"
                         RenderOptions.BitmapScalingMode="HighQuality"
                         SnapsToDevicePixels="True"
-                        Stroke="Red"
+                        Stroke="{Binding Stroke}"
                         StrokeThickness="{Binding StrokeThickness}"
                         X1="{Binding X1}"
                         X2="{Binding X2}"
@@ -347,7 +348,10 @@
                 </DataTemplate>
 
                 <DataTemplate DataType="{x:Type vm:ImageNodeViewModel}">
-                    <Border>
+                    <Border
+                        Background="{Binding Fill}"
+                        BorderBrush="{Binding Stroke}"
+                        BorderThickness="{Binding StrokeThickness}">
                         <Image SnapsToDevicePixels="True" Source="{Binding ImageSource}">
                             <Image.Style>
                                 <Style>
@@ -370,7 +374,7 @@
                     <TextBox
                         Width="{Binding Width}"
                         Height="{Binding Height}"
-                        Background="Transparent"
+                        Background="{Binding Fill}"
                         BorderThickness="0"
                         Cursor="Arrow"
                         Focusable="{Binding IsFocusable}"

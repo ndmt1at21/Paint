@@ -1,6 +1,8 @@
 ﻿using Paint.Adorner;
+using Paint.Commands;
 using Paint.IconImg;
 using Paint.Lib;
+using Paint.Models;
 using Paint.ViewModels;
 using PluginContract;
 using System;
@@ -27,79 +29,175 @@ namespace Paint.Views
 {
     public partial class MainWindow : RibbonWindow
     {
+        public static int ProjectNumber { get; set; } = 0;
+        public string CurrentProjectName { get; set; }
+
         private PluginManager _pluginManager { get; set; }
+        private Store _store { get; set; }
+
+        private BackupService<Store> _backupService { get; set; }
+        private SaveService<Store> _saveProjectService { get; set; }
+        private LoadService<Store> _loadProjectService { get; set; }
+        private AutoSaveService<Store> _autoSaveService { get; set; }
+        private IPersister<Store> _persisterProject { get; set; }
+
+        public ICommand NewCommand { get; set; }
+        public ICommand OpenCommand { get; set; }
+        public ICommand LoadProjectCommand { get; set; }
+        public ICommand SaveAsCommand { get; set; }
+        public ICommand SaveOrSaveAsCommand { get; set; }
+        public ICommand ImportCommand { get; set; }
+        public ICommand ExportCommand { get; set; }
+        public ICommand ExitCommand { get; set; }
 
         public ObservableCollection<NodeViewModel> Nodes { get; set; }
+        public Stack<ObservableCollection<NodeViewModel>> UndoStack { get; set; }
+        public Stack<ObservableCollection<NodeViewModel>> RedoStack { get; set; }
+    }
 
+    public partial class MainWindow
+    {
+        public MainWindow(PluginManager pluginManager)
+        {
+            InitializeComponent();
+
+            _pluginManager = pluginManager;
+
+            DataContext = this;
+            NodesControl.ItemsSource = Nodes;
+
+            InitializeStore();
+            InitializeServices();
+            InitializeCommands();
+        }
+
+        private void InitializeStore()
+        {
+            _store = new Store();
+            RegisterStoreChanged();
+
+            _store.CurrentProjectPath = $"pait{ProjectNumber}";
+        }
+
+        public void InitializeServices()
+        {
+            var _autoSaveConfig = new AutoSaveConfig
+            {
+                AutoSave = true,
+                AutoSaveInterval = 30
+            };
+
+            var _backupConfig = new BackupConfig
+            {
+                Directory = Environment.GetEnvironmentVariable("BackupFilesPath"),
+                BackupInterval = 10,
+                Extension = "paitup",
+            };
+
+            _persisterProject = new JsonPersister<Store>();
+
+            _saveProjectService = new SaveService<Store>(_persisterProject);
+            _loadProjectService = new LoadService<Store>(_persisterProject);
+
+            _autoSaveService = new AutoSaveService<Store>(_autoSaveConfig, _persisterProject);
+            _autoSaveService.GetSavePath = () => _store.CurrentProjectPath;
+            _autoSaveService.GetSaveData = () => _store;
+
+            _backupService = new BackupService<Store>(_backupConfig, _persisterProject);
+            _backupService.GetBackupData = () => new Store();
+            _backupService.GetBackupPath = () => _store.CurrentProjectPath;
+            _backupService.StartBackup();
+        }
+
+        public void InitializeCommands()
+        {
+            NewCommand = new NewCommand(_pluginManager);
+            OpenCommand = new OpenCommand(_pluginManager);
+            LoadProjectCommand = new LoadProjectCommand(_store, _loadProjectService);
+            SaveOrSaveAsCommand = new SaveOrSaveAsCommand(_store, _saveProjectService);
+            SaveAsCommand = new SaveAsCommand(_store, _saveProjectService);
+            ExitCommand = new ExitCommand(_store, this);
+        }
+
+        private void RegisterStoreChanged()
+        {
+
+        }
+    }
+
+    public partial class MainWindow
+    {
         public List<List<NodeViewModel>> NodeList { get; set; }
         public List<NodeViewModel> NodeListPresent { get; set; }
 
-        public void UndoAction()
+        public void LoadFrom(string path)
         {
-            if (NodeList != null)
-            {
-                for (int i = 1; i < NodeList.Count(); i++)
-                {
-                    if (NodeList[i] == NodeListPresent)
-                    {
-                        NodeListPresent = NodeList[i - 1];
-                    }
-                }
-            }
+            LoadProjectCommand.Execute(path);
+            _autoSaveService.EnableAutoSave();
 
+            RecentFiles.Shared.AddRecent(_store.CurrentProjectPath);
         }
 
-        public void RedoAction()
+        private void UndoAction()
         {
-            if (NodeList != null)
-            {
-                for (int i = 0; i < NodeList.Count() - 1; i++)
-                {
-                    if (NodeList[i] == NodeListPresent)
-                    {
-                        NodeListPresent = NodeList[i + 1];
-                    }
-                }
-            }
+            if (UndoStack.Count == 0) return;
+
+            Nodes = UndoStack.Pop();
+            RedoStack.Push(new ObservableCollection<NodeViewModel>(Nodes));
         }
-        public void Copy()
+
+        private void RedoAction()
+        {
+            if (RedoStack.Count == 0) return;
+
+            Nodes = RedoStack.Pop();
+            UndoStack.Push(new ObservableCollection<NodeViewModel>(Nodes));
+        }
+
+        private void Copy()
         {
             foreach (var item in Nodes)
+            {
                 if (item.IsSelected)
                 {
                     Clipboard.SetDataObject(item.Clone());
                 }
+            }
         }
-        public void Cut()
+
+        private void Cut()
         {
             foreach (var item in Nodes)
+            {
                 if (item.IsSelected)
                 {
                     Clipboard.SetDataObject(item.Clone());
                     Nodes.Remove(item);
                 }
+            }
         }
-        public void Paste()
+
+        private void Paste()
         {
             List<NodeViewModel> list = new List<NodeViewModel>();
             list = Clipboard.GetDataObject() as List<NodeViewModel>;
+
             if (list == null)
                 return;
+
             foreach (var item in list)
+            {
                 Nodes.Add(item);
+            }
         }
 
-        public MainWindow(PluginManager pluginManager)
+        // UI Load
+        private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
                 InitializeComponent();
                 Nodes = new ObservableCollection<NodeViewModel>();
-
-                _pluginManager = pluginManager;
-
-                NodesControl.ItemsSource = Nodes;
-
 
                 //load in plugin
                 string[] pluginIDs = _pluginManager.GetPluginIDs();
@@ -185,14 +283,11 @@ namespace Paint.Views
                 //init set colorpick color
                 ClrPcker_Background.SelectedColor = Color.FromRgb(255, 255, 255);
             }
-            catch (Exception e)
+            catch (Exception err)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(err.Message);
             }
-        }
 
-        private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
-        {
             BindingList<ColorPickerForDataContext> tempItemSource = new BindingList<ColorPickerForDataContext>();
             ColorPickerForDataContext temp;
 
@@ -216,19 +311,16 @@ namespace Paint.Views
                 tempItemSource.Add(temp);
             }
             this.colorList.ItemsSource = tempItemSource;
-
-
-
         }
+    }
 
-
-
+    // Event Click
+    public partial class MainWindow
+    {
         private void saveBtnEvenListener(object sender, RoutedEventArgs e)
         {
-
+            SaveOrSaveAsCommand.Execute(null);
         }
-
-
 
         private void undoBtnEvenListener(object sender, RoutedEventArgs e)
         {
@@ -338,26 +430,40 @@ namespace Paint.Views
         private void ClrPcker_Background_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             rtlfill.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
+
+            foreach (var item in NodesControl.SelectedItems)
+            {
+                item.Fill = rtlfill.Fill;
+            }
         }
 
         private void colorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             Brush selectedColor = (Brush)(e.AddedItems[0] as PropertyInfo).GetValue(null, null);
-
             rtlfill.Fill = selectedColor;
 
+            foreach (var item in NodesControl.SelectedItems)
+            {
+                item.Fill = selectedColor;
+            }
         }
 
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Rectangle rectangle = e.Source as Rectangle;
             rtlfill.Fill = rectangle.Fill;
+
+            foreach (var item in NodesControl.SelectedItems)
+            {
+                item.Fill = rectangle.Fill;
+            }
         }
 
         private void chooseShapeBtnClick(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine(sender);
             var a = e.Source as RibbonButton;
+            Debug.WriteLine(a);
             var pluginID = a.Label;
         }
     }
