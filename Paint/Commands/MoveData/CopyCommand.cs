@@ -30,6 +30,13 @@ namespace Paint.Commands.MoveData
 
             Clipboard.Clear();
             Clipboard.SetData("PaintObjects", JsonConvert.SerializeObject(_window.SelectedItems.ToList(), _serializeSettings));
+
+            foreach (var item in _window.SelectedItems)
+            {
+                item.IsSelected = false;
+            }
+
+            _window.SelectedItems.Clear();
         }
     }
 }

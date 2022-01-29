@@ -57,6 +57,11 @@
             Key="{Binding DeleteCommand.Gesture.Key}"
             Command="{Binding DeleteCommand}"
             Modifiers="{Binding DeleteCommand.Gesture.Modifiers}" />
+
+        <KeyBinding
+            Key="{Binding SelectAllCommand.Gesture.Key}"
+            Command="{Binding SelectAllCommand}"
+            Modifiers="{Binding SelectAllCommand.Gesture.Modifiers}" />
     </RibbonWindow.InputBindings>
 
 
@@ -291,42 +296,50 @@
 
                 </RibbonGroup>
                 <!--  Shape  group  -->
-                <RibbonGroup x:Name="ShapeGroup" Header="Shape" Width="150">
-                   
+                <RibbonGroup
+                    x:Name="ShapeGroup"
+                    Width="150"
+                    Header="Shape">
+
                     <WrapPanel Width="140">
-                            
-                            <RibbonControlGroup
-                                x:Name="shapeList"
-                                HorizontalAlignment="Stretch"
-                                HorizontalContentAlignment="Stretch">
-                                <RibbonControlGroup.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
-                                    </ItemsPanelTemplate>
-                                </RibbonControlGroup.ItemsPanel>
-                                <RibbonControlGroup.ItemTemplate>
-                                    <DataTemplate>
-                                    <RibbonButton Width="20" Height="20" 
-                                                  Click="chooseShapeBtnClick" 
-                                                  Tag="{Binding PluginID}" 
-                                                  SmallImageSource="{Binding PluginIconPath}"/>
+
+                        <RibbonControlGroup
+                            x:Name="shapeList"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch">
+                            <RibbonControlGroup.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </RibbonControlGroup.ItemsPanel>
+                            <RibbonControlGroup.ItemTemplate>
+                                <DataTemplate>
+                                    <RibbonButton
+                                        Width="20"
+                                        Height="20"
+                                        Click="chooseShapeBtnClick"
+                                        SmallImageSource="{Binding PluginIconPath}"
+                                        Tag="{Binding PluginID}" />
                                 </DataTemplate>
-                                </RibbonControlGroup.ItemTemplate>
-                            </RibbonControlGroup>
-                        </WrapPanel>
+                            </RibbonControlGroup.ItemTemplate>
+                        </RibbonControlGroup>
+                    </WrapPanel>
                     <ComboBox SelectionChanged="SelectFillOrOutline">
                         <ComboBoxItem Tag="No fill">
-                            <TextBlock >No fill</TextBlock>
+                            <TextBlock>Border</TextBlock>
                         </ComboBoxItem>
-                        <ComboBoxItem Tag="Fill">
-                                <TextBlock >Fill</TextBlock>
+                        <ComboBoxItem IsSelected="True" Tag="Fill">
+                            <TextBlock>Fill</TextBlock>
                         </ComboBoxItem>
-                        
+
                     </ComboBox>
                 </RibbonGroup>
 
                 <!--  Color  group  -->
-                <RibbonGroup x:Name="ColorGroupPicker" Header="Color" Width="45">
+                <RibbonGroup
+                    x:Name="ColorGroupPicker"
+                    Width="45"
+                    Header="Color">
 
                     <Rectangle
                         x:Name="rtloutline"
@@ -336,9 +349,9 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Stretch"
                         Fill="#FFF4F4F5"
-                        Stroke="Black" 
-                        StrokeThickness="3"
-                        MouseDown="chooseTypeToColourEvenListener1"/>
+                        MouseDown="chooseTypeToColourEvenListener1"
+                        Stroke="Black"
+                        StrokeThickness="3" />
                     <Rectangle
                         x:Name="rtlfill"
                         Width="30"
@@ -347,9 +360,9 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Stretch"
                         Fill="#FFF4F4F5"
-                        Stroke="Black" 
-                        StrokeThickness="0"
-                        MouseDown="chooseTypeToColourEvenListener2"/>
+                        MouseDown="chooseTypeToColourEvenListener2"
+                        Stroke="Black"
+                        StrokeThickness="0" />
                 </RibbonGroup>
                 <RibbonGroup>
                     <WrapPanel Width="200">

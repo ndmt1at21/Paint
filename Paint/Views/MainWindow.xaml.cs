@@ -60,6 +60,7 @@ namespace Paint.Views
         public ICommand PasteCommand { get; set; }
         public ICommand CopyCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand SelectAllCommand { get; set; }
 
         public ObservableCollection<NodeViewModel> Nodes { get; set; }
         public ObservableCollection<NodeViewModel> SelectedItems { get; set; }
@@ -127,6 +128,7 @@ namespace Paint.Views
             CutCommand = new CutCommand(this);
             PasteCommand = new PasteCommand(this);
             DeleteCommand = new DeleteCommand(this);
+            SelectAllCommand = new SelectAllCommand(this);
         }
 
         private void RegisterStoreChanged()
@@ -197,24 +199,6 @@ namespace Paint.Views
             NodesControl.DrawingNode = shape;
             Nodes.Add(shape);
 
-            Nodes.Add(new ImageNodeViewModel
-            {
-                Top = 0,
-                Left = 0,
-                Height = 100,
-                Width = 100,
-                ImageSource = "C:\\Users\\ndmt1at21\\Desktop\\escape.png"
-            });
-
-            Nodes.Add(new TextNodeViewModel
-            {
-                Top = 0,
-                Left = 0,
-                Height = 100,
-                Width = 100,
-                Content = "dfjghjfhfhjfg"
-            });
-
             try
             {
                 InitializeComponent();
@@ -235,10 +219,6 @@ namespace Paint.Views
 
                 }
                 shapeList.ItemsSource = shapeItemSource;
-
-                //test
-
-
 
                 //load in ico path
                 imgPaths = new IconPath
@@ -464,15 +444,22 @@ namespace Paint.Views
         private void ClrPcker_Background_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             if (typeOfColour == "rtlfill")
+            {
                 rtlfill.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
+
+                foreach (var item in NodesControl.SelectedItems)
+                {
+                    item.Fill = rtlfill.Fill;
+                }
+            }
             else if (typeOfColour == "rtloutline")
             {
                 rtloutline.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
-            }
 
-            foreach (var item in NodesControl.SelectedItems)
-            {
-                item.Fill = rtlfill.Fill;
+                foreach (var item in NodesControl.SelectedItems)
+                {
+                    item.Stroke = rtlfill.Fill;
+                }
             }
         }
 
@@ -490,16 +477,23 @@ namespace Paint.Views
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Rectangle rectangle = e.Source as Rectangle;
-            if(typeOfColour == "rtlfill")
-            rtlfill.Fill = rectangle.Fill;
-            else if(typeOfColour == "rtloutline")
+            if (typeOfColour == "rtlfill")
+            {
+                rtlfill.Fill = rectangle.Fill;
+
+                foreach (var item in NodesControl.SelectedItems)
+                {
+                    item.Fill = rectangle.Fill;
+                }
+            }
+            else if (typeOfColour == "rtloutline")
             {
                 rtloutline.Fill = rectangle.Fill;
-            }
 
-            foreach (var item in NodesControl.SelectedItems)
-            {
-                item.Fill = rectangle.Fill;
+                foreach (var item in NodesControl.SelectedItems)
+                {
+                    item.Stroke = rectangle.Fill;
+                }
             }
         }
         private void brushSelected(object sender, RoutedEventArgs e)
@@ -589,11 +583,7 @@ namespace Paint.Views
 
         private void SelectFillOrOutline(object sender, SelectionChangedEventArgs e)
         {
-            var selectOption = e.Source as ComboBox;
-            var selectedItem = selectOption.SelectedItem;
-            var comboBoxItem = selectedItem as ComboBoxItem;
-            var text = comboBoxItem.Tag;
-            isFill = text.ToString();
+
         }
 
         private void chooseTypeToColourEvenListener1(object sender, MouseButtonEventArgs e)
