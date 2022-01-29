@@ -52,7 +52,7 @@ namespace Paint.Helpers
             {
                 if (nodeVM is LineNodeViewModel)
                     HandleRemoveResizeLineAdorner(element, layer);
-                else 
+                else
                     HandleRemoveResizeRectangleAdorner(element, layer);
             }
         }
@@ -88,6 +88,37 @@ namespace Paint.Helpers
             foreach (System.Windows.Documents.Adorner adorner in adorners)
             {
                 layer.Remove(adorner);
+            }
+        }
+
+        // Canvas
+        public static readonly DependencyProperty ShowCanvasResizeAdornerProperty =
+           DependencyProperty.RegisterAttached(
+               "ShowCanvasResizeAdorner",
+               typeof(bool),
+               typeof(AttachedAdorner),
+               new FrameworkPropertyMetadata(false, OnShowCanvasResizeAdornerChanged)
+           );
+
+        public static void SetShowCanvasResizeAdorner(UIElement element, bool value)
+            => element.SetValue(ShowCanvasResizeAdornerProperty, value);
+
+        public static bool GetShowCanvasResizeAdorner(UIElement element)
+            => (bool)element.GetValue(ShowCanvasResizeAdornerProperty);
+
+        private static void OnShowCanvasResizeAdornerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            DesignCanvas canvas = (DesignCanvas)d;
+
+            if (canvas == null) return;
+
+            bool value = (bool)e.NewValue;
+            AdornerLayer layer = AdornerLayer.GetAdornerLayer(canvas);
+
+            if (value)
+            {
+                CanvasAdorner adorner = new CanvasAdorner(canvas);
+                layer.Add(adorner);
             }
         }
     }

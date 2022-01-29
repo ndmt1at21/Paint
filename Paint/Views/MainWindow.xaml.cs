@@ -55,6 +55,7 @@ namespace Paint.Views
         public ICommand CutCommand { get; set; }
         public ICommand PasteCommand { get; set; }
         public ICommand CopyCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
 
         public ObservableCollection<NodeViewModel> Nodes { get; set; }
         public ObservableCollection<NodeViewModel> SelectedItems { get; set; }
@@ -69,57 +70,6 @@ namespace Paint.Views
             InitializeComponent();
 
             _pluginManager = pluginManager;
-
-            InitializeStore();
-            InitializeServices();
-            InitializeCommands();
-
-            DataContext = this;
-            Nodes = _store.Nodes;
-            SelectedItems = new ObservableCollection<NodeViewModel>();
-            NodesControl.ItemsSource = Nodes;
-            NodesControl.SelectedItems = SelectedItems;
-
-            Nodes.Add(new ShapeNodeViewModel
-            {
-                Top = 100,
-                Left = 100,
-                Width = 100,
-                Height = 100,
-                Fill = Brushes.Red,
-                DefiningShape = "M 1 1 H 90 V 90 H 1 L 1 1"
-            });
-
-            var shape = new ShapeNodeViewModel
-            {
-                Top = 100,
-                Left = 100,
-                Width = 100,
-                Height = 100,
-                Fill = Brushes.Red,
-                DefiningShape = "M 1 1 H 90 V 90 H 1 L 1 1"
-            };
-
-            NodesControl.DrawingNode = shape;
-            Nodes.Add(shape);
-
-            Nodes.Add(new ImageNodeViewModel
-            {
-                Top = 0,
-                Left = 0,
-                Height = 100,
-                Width = 100,
-                ImageSource = "C:\\Users\\ndmt1at21\\Desktop\\escape.png"
-            });
-
-            Nodes.Add(new TextNodeViewModel
-            {
-                Top = 0,
-                Left = 0,
-                Height = 100,
-                Width = 100,
-                Content = "dfjghjfhfhjfg"
-            });
         }
 
         private void InitializeStore()
@@ -172,6 +122,7 @@ namespace Paint.Views
             CopyCommand = new CopyCommand(this);
             CutCommand = new CutCommand(this);
             PasteCommand = new PasteCommand(this);
+            DeleteCommand = new DeleteCommand(this);
         }
 
         private void RegisterStoreChanged()
@@ -209,6 +160,57 @@ namespace Paint.Views
         // UI Load
         private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            InitializeStore();
+            InitializeServices();
+            InitializeCommands();
+
+            DataContext = this;
+            Nodes = _store.Nodes;
+            SelectedItems = new ObservableCollection<NodeViewModel>();
+            NodesControl.ItemsSource = Nodes;
+            NodesControl.SelectedItems = SelectedItems;
+
+            Nodes.Add(new ShapeNodeViewModel
+            {
+                Top = 100,
+                Left = 100,
+                Width = 100,
+                Height = 100,
+                Fill = Brushes.Red,
+                DefiningShape = "M 1 1 H 90 V 90 H 1 L 1 1"
+            });
+
+            var shape = new ShapeNodeViewModel
+            {
+                Top = 100,
+                Left = 100,
+                Width = 100,
+                Height = 100,
+                Fill = Brushes.Red,
+                DefiningShape = "M 1 1 H 90 V 90 H 1 L 1 1"
+            };
+
+            NodesControl.DrawingNode = shape;
+            Nodes.Add(shape);
+
+            Nodes.Add(new ImageNodeViewModel
+            {
+                Top = 0,
+                Left = 0,
+                Height = 100,
+                Width = 100,
+                ImageSource = "C:\\Users\\ndmt1at21\\Desktop\\escape.png"
+            });
+
+            Nodes.Add(new TextNodeViewModel
+            {
+                Top = 0,
+                Left = 0,
+                Height = 100,
+                Width = 100,
+                Content = "dfjghjfhfhjfg"
+            });
+
             try
             {
                 InitializeComponent();
@@ -331,12 +333,12 @@ namespace Paint.Views
 
         private void saveAsJPGBtnEvenListener(object sender, RoutedEventArgs e)
         {
-            ExportCommand.Execute("jpg");
+            ExportCommand.Execute(null);
         }
 
         private void saveAsPNGBtnEvenListener(object sender, RoutedEventArgs e)
         {
-            ExportCommand.Execute("png");
+            ExportCommand.Execute(null);
         }
 
         private void exitAsPNGBtnEvenListener(object sender, RoutedEventArgs e)

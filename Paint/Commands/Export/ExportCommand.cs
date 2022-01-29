@@ -19,7 +19,6 @@ namespace Paint.Commands.Export
         public ExportCommand(DesignCanvas canvas)
         {
             _canvas = canvas;
-            Debug.WriteLine(canvas);
         }
 
         public override void Execute(object parameter)
@@ -34,9 +33,6 @@ namespace Paint.Commands.Export
                 DrawingVisual drawingVisual = new DrawingVisual();
                 DrawingContext drawingContext = drawingVisual.RenderOpen();
                 VisualBrush visualBrush = new VisualBrush(_canvas);
-                Debug.WriteLine("dfgfhfgjfghfjghfhgjgfnfgjfggf");
-                Debug.WriteLine(_canvas);
-                Debug.WriteLine(VisualTreeHelper.GetDescendantBounds(_canvas));
                 drawingContext.DrawRectangle(visualBrush, null, VisualTreeHelper.GetDescendantBounds(_canvas));
                 drawingContext.Close();
 

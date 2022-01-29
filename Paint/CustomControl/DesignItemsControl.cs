@@ -230,6 +230,7 @@ namespace Paint.CustomControl
             base.OnApplyTemplate();
 
             DesignCanvas = (DesignCanvas)GetTemplateChild("PART_Canvas");
+            Debug.WriteLine(DesignCanvas);
         }
 
         private void EventAnalyzeOnButtonDown(MouseButtonEventArgs e)

@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AdornerTemplate\CanvasResizeAdornerTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AdornerTemplate\RectangleHoverAdornerTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +18,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AdornerTemplate\CanvasResizeAdornerTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="AdornerTemplate\RectangleHoverAdornerTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
