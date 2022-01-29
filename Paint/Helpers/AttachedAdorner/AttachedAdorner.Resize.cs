@@ -42,20 +42,18 @@ namespace Paint.Helpers
 
             if (value)
             {
-                if (nodeVM is ShapeNodeViewModel)
-                    HandleAddResizeRectangleAdorner(element, layer);
-
                 if (nodeVM is LineNodeViewModel)
                     HandleAddResizeLineAdorner(element, layer);
+                else
+                    HandleAddResizeRectangleAdorner(element, layer);
             }
 
             if (!value)
             {
-                if (nodeVM is ShapeNodeViewModel)
-                    HandleRemoveResizeRectangleAdorner(element, layer);
-
                 if (nodeVM is LineNodeViewModel)
                     HandleRemoveResizeLineAdorner(element, layer);
+                else 
+                    HandleRemoveResizeRectangleAdorner(element, layer);
             }
         }
 

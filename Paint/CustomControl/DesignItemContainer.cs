@@ -13,7 +13,7 @@ using System.Windows.Media;
 
 namespace Paint.CustomControl
 {
-    public class DesignItemContainer : ContentControl, IGroupable, ISelectable
+    public class DesignItemContainer : ContentControl, ISelectable
     {
         static DesignItemContainer()
         {
@@ -96,26 +96,6 @@ namespace Paint.CustomControl
         {
             get { return (double)GetValue(LeftProperty); }
             set { SetValue(TopProperty, value); }
-        }
-
-        // Perent Id
-        public static readonly DependencyProperty ParentIDProperty =
-           DependencyProperty.Register("ParentID", typeof(Guid), typeof(DesignItemContainer));
-
-        public Guid ParentID
-        {
-            get { return (Guid)GetValue(ParentIDProperty); }
-            set { SetValue(ParentIDProperty, value); }
-        }
-
-        // Has Any Group 
-        public static readonly DependencyProperty IsGroupProperty =
-            DependencyProperty.Register("IsGroup", typeof(bool), typeof(DesignItemContainer));
-
-        public bool IsGroup
-        {
-            get { return (bool)GetValue(IsGroupProperty); }
-            set { SetValue(IsGroupProperty, value); }
         }
 
         // Is Selected

@@ -223,7 +223,7 @@
                                 </RibbonControlGroup.ItemsPanel>
                                 <RibbonControlGroup.ItemTemplate>
                                     <DataTemplate>
-                                        <RibbonButton Click="chooseShapeBtnClick"  Width="20" Height="30" SmallImageSource="{Binding PluginIconPath}" Label="{Binding PluginID}" />
+                                        <RibbonMenuItem Click="chooseShapeBtnClick" Header="{Binding PluginID}" />
                                     </DataTemplate>
                                 </RibbonControlGroup.ItemTemplate>
                             </RibbonControlGroup>
@@ -329,7 +329,67 @@
                         X1="{Binding X1}"
                         X2="{Binding X2}"
                         Y1="{Binding Y1}"
-                        Y2="{Binding Y2}" />
+                        Y2="{Binding Y2}">
+                        <Line.Style>
+                            <Style>
+                                <Setter Property="custom:DesignItemContainer.ApplyTransform">
+                                    <Setter.Value>
+                                        <TransformGroup>
+                                            <TranslateTransform />
+                                            <ScaleTransform />
+                                            <RotateTransform Angle="{Binding RotateAngle}" />
+                                        </TransformGroup>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Line.Style>
+                    </Line>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type vm:ImageNodeViewModel}">
+                    <Border>
+                        <Image SnapsToDevicePixels="True" Source="{Binding ImageSource}">
+                            <Image.Style>
+                                <Style>
+                                    <Setter Property="custom:DesignItemContainer.ApplyTransform">
+                                        <Setter.Value>
+                                            <TransformGroup>
+                                                <TranslateTransform />
+                                                <ScaleTransform />
+                                                <RotateTransform Angle="{Binding RotateAngle}" />
+                                            </TransformGroup>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </Border>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type vm:TextNodeViewModel}">
+                    <TextBox
+                        Width="{Binding Width}"
+                        Height="{Binding Height}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Cursor="Arrow"
+                        Focusable="{Binding IsFocusable}"
+                        Text="{Binding Content}"
+                        TextWrapping="Wrap">
+                        <TextBox.Style>
+                            <Style>
+                                <Setter Property="custom:DesignItemContainer.ApplyTransform">
+                                    <Setter.Value>
+                                        <TransformGroup>
+                                            <TranslateTransform />
+                                            <ScaleTransform />
+                                            <RotateTransform Angle="{Binding RotateAngle}" />
+                                        </TransformGroup>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
                 </DataTemplate>
             </custom:DesignItemsControl.Resources>
 
@@ -350,7 +410,6 @@
                     <Setter Property="RenderTransformOrigin" Value="{Binding TransformOrigin}" />
                 </Style>
             </custom:DesignItemsControl.ItemContainerStyle>
-
         </custom:DesignItemsControl>
     </DockPanel>
 

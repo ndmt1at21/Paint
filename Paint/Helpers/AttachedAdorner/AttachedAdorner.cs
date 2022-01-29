@@ -15,10 +15,7 @@ namespace Paint.Helpers
 {
     public partial class AttachedAdorner
     {
-        // All adorner show on canvas
-        private static List<System.Windows.Documents.Adorner> _resizeAdorners { get; set; }
-            = new List<System.Windows.Documents.Adorner>();
-
-        private static System.Windows.Documents.Adorner _currentHoverAdorner { get; set; }
+        private static System.Windows.Documents.Adorner _currentRectHoverAdorner { get; set; }
+        private static System.Windows.Documents.Adorner _currentLineHoverAdorner { get; set; }
     }
 }

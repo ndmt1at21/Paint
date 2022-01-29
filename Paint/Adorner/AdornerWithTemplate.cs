@@ -12,7 +12,7 @@ namespace Paint.Adorner
     public class AdornerWithTemplate : System.Windows.Documents.Adorner
     {
         private VisualCollection _visuals;
-        private UserControl _template;
+        private Control _template;
 
         protected override int VisualChildrenCount
         {
@@ -22,7 +22,7 @@ namespace Paint.Adorner
             }
         }
 
-        public AdornerWithTemplate(UIElement designerItem, UserControl template)
+        public AdornerWithTemplate(UIElement designerItem, Control template)
             : base(designerItem)
         {
             SnapsToDevicePixels = true;

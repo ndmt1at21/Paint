@@ -153,6 +153,9 @@ namespace Paint.CustomControl
         {
             base.OnPreviewMouseLeftButtonDown(e);
 
+            if (e.ClickCount == 2) return;
+
+            Debug.WriteLine("Clijc ciount" + e.ClickCount);
             _selectingGesture.SelectByMouseDown(e);
 
             //if (DrawingNode != null)
@@ -173,6 +176,12 @@ namespace Paint.CustomControl
             //    Debug.WriteLine("drgaggging");
             //    return;
             //}
+        }
+
+        protected override void OnMouseDoubleClick(MouseButtonEventArgs e)
+        {
+            base.OnMouseDoubleClick(e);
+            _selectingGesture.SelectByMouseDoubleClick(e);
         }
 
         protected override void OnPreviewMouseMove(MouseEventArgs e)
@@ -200,14 +209,11 @@ namespace Paint.CustomControl
             //}
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-        }
-
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
+
+            if (e.ClickCount == 2) return;
 
             if (!IsDragging)
             {

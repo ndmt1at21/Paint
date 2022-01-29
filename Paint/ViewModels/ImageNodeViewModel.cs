@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace Paint.ViewModels
 {
-    public class TextNodeViewModel : NodeViewModel
+    public class ImageNodeViewModel : NodeViewModel
     {
-        public string Content { get; set; }
-        public bool IsFocusable { get; set; }
+        public BitmapImage ImageSource { get; set; }
 
         public override NodeViewModel Clone()
         {
-            return new TextNodeViewModel
+            return new ImageNodeViewModel
             {
                 Top = Top,
                 Left = Left,
@@ -31,7 +31,7 @@ namespace Paint.ViewModels
                 RotateAngle = RotateAngle,
                 StrokeMiterLimit = StrokeMiterLimit,
                 StrokeThickness = StrokeThickness,
-                Content = Content,
+                ImageSource = ImageSource.Clone(),
             };
         }
     }

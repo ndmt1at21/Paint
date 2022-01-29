@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -59,6 +60,7 @@ namespace Paint.Gestures
 
         public bool SelectByMouseDown(MouseButtonEventArgs e)
         {
+            Debug.WriteLine("mouse down select");
             HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
             DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
 
@@ -94,9 +96,36 @@ namespace Paint.Gestures
             return false;
         }
 
+        public void SelectByMouseDoubleClick(MouseButtonEventArgs e)
+        {
+            HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
+            DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
+
+            if (designItem == null) return;
+
+            NodeViewModel nodeVM = (NodeViewModel)designItem.DataContext;
+
+            if (nodeVM is TextNodeViewModel textNodeVM)
+            {
+                UnselectAll();
+
+                TextBox textbox = Utils.Control.GetParentControl<TextBox>(hitTestResult.VisualHit);
+
+                textNodeVM.IsFocusable = true;
+                textbox.Focus();
+                textbox.SelectAll();
+
+                AddSelectedItem(textNodeVM);
+
+                onePointSelectionHandleByMouseUp = false;
+            }
+        }
+
         public bool SelectByMouseUp(MouseButtonEventArgs e)
         {
+
             if (!onePointSelectionHandleByMouseUp) return false;
+            Debug.WriteLine("mouse up select");
 
             HitTestResult hitTestResult = VisualTreeHelper.HitTest(_context.DesignCanvas, e.GetPosition(_context.DesignCanvas));
             DesignItemContainer designItem = Utils.Control.GetParentControl<DesignItemContainer>(hitTestResult.VisualHit);
@@ -136,7 +165,9 @@ namespace Paint.Gestures
         {
             foreach (var item in _context.SelectedItems)
             {
-                Debug.WriteLine("Unsleected all");
+                if (item is TextNodeViewModel textNode)
+                    textNode.IsFocusable = false;
+
                 item.IsSelected = false;
             }
             _context.SelectedItems.Clear();
@@ -150,10 +181,11 @@ namespace Paint.Gestures
 
         public void RemoveSelectedItem(NodeViewModel vm)
         {
-            Debug.WriteLine("Remov eone ite,");
+            if (vm is TextNodeViewModel textNode)
+                textNode.IsFocusable = false;
+
             vm.IsSelected = false;
             _context.SelectedItems.Remove(vm);
-            Debug.WriteLine(_context.SelectedItems.Count);
         }
     }
 }

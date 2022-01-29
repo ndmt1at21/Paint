@@ -120,22 +120,33 @@ namespace Paint.Views
 
 
                 //test
-                for (int i = 0; i < 10; i++)
+                Nodes.Add(new ShapeNodeViewModel
                 {
-                    Nodes.Add(new LineNodeViewModel
-                    {
-                        Top = 10,
-                        Left = 10,
-                        Width = 100,
-                        Height = 100,
-                        X1 = 10,
-                        X2 = 100,
-                        Y1 = 10,
-                        Y2 = 100,
-                        StrokeThickness = 2,
-                        Stroke = new SolidColorBrush(Colors.Black),
-                    });
-                }
+                    Top = 100,
+                    Left = 100,
+                    Width = 100,
+                    Height = 100,
+                    Fill = Brushes.Red,
+                    DefiningShape = new RectangleGeometry(new Rect(0, 0, 1, 1))
+                });
+
+                Nodes.Add(new ImageNodeViewModel
+                {
+                    Top = 0,
+                    Left = 0,
+                    Height = 100,
+                    Width = 100,
+                    ImageSource = new BitmapImage(new Uri("C:\\Users\\ndmt1at21\\Desktop\\escape.png"))
+                });
+
+                Nodes.Add(new TextNodeViewModel
+                {
+                    Top = 0,
+                    Left = 0,
+                    Height = 100,
+                    Width = 100,
+                    Content = "dfjghjfhfhjfg"
+                });
 
                 //load in ico path
                 var imgPaths = new IconPath

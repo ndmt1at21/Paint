@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "D:\\C#\\Paint\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
@@ -16,22 +15,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ndmt1at21\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj": {}
-  },
-  "projects": {
-    "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj",
-        "projectName": "BRControl",
-        "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj",
-        "packagesPath": "C:\\Users\\ssd\\.nuget\\packages\\",
-        "outputPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\ssd\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 88f46b40f1f492030ffbf226cb733a969b4e8c43
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,7 +71,6 @@
               "privateAssets": "none"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
@@ -104,23 +86,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ndmt1at21\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj",
-        "projectName": "Paint",
-        "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\Paint.csproj",
-        "packagesPath": "C:\\Users\\ssd\\.nuget\\packages\\",
-        "outputPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\Paint\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\ssd\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 88f46b40f1f492030ffbf226cb733a969b4e8c43
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -134,19 +99,11 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-<<<<<<< HEAD
               "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj": {
                 "projectPath": "D:\\C#\\Paint\\Paint\\BRControl\\BRControl.csproj"
               },
               "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj": {
                 "projectPath": "D:\\C#\\Paint\\Paint\\PluginContract\\PluginContract.csproj"
-=======
-              "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj": {
-                "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\BRControl\\BRControl.csproj"
-              },
-              "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj": {
-                "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj"
->>>>>>> 88f46b40f1f492030ffbf226cb733a969b4e8c43
               }
             }
           }
@@ -218,7 +175,6 @@
               "privateAssets": "none"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
@@ -234,23 +190,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ndmt1at21\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj",
-        "projectName": "PluginContract",
-        "projectPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\PluginContract.csproj",
-        "packagesPath": "C:\\Users\\ssd\\.nuget\\packages\\",
-        "outputPath": "G:\\Coding\\Code C#\\WPF Code C#\\Paint\\PluginContract\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\ssd\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 88f46b40f1f492030ffbf226cb733a969b4e8c43
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -313,11 +252,7 @@
               "privateAssets": "none"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
->>>>>>> 88f46b40f1f492030ffbf226cb733a969b4e8c43
         }
       }
     }
