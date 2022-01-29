@@ -43,6 +43,10 @@ namespace Paint.Views
         private LoadService<Store> _loadProjectService { get; set; }
         private AutoSaveService<Store> _autoSaveService { get; set; }
         private IPersister<Store> _persisterProject { get; set; }
+        private FontFamily fontStyle;
+        private string fontSize;
+        private String typeOfColour { get; set; }
+        private string isFill { get; set; }
 
         public ICommand NewCommand { get; set; }
         public ICommand OpenCommand { get; set; }
@@ -283,7 +287,7 @@ namespace Paint.Views
             ColorPickerForDataContext temp;
             BindingList<TextSizeDataContext> tempItemSourceCombobox = new BindingList<TextSizeDataContext>();
             TextSizeDataContext tempCombobox;
-
+            typeOfColour = "rtloutline";
 
             temp = new ColorPickerForDataContext
             {
@@ -459,7 +463,12 @@ namespace Paint.Views
 
         private void ClrPcker_Background_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
-            rtlfill.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
+            if (typeOfColour == "rtlfill")
+                rtlfill.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
+            else if (typeOfColour == "rtloutline")
+            {
+                rtloutline.Fill = new SolidColorBrush((Color)ClrPcker_Background.SelectedColor);
+            }
 
             foreach (var item in NodesControl.SelectedItems)
             {
@@ -481,7 +490,12 @@ namespace Paint.Views
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Rectangle rectangle = e.Source as Rectangle;
+            if(typeOfColour == "rtlfill")
             rtlfill.Fill = rectangle.Fill;
+            else if(typeOfColour == "rtloutline")
+            {
+                rtloutline.Fill = rectangle.Fill;
+            }
 
             foreach (var item in NodesControl.SelectedItems)
             {
@@ -579,6 +593,20 @@ namespace Paint.Views
             var selectedItem = selectOption.SelectedItem;
             var comboBoxItem = selectedItem as ComboBoxItem;
             var text = comboBoxItem.Tag;
+            isFill = text.ToString();
+        }
+
+        private void chooseTypeToColourEvenListener1(object sender, MouseButtonEventArgs e)
+        {
+            typeOfColour = "rtloutline";
+            rtloutline.StrokeThickness = 3;
+            rtlfill.StrokeThickness = 0;
+        }
+        private void chooseTypeToColourEvenListener2(object sender, MouseButtonEventArgs e)
+        {
+            typeOfColour = "rtlfill";
+            rtloutline.StrokeThickness = 0;
+            rtlfill.StrokeThickness = 3;
         }
     }
 }

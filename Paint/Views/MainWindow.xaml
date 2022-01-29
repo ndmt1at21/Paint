@@ -291,7 +291,7 @@
 
                 </RibbonGroup>
                 <!--  Shape  group  -->
-                <RibbonGroup x:Name="ShapeGroup" Header="Shape" Width="200">
+                <RibbonGroup x:Name="ShapeGroup" Header="Shape" Width="150">
                    
                     <WrapPanel Width="140">
                             
@@ -315,8 +315,8 @@
                             </RibbonControlGroup>
                         </WrapPanel>
                     <ComboBox SelectionChanged="SelectFillOrOutline">
-                        <ComboBoxItem Tag="Outline">
-                            <TextBlock >Outline</TextBlock>
+                        <ComboBoxItem Tag="No fill">
+                            <TextBlock >No fill</TextBlock>
                         </ComboBoxItem>
                         <ComboBoxItem Tag="Fill">
                                 <TextBlock >Fill</TextBlock>
@@ -326,8 +326,19 @@
                 </RibbonGroup>
 
                 <!--  Color  group  -->
-                <RibbonGroup x:Name="ColorGroupPicker" Header="Color">
+                <RibbonGroup x:Name="ColorGroupPicker" Header="Color" Width="45">
 
+                    <Rectangle
+                        x:Name="rtloutline"
+                        Width="30"
+                        Height="30"
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch"
+                        Fill="#FFF4F4F5"
+                        Stroke="Black" 
+                        StrokeThickness="3"
+                        MouseDown="chooseTypeToColourEvenListener1"/>
                     <Rectangle
                         x:Name="rtlfill"
                         Width="30"
@@ -336,8 +347,9 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Stretch"
                         Fill="#FFF4F4F5"
-                        Stroke="Black" />
-
+                        Stroke="Black" 
+                        StrokeThickness="0"
+                        MouseDown="chooseTypeToColourEvenListener2"/>
                 </RibbonGroup>
                 <RibbonGroup>
                     <WrapPanel Width="200">
